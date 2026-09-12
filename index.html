@@ -3,21 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sean Merkado - Alternative Site Development Plans</title>
+  <title>Sean Merkado - Site Development Plans</title>
   <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
   <style>
-    canvas {
-      cursor: grab;
-      touch-action: none;
-    }
-    canvas:active {
-      cursor: grabbing;
-    }
+    canvas { cursor: grab; touch-action: none; }
+    canvas:active { cursor: grabbing; }
   </style>
 </head>
 <body class="bg-transparent text-[var(--foreground,#0f172a)] antialiased p-2 sm:p-4">
   <div class="max-w-7xl mx-auto flex flex-col gap-4">
-    
+
     <!-- Top Nav & Scheme Selector -->
     <div class="bg-[var(--card,#ffffff)] border border-[var(--border,#e2e8f0)] rounded-2xl p-4 sm:p-5 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
       <div>
@@ -35,8 +30,6 @@
           National Road, Brgy. Pahanocoy, Bacolod City &bull; 36.38m Frontage × 110.00m Depth
         </p>
       </div>
-
-      <!-- Master Scheme Switcher -->
       <div class="flex flex-wrap items-center gap-2">
         <label class="text-xs font-semibold text-[var(--foreground,#0f172a)] block sm:inline">Select Scheme:</label>
         <select id="scheme-select" class="text-xs font-semibold rounded-xl border border-[var(--border,#cbd5e1)] bg-[var(--background,#ffffff)] text-[var(--foreground,#0f172a)] px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none shadow-sm cursor-pointer">
@@ -48,7 +41,7 @@
       </div>
     </div>
 
-    <!-- Comparative Metrics Bar -->
+    <!-- Metrics Bar -->
     <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 sm:gap-3 text-center">
       <div class="bg-[var(--card,#ffffff)] border border-[var(--border,#e2e8f0)] rounded-xl p-3 shadow-sm">
         <div class="text-[11px] font-medium text-[var(--muted-foreground,#64748b)] uppercase">Total Site Area</div>
@@ -74,25 +67,19 @@
 
     <!-- Main Workspace -->
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-4 items-start">
-      
+
       <!-- Left Controls Panel -->
       <div class="lg:col-span-1 flex flex-col gap-4">
-        
+
         <!-- Scheme Details Card -->
         <div class="bg-[var(--card,#ffffff)] border border-[var(--border,#e2e8f0)] rounded-2xl p-4 shadow-sm space-y-3">
-          <h2 class="text-xs font-bold uppercase tracking-wider text-[var(--muted-foreground,#64748b)]">
-            Active Scheme Description
-          </h2>
-          <div id="scheme-description" class="text-xs text-[var(--muted-foreground,#64748b)] leading-relaxed space-y-2">
-            <!-- Dynamic content inserted by JS -->
-          </div>
+          <h2 class="text-xs font-bold uppercase tracking-wider text-[var(--muted-foreground,#64748b)]">Active Scheme Description</h2>
+          <div id="scheme-description" class="text-xs text-[var(--muted-foreground,#64748b)] leading-relaxed space-y-2"></div>
         </div>
 
         <!-- Layer Toggles -->
         <div class="bg-[var(--card,#ffffff)] border border-[var(--border,#e2e8f0)] rounded-2xl p-4 shadow-sm space-y-3">
-          <h2 class="text-xs font-bold uppercase tracking-wider text-[var(--muted-foreground,#64748b)]">
-            Display Layers
-          </h2>
+          <h2 class="text-xs font-bold uppercase tracking-wider text-[var(--muted-foreground,#64748b)]">Display Layers</h2>
           <div class="space-y-2 text-xs">
             <label class="flex items-center gap-2 cursor-pointer">
               <input type="checkbox" id="chk-parking" checked class="rounded text-blue-600">
@@ -119,9 +106,7 @@
 
         <!-- Inspector Card -->
         <div class="bg-[var(--card,#ffffff)] border border-[var(--border,#e2e8f0)] rounded-2xl p-4 shadow-sm">
-          <h2 class="text-xs font-bold uppercase tracking-wider text-[var(--muted-foreground,#64748b)] mb-2">
-            Selected Element Inspector
-          </h2>
+          <h2 class="text-xs font-bold uppercase tracking-wider text-[var(--muted-foreground,#64748b)] mb-2">Selected Element Inspector</h2>
           <div id="inspector-text" class="text-xs text-[var(--muted-foreground,#64748b)] italic">
             Hover or click on any stall, parking slot, or facility to view details.
           </div>
@@ -132,14 +117,12 @@
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
           Export Active Scheme (PNG)
         </button>
-
       </div>
 
       <!-- Right Canvas Panel -->
       <div class="lg:col-span-3 flex flex-col gap-4">
-        
         <div class="relative bg-[var(--card,#ffffff)] border border-[var(--border,#e2e8f0)] rounded-2xl shadow-sm overflow-hidden flex flex-col">
-          
+
           <!-- Floating Controls -->
           <div class="absolute top-3 left-3 right-3 z-10 flex flex-wrap items-center justify-between gap-2 pointer-events-none">
             <div class="pointer-events-auto flex items-center bg-[var(--card,#ffffff)]/90 backdrop-blur-md border border-[var(--border,#cbd5e1)] rounded-xl p-1 shadow-sm gap-1">
@@ -147,7 +130,6 @@
               <button id="btn-zoom-out" class="w-7 h-7 rounded-lg flex items-center justify-center text-[var(--foreground,#0f172a)] hover:bg-gray-100 dark:hover:bg-slate-800 font-bold" title="Zoom Out">&minus;</button>
               <button id="btn-fit" class="px-2.5 h-7 rounded-lg flex items-center justify-center text-xs font-medium text-[var(--foreground,#0f172a)] hover:bg-gray-100 dark:hover:bg-slate-800" title="Fit to Viewport">Fit View</button>
             </div>
-
             <div class="pointer-events-auto bg-[var(--card,#ffffff)]/90 backdrop-blur-md border border-[var(--border,#cbd5e1)] rounded-xl px-3 py-1 shadow-sm text-xs font-medium text-[var(--foreground,#0f172a)] flex items-center gap-2">
               <span id="coord-readout" class="font-mono text-[11px] text-[var(--muted-foreground,#64748b)]">X: 0.0m, Y: 0.0m</span>
               <span class="w-px h-3 bg-gray-300"></span>
@@ -160,594 +142,1262 @@
 
           <!-- Footer Legend -->
           <div class="p-3 bg-[var(--background,#f8fafc)] border-t border-[var(--border,#e2e8f0)] flex flex-wrap items-center justify-between gap-3 text-xs">
-            <div id="canvas-legend" class="flex items-center flex-wrap gap-4">
-              <!-- Inserted dynamically based on scheme -->
-            </div>
+            <div id="canvas-legend" class="flex items-center flex-wrap gap-4"></div>
             <div class="text-[var(--muted-foreground,#64748b)] text-[11px]">
               Drag to pan &bull; Scroll to zoom &bull; Click items for specs
             </div>
           </div>
-
         </div>
-
       </div>
-
     </div>
-
   </div>
 
-  <script>
-    const W_SITE = 36.38;
-    const D_SITE = 110.00;
+<script>
+/* ============================================================
+   SEAN MERKADO — Interactive Site Development Plans
+   Full-featured: Inspector, Labels, Layers, Dims, Compass
+   ============================================================ */
 
-    const SCHEME_INFO = {
-      opt1: {
-        title: "Option 1: Linear Front-to-Back Split",
-        subtitle: "• Front Parking / Rear Food Promenade",
-        cars: 38,
-        moto: 24,
-        stalls: "22+ & Bar",
-        seats: "~260",
-        desc: `
-          <p><strong>Typology:</strong> Clean linear zoning splitting the site into two distinct zones.</p>
-          <ul class="list-disc pl-4 space-y-1 mt-1 text-gray-500">
-            <li><strong>Front 47m:</strong> Dedicated customer parking with one-way circulation loop (38 cars + 24 motorbikes).</li>
-            <li><strong>Rear 63m:</strong> Continuous central gravel &amp; turf-paver promenade flanked by 22 container kiosks, central craft bar, acoustic stage, and comfort rooms.</li>
-            <li><strong>Advantage:</strong> 100% pedestrian safety, low highway noise/dust inside dining, authentic night market vibe.</li>
-          </ul>
-        `
-      },
-      opt2: {
-        title: "Option 2: Courtyard Piazza & Village",
-        subtitle: "• Central Enclosed Piazza & Radial Festoon Canopy",
-        cars: 32,
-        moto: 20,
-        stalls: "26 Kiosks",
-        seats: "~320",
-        desc: `
-          <p><strong>Typology:</strong> Enclosed central dining courtyard enclosed on 3 sides by modular food stalls.</p>
-          <ul class="list-disc pl-4 space-y-1 mt-1 text-gray-500">
-            <li><strong>Front Courtyard:</strong> 14 quick-turnover car stalls + 2 Express Highway Drive-Up booths (coffee/boba).</li>
-            <li><strong>Central Piazza:</strong> 34m × 22m grand open dining square with central craft bar pavilion and radial festoon canopy.</li>
-            <li><strong>Rear Zone:</strong> 18 overflow parking stalls + covered live amphitheater &amp; restrooms.</li>
-            <li><strong>Advantage:</strong> Intimate festival square atmosphere, wind/weather protection, drive-up highway sales.</li>
-          </ul>
-        `
-      },
-      opt3: {
-        title: "Option 3: Boulevard Ribbon & Drive-In",
-        subtitle: "• Parallel Drive-In Boulevard & 2-Story Container Strip",
-        cars: 40,
-        moto: 30,
-        stalls: "19 Two-Story",
-        seats: "~350",
-        desc: `
-          <p><strong>Typology:</strong> Longitudinal parallel ribbon split running the full 110m depth.</p>
-          <ul class="list-disc pl-4 space-y-1 mt-1 text-gray-500">
-            <li><strong>South Ribbon (17m wide):</strong> Full-length two-way drive-in boulevard with 38+ angled parking stalls.</li>
-            <li><strong>North Ribbon (19.4m wide):</strong> Continuous pedestrian food street with 19 multi-tier container stalls featuring 2nd-floor rooftop dining decks!</li>
-            <li><strong>Advantage:</strong> Complete highway visibility from the national road, "Park-and-Dine" convenience, double floor space.</li>
-          </ul>
-        `
-      },
-      survey: {
-        title: "Technical Survey & Boundary Plan",
-        subtitle: "• Geodetic Metes & Bounds (PSD-408589)",
-        cars: 0,
-        moto: 0,
-        stalls: "N/A",
-        seats: "N/A",
-        desc: `
-          <p><strong>Official Geodetic Survey Plan:</strong> Lot 834-A-2-B &amp; Lot 834-A-2-C situated in Brgy. Pahanocoy, Bacolod City.</p>
-          <ul class="list-disc pl-4 space-y-1 mt-1 text-gray-500">
-            <li>Frontage: 36.38m (N 28°00'E) along National Highway.</li>
-            <li>Depth: 110.00m (S 63°22'E) along Lot D and Lot A boundaries.</li>
-            <li>Rear: 36.38m (S 28°00'W) along NHA property.</li>
-            <li>Common tie line: BBM No. 2, CAD 39 to Cor 1: S 26°13'W, 711.62m.</li>
-          </ul>
-        `
-      }
-    };
+const W_SITE = 36.38;
+const D_SITE = 110.00;
 
-    const app = {
-      scheme: 'opt1',
-      showParking: true,
-      showStalls: true,
-      showDining: true,
-      showLights: true,
-      showDims: true,
-      scale: 6.2,
-      panX: 60,
-      panY: 300,
-      isDragging: false,
-      dragStart: { x: 0, y: 0 },
-      hoverItem: null
-    };
+/* ---- Scheme metadata ---- */
+const SCHEME_INFO = {
+  opt1: {
+    title: "Option 1: Linear Front-to-Back Split",
+    subtitle: "• Front Parking / Rear Food Promenade",
+    cars: 38, moto: 24, stalls: "22+ & Bar", seats: "~260",
+    desc: `<p><strong>Typology:</strong> Clean linear zoning splitting the site into two distinct zones.</p>
+      <ul class="list-disc pl-4 space-y-1 mt-1 text-gray-500">
+        <li><strong>Front 47m:</strong> Dedicated customer parking with one-way circulation loop (38 cars + 24 motorbikes).</li>
+        <li><strong>Rear 63m:</strong> Continuous central gravel &amp; turf-paver promenade flanked by 22 container kiosks, central craft bar, acoustic stage, and comfort rooms.</li>
+        <li><strong>Advantage:</strong> 100% pedestrian safety, low highway noise/dust inside dining, authentic night market vibe.</li>
+      </ul>`
+  },
+  opt2: {
+    title: "Option 2: Courtyard Piazza & Village",
+    subtitle: "• Central Enclosed Piazza & Radial Festoon Canopy",
+    cars: 32, moto: 20, stalls: "26 Kiosks", seats: "~320",
+    desc: `<p><strong>Typology:</strong> Enclosed central dining courtyard enclosed on 3 sides by modular food stalls.</p>
+      <ul class="list-disc pl-4 space-y-1 mt-1 text-gray-500">
+        <li><strong>Front Courtyard:</strong> 14 quick-turnover car stalls + 2 Express Highway Drive-Up booths (coffee/boba).</li>
+        <li><strong>Central Piazza:</strong> 34m × 22m grand open dining square with central craft bar pavilion and radial festoon canopy.</li>
+        <li><strong>Rear Zone:</strong> 18 overflow parking stalls + covered live amphitheater &amp; restrooms.</li>
+        <li><strong>Advantage:</strong> Intimate festival square atmosphere, wind/weather protection, drive-up highway sales.</li>
+      </ul>`
+  },
+  opt3: {
+    title: "Option 3: Boulevard Ribbon & Drive-In",
+    subtitle: "• Parallel Drive-In Boulevard & 2-Story Container Strip",
+    cars: 40, moto: 30, stalls: "19 Two-Story", seats: "~350",
+    desc: `<p><strong>Typology:</strong> Longitudinal parallel ribbon split running the full 110m depth.</p>
+      <ul class="list-disc pl-4 space-y-1 mt-1 text-gray-500">
+        <li><strong>South Ribbon (17m wide):</strong> Full-length two-way drive-in boulevard with 38+ angled parking stalls.</li>
+        <li><strong>North Ribbon (19.4m wide):</strong> Continuous pedestrian food street with 19 multi-tier container stalls featuring 2nd-floor rooftop dining decks!</li>
+        <li><strong>Advantage:</strong> Complete highway visibility from the national road, "Park-and-Dine" convenience, double floor space.</li>
+      </ul>`
+  },
+  survey: {
+    title: "Technical Survey & Boundary Plan",
+    subtitle: "• Geodetic Metes & Bounds (PSD-408589)",
+    cars: 0, moto: 0, stalls: "N/A", seats: "N/A",
+    desc: `<p><strong>Official Geodetic Survey Plan:</strong> Lot 834-A-2-B &amp; Lot 834-A-2-C situated in Brgy. Pahanocoy, Bacolod City.</p>
+      <ul class="list-disc pl-4 space-y-1 mt-1 text-gray-500">
+        <li>Frontage: 36.38m (N 28°00'E) along National Highway.</li>
+        <li>Depth: 110.00m (S 63°22'E) along Lot D and Lot A boundaries.</li>
+        <li>Rear: 36.38m (S 28°00'W) along NHA property.</li>
+        <li>Common tie line: BBM No. 2, CAD 39 to Cor 1: S 26°13'W, 711.62m.</li>
+      </ul>`
+  }
+};
 
-    const canvas = document.getElementById('app-canvas');
-    const ctx = canvas.getContext('2d');
+/* ---- App state ---- */
+const app = {
+  scheme: 'opt1',
+  showParking: true,
+  showStalls: true,
+  showDining: true,
+  showLights: true,
+  showDims: true,
+  scale: 6.2,
+  panX: 60,
+  panY: 300,
+  isDragging: false,
+  dragStart: { x: 0, y: 0 },
+  hoverItem: null,
+  selectedItem: null
+};
 
-    function resize() {
-      const rect = canvas.getBoundingClientRect();
-      const dpr = window.devicePixelRatio || 1;
-      canvas.width = rect.width * dpr;
-      canvas.height = rect.height * dpr;
-      ctx.resetTransform();
-      ctx.scale(dpr, dpr);
-      draw();
+/* ---- Hittable elements registry — rebuilt every draw ---- */
+let hitItems = [];
+
+const canvas = document.getElementById('app-canvas');
+const ctx = canvas.getContext('2d');
+
+/* ============================================================
+   COORDINATE HELPERS
+   ============================================================ */
+function resize() {
+  const rect = canvas.getBoundingClientRect();
+  const dpr = window.devicePixelRatio || 1;
+  canvas.width = rect.width * dpr;
+  canvas.height = rect.height * dpr;
+  ctx.resetTransform();
+  ctx.scale(dpr, dpr);
+  draw();
+}
+window.addEventListener('resize', resize);
+
+function fitView() {
+  const rect = canvas.getBoundingClientRect();
+  const w = rect.width, h = rect.height;
+  const totalSpanX = 135, totalSpanY = 55;
+  app.scale = Math.min((w * 0.9) / totalSpanX, (h * 0.85) / totalSpanY);
+  app.panX = (w - (D_SITE * app.scale)) / 2 + 10 * app.scale;
+  app.panY = h / 2 + (W_SITE / 2) * app.scale;
+  document.getElementById('zoom-readout').innerText = (app.scale / 6.2).toFixed(1) + 'x';
+  draw();
+}
+
+function toScreen(x, y) {
+  return { x: app.panX + x * app.scale, y: app.panY - y * app.scale };
+}
+function toSite(sx, sy) {
+  return { x: (sx - app.panX) / app.scale, y: -(sy - app.panY) / app.scale };
+}
+
+/* ============================================================
+   UI UPDATE
+   ============================================================ */
+function updateSchemeUI() {
+  const info = SCHEME_INFO[app.scheme];
+  document.getElementById('header-scheme-subtitle').innerText = info.subtitle;
+  document.getElementById('metric-cars').innerHTML = `${info.cars} <span class="text-xs font-normal">Cars</span>`;
+  document.getElementById('metric-moto').innerHTML = `${info.moto} <span class="text-xs font-normal">Bays</span>`;
+  document.getElementById('metric-stalls').innerHTML = `${info.stalls}`;
+  document.getElementById('metric-seats').innerHTML = `${info.seats} <span class="text-xs font-normal">Seats</span>`;
+  document.getElementById('scheme-description').innerHTML = info.desc;
+
+  const leg = document.getElementById('canvas-legend');
+  const legendHTML = {
+    opt1: `
+      <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-blue-600"></span><span>Parking (38 Cars + 24 Moto)</span></div>
+      <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-emerald-600"></span><span>Food Stalls North</span></div>
+      <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-amber-600"></span><span>Grill Stalls South</span></div>
+      <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-indigo-600"></span><span>Central Bar</span></div>
+      <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-purple-600"></span><span>Acoustic Stage</span></div>`,
+    opt2: `
+      <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-amber-500"></span><span>Express Drive-Up (Front)</span></div>
+      <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-emerald-600"></span><span>Piazza Kiosks (U-Shape)</span></div>
+      <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-rose-600"></span><span>Central Bar Pavilion</span></div>
+      <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-blue-600"></span><span>Split Parking (Front &amp; Rear)</span></div>`,
+    opt3: `
+      <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-blue-600"></span><span>Drive-In Boulevard &amp; Ribbon Parking</span></div>
+      <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-emerald-600"></span><span>2-Story Container Kiosks (Rooftop Decks)</span></div>
+      <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-yellow-500"></span><span>Continuous Merkado Promenade</span></div>`,
+    survey: `
+      <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-emerald-500"></span><span>Lot 834-A-2-C (2,000 m²)</span></div>
+      <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-amber-500"></span><span>Lot 834-A-2-B (2,000 m²)</span></div>`
+  };
+  leg.innerHTML = legendHTML[app.scheme] || '';
+}
+
+/* ============================================================
+   INSPECTOR
+   ============================================================ */
+function updateInspector(item) {
+  const el = document.getElementById('inspector-text');
+  if (!item) {
+    el.innerHTML = '<span class="italic">Hover or click on any stall, parking slot, or facility to view details.</span>';
+    return;
+  }
+  let html = `<div class="space-y-1.5 not-italic">`;
+  html += `<div class="font-bold text-sm text-[var(--foreground,#0f172a)]">${item.id}</div>`;
+  if (item.type) html += `<div><span class="font-semibold">Type:</span> ${item.type}</div>`;
+  if (item.dims) html += `<div><span class="font-semibold">Dims:</span> ${item.dims}</div>`;
+  if (item.area) html += `<div><span class="font-semibold">Area:</span> ${item.area}</div>`;
+  if (item.category) html += `<div><span class="font-semibold">Category:</span> ${item.category}</div>`;
+  if (item.notes) html += `<div class="text-gray-400 mt-1">${item.notes}</div>`;
+  html += `</div>`;
+  el.innerHTML = html;
+}
+
+function checkHitTest(sx, sy) {
+  for (let i = hitItems.length - 1; i >= 0; i--) {
+    const it = hitItems[i];
+    if (sx >= it.sx && sx <= it.sx + it.sw && sy >= it.sy && sy <= it.sy + it.sh) {
+      return it;
     }
-    window.addEventListener('resize', resize);
+  }
+  return null;
+}
 
-    function fitView() {
-      const rect = canvas.getBoundingClientRect();
-      const w = rect.width;
-      const h = rect.height;
+/* ============================================================
+   DRAWING PRIMITIVES
+   ============================================================ */
+function drawBox(x, y, w, h, fill, stroke, label, hitData) {
+  const sp = toScreen(x, y + h);
+  const sw = w * app.scale;
+  const sh = h * app.scale;
 
-      const totalSpanX = 135;
-      const totalSpanY = 55;
-      app.scale = Math.min((w * 0.9) / totalSpanX, (h * 0.85) / totalSpanY);
-      app.panX = (w - (D_SITE * app.scale)) / 2 + 10 * app.scale;
-      app.panY = h / 2 + (W_SITE / 2) * app.scale;
-      document.getElementById('zoom-readout').innerText = (app.scale / 6.2).toFixed(1) + 'x';
-      draw();
+  // Highlight if hovered/selected
+  const isHover = app.hoverItem && hitData && app.hoverItem.id === hitData.id;
+  const isSel = app.selectedItem && hitData && app.selectedItem.id === hitData.id;
+
+  ctx.fillStyle = fill;
+  ctx.fillRect(sp.x, sp.y, sw, sh);
+  ctx.strokeStyle = (isHover || isSel) ? '#ffffff' : stroke;
+  ctx.lineWidth = (isHover || isSel) ? 2.5 : 1.2;
+  ctx.strokeRect(sp.x, sp.y, sw, sh);
+
+  if (isHover || isSel) {
+    ctx.save();
+    ctx.strokeStyle = 'rgba(255,255,255,0.4)';
+    ctx.lineWidth = 1;
+    ctx.strokeRect(sp.x - 2, sp.y - 2, sw + 4, sh + 4);
+    ctx.restore();
+  }
+
+  if (label && app.scale > 2.5) {
+    ctx.fillStyle = '#ffffff';
+    const fSize = Math.max(7, Math.min(11, sw / label.length * 1.3));
+    ctx.font = `bold ${fSize}px system-ui, sans-serif`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(label, sp.x + sw / 2, sp.y + sh / 2, sw - 2);
+  }
+
+  if (hitData) {
+    hitItems.push({ ...hitData, sx: sp.x, sy: sp.y, sw, sh });
+  }
+}
+
+function drawStall(x, y, w, h, fill, stroke, label, hitData) {
+  const sp = toScreen(x, y + h);
+  const sw = w * app.scale;
+  const sh = h * app.scale;
+
+  const isHover = app.hoverItem && hitData && app.hoverItem.id === hitData.id;
+  const isSel = app.selectedItem && hitData && app.selectedItem.id === hitData.id;
+
+  ctx.fillStyle = fill;
+  ctx.fillRect(sp.x, sp.y, sw, sh);
+  ctx.strokeStyle = (isHover || isSel) ? '#38bdf8' : stroke;
+  ctx.lineWidth = (isHover || isSel) ? 2 : 1;
+  ctx.strokeRect(sp.x, sp.y, sw, sh);
+
+  if (label && app.scale > 3) {
+    ctx.fillStyle = '#94a3b8';
+    ctx.font = `600 ${Math.max(6, Math.min(9, sw * 0.55))}px system-ui, sans-serif`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(label, sp.x + sw / 2, sp.y + sh / 2, sw - 1);
+  }
+
+  if (hitData) {
+    hitItems.push({ ...hitData, sx: sp.x, sy: sp.y, sw, sh });
+  }
+}
+
+function drawCircle(x, y, r, fill, stroke, label, hitData) {
+  const sp = toScreen(x, y);
+  const sr = r * app.scale;
+
+  ctx.beginPath();
+  ctx.arc(sp.x, sp.y, sr, 0, Math.PI * 2);
+  ctx.fillStyle = fill;
+  ctx.fill();
+  ctx.strokeStyle = stroke;
+  ctx.lineWidth = 1.5;
+  ctx.stroke();
+
+  if (label && app.scale > 2.5) {
+    ctx.fillStyle = '#ffffff';
+    ctx.font = 'bold 9px system-ui, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(label, sp.x, sp.y);
+  }
+
+  if (hitData) {
+    hitItems.push({ ...hitData, sx: sp.x - sr, sy: sp.y - sr, sw: sr * 2, sh: sr * 2 });
+  }
+}
+
+function drawDiningTable(x, y) {
+  if (!app.showDining) return;
+  const sp = toScreen(x, y);
+  const s = app.scale;
+  // Table
+  ctx.fillStyle = '#78350f';
+  ctx.fillRect(sp.x - 0.5 * s, sp.y - 0.5 * s, 1.0 * s, 1.0 * s);
+  // Umbrella pole
+  ctx.strokeStyle = '#fbbf24';
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  ctx.moveTo(sp.x, sp.y + 0.5 * s);
+  ctx.lineTo(sp.x, sp.y - 1.0 * s);
+  ctx.stroke();
+  // Umbrella canopy
+  ctx.beginPath();
+  ctx.arc(sp.x, sp.y - 1.0 * s, 0.8 * s, Math.PI, 0);
+  ctx.strokeStyle = '#fbbf24';
+  ctx.lineWidth = 1;
+  ctx.stroke();
+  // Chairs (4 dots)
+  ctx.fillStyle = '#a16207';
+  const offsets = [[-0.7, 0], [0.7, 0], [0, -0.7], [0, 0.7]];
+  offsets.forEach(([dx, dy]) => {
+    ctx.beginPath();
+    ctx.arc(sp.x + dx * s, sp.y + dy * s, 0.18 * s, 0, Math.PI * 2);
+    ctx.fill();
+  });
+}
+
+function drawFestoon(x1, x2, y1, y2) {
+  if (!app.showLights) return;
+  ctx.save();
+  // Catenary lines
+  ctx.strokeStyle = 'rgba(253, 224, 71, 0.6)';
+  ctx.lineWidth = 1.2;
+  ctx.setLineDash([4, 4]);
+  const n = 18;
+  for (let row = 0; row < 3; row++) {
+    const yy = y2 + (y1 - y2) * (row / 2);
+    ctx.beginPath();
+    for (let i = 0; i <= n; i++) {
+      const x = x1 + (i / n) * (x2 - x1);
+      const sag = Math.sin(i / n * Math.PI) * 1.2;
+      const sp = toScreen(x, yy - sag);
+      if (i === 0) ctx.moveTo(sp.x, sp.y); else ctx.lineTo(sp.x, sp.y);
     }
+    ctx.stroke();
+  }
+  ctx.setLineDash([]);
 
-    function toScreen(x, y) {
-      return {
-        x: app.panX + x * app.scale,
-        y: app.panY - y * app.scale
-      };
-    }
-
-    function toSite(sx, sy) {
-      return {
-        x: (sx - app.panX) / app.scale,
-        y: -(sy - app.panY) / app.scale
-      };
-    }
-
-    function updateSchemeUI() {
-      const info = SCHEME_INFO[app.scheme];
-      document.getElementById('header-scheme-subtitle').innerText = info.subtitle;
-      document.getElementById('metric-cars').innerHTML = `${info.cars} <span class="text-xs font-normal">Cars</span>`;
-      document.getElementById('metric-moto').innerHTML = `${info.moto} <span class="text-xs font-normal">Bays</span>`;
-      document.getElementById('metric-stalls').innerHTML = `${info.stalls}`;
-      document.getElementById('metric-seats').innerHTML = `${info.seats} <span class="text-xs font-normal">Seats</span>`;
-      document.getElementById('scheme-description').innerHTML = info.desc;
-
-      const leg = document.getElementById('canvas-legend');
-      if (app.scheme === 'opt1') {
-        leg.innerHTML = `
-          <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-blue-600"></span><span>Parking (38 Cars + 24 Moto)</span></div>
-          <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-emerald-600"></span><span>Food Stalls North</span></div>
-          <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-amber-600"></span><span>Grill Stalls South</span></div>
-          <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-indigo-600"></span><span>Central Bar</span></div>
-          <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-purple-600"></span><span>Acoustic Stage</span></div>
-        `;
-      } else if (app.scheme === 'opt2') {
-        leg.innerHTML = `
-          <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-amber-500"></span><span>Express Drive-Up (Front)</span></div>
-          <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-emerald-600"></span><span>Piazza Kiosks (U-Shape)</span></div>
-          <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-rose-600"></span><span>Central Bar Pavilion</span></div>
-          <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-blue-600"></span><span>Split Parking (Front &amp; Rear)</span></div>
-        `;
-      } else if (app.scheme === 'opt3') {
-        leg.innerHTML = `
-          <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-blue-600"></span><span>Drive-In Boulevard &amp; Ribbon Parking</span></div>
-          <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-emerald-600"></span><span>2-Story Container Kiosks (Rooftop Decks)</span></div>
-          <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-yellow-500"></span><span>Continuous Merkado Promenade</span></div>
-        `;
-      } else {
-        leg.innerHTML = `
-          <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-emerald-500"></span><span>Lot 834-A-2-C (2,000 m²)</span></div>
-          <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-amber-500"></span><span>Lot 834-A-2-B (2,000 m²)</span></div>
-        `;
-      }
-    }
-
-    // --- MAIN DRAW ROUTINE ---
-    function draw() {
-      const rect = canvas.getBoundingClientRect();
-      const w = rect.width;
-      const h = rect.height;
-
-      const isDark = document.documentElement.classList.contains('dark');
-      ctx.fillStyle = isDark ? '#0f172a' : '#ffffff';
-      ctx.fillRect(0, 0, w, h);
-
-      if (app.scheme === 'opt1') drawOption1(w, h);
-      else if (app.scheme === 'opt2') drawOption2(w, h);
-      else if (app.scheme === 'opt3') drawOption3(w, h);
-      else drawSurveyPlan(w, h);
-    }
-
-    // --- BASE CAD DRAW HELPERS ---
-    function drawBaseSite() {
-      const p0 = toScreen(0, W_SITE);
-      const sw = D_SITE * app.scale;
-      const sh = W_SITE * app.scale;
-
-      ctx.fillStyle = '#182234';
-      ctx.fillRect(p0.x, p0.y, sw, sh);
-
-      // National Road
-      const pR0 = toScreen(-16, W_SITE + 2);
-      ctx.fillStyle = '#334155';
-      ctx.fillRect(pR0.x, pR0.y, 16 * app.scale, (W_SITE + 4) * app.scale);
-
-      // Road text
-      const pRT = toScreen(-8, W_SITE / 2);
-      ctx.save();
-      ctx.translate(pRT.x, pRT.y);
-      ctx.rotate(-Math.PI / 2);
-      ctx.fillStyle = '#f8fafc';
-      ctx.font = 'bold 11px system-ui, sans-serif';
-      ctx.textAlign = 'center';
-      ctx.fillText('NATIONAL ROAD (LOT 834-A-1, PSD-24776)', 0, -4);
-      ctx.font = '500 10px system-ui, sans-serif';
-      ctx.fillStyle = '#cbd5e1';
-      ctx.fillText('◄ TO BAGO CITY          TO BACOLOD CITY PROPER ►', 0, 12);
-      ctx.restore();
-
-      // Border
-      ctx.strokeStyle = '#38bdf8';
-      ctx.lineWidth = 2;
-      ctx.strokeRect(p0.x, p0.y, sw, sh);
-    }
-
-    // --- DRAW OPTION 1 ---
-    function drawOption1(w, h) {
-      drawBaseSite();
-      const p0 = toScreen(0, W_SITE);
-      const sh = W_SITE * app.scale;
-
-      // Parking (X: 3 to 47)
-      if (app.showParking) {
-        const pAsp0 = toScreen(3, W_SITE);
-        ctx.fillStyle = '#1e293b';
-        ctx.fillRect(pAsp0.x, pAsp0.y, 44 * app.scale, sh);
-
-        // Parking Stalls
-        for (let x = 7; x <= 43.4; x += 2.6) {
-          drawStall(x, 31.38, 2.5, 5.0, '#0f172a', '#64748b');
-          drawStall(x, 0, 2.5, 5.0, '#0f172a', '#64748b');
-        }
-        for (let x = 14; x <= 37.4; x += 2.6) {
-          drawStall(x, 18.19, 2.5, 4.5, '#0f172a', '#64748b');
-          drawStall(x, 13.69, 2.5, 4.5, '#0f172a', '#64748b');
-        }
-      }
-
-      // Food Park Ground
-      const pM0 = toScreen(47, W_SITE);
-      ctx.fillStyle = '#27272a';
-      ctx.fillRect(pM0.x, pM0.y, 63 * app.scale, sh);
-
-      // Central Promenade
-      const pPr0 = toScreen(51, 24.5);
-      ctx.fillStyle = '#3f3f46';
-      ctx.fillRect(pPr0.x, pPr0.y, 41 * app.scale, 12.5 * app.scale);
-
-      // Kiosks
-      if (app.showStalls) {
-        for (let i = 0; i < 11; i++) {
-          const x = 52 + i * 3.7;
-          drawBox(x, 26.5, 3.4, 7.8, '#047857', '#34d399', `K${i+1}`);
-          drawBox(x, 2.0, 3.4, 7.8, '#b45309', '#f59e0b', `K${i+12}`);
-        }
-        // Central Bar
-        drawBox(70.5, 15.6, 5.0, 5.2, '#1e1b4b', '#818cf8', 'BAR');
-      }
-
-      // Festoon Lights
-      if (app.showLights) {
-        drawFestoon(52, 92, 25.2, 11.2);
-      }
-
-      // Stage & Restrooms
-      drawBox(94, 13, 8, 10.38, '#4c1d95', '#a855f7', 'STAGE');
-      drawBox(102.5, 23.5, 6.5, 11, '#0369a1', '#38bdf8', 'RESTROOMS');
-    }
-
-    // --- DRAW OPTION 2: COURTYARD PIAZZA ---
-    function drawOption2(w, h) {
-      drawBaseSite();
-      const p0 = toScreen(0, W_SITE);
-      const sh = W_SITE * app.scale;
-
-      // Front Parking & Express Kiosks (X: 0 to 28)
-      if (app.showParking) {
-        const pFr = toScreen(0, W_SITE);
-        ctx.fillStyle = '#1e293b';
-        ctx.fillRect(pFr.x, pFr.y, 28 * app.scale, sh);
-
-        // Express Drive-Up Kiosks
-        drawBox(2, 12.5, 6, 11.5, '#d97706', '#f59e0b', 'EXPRESS DRIVE-UP');
-
-        // Front stalls
-        for (let x = 9; x <= 26; x += 2.6) {
-          drawStall(x, 31.38, 2.5, 5.0, '#0f172a', '#94a3b8');
-          drawStall(x, 0, 2.5, 5.0, '#0f172a', '#94a3b8');
-        }
-      }
-
-      // Central Grand Piazza (X: 28 to 82)
-      const pZ0 = toScreen(28, W_SITE);
-      ctx.fillStyle = '#27272a';
-      ctx.fillRect(pZ0.x, pZ0.y, 54 * app.scale, sh);
-
-      // Courtyard square
-      const pSq0 = toScreen(36, 29);
-      ctx.fillStyle = '#3f3f46';
-      ctx.fillRect(pSq0.x, pSq0.y, 38 * app.scale, 21.5 * app.scale);
-
-      // Perimeter U-Shape Stalls
-      if (app.showStalls) {
-        // North Row
-        for (let x = 32; x <= 74; x += 4.2) {
-          drawBox(x, 30.5, 3.8, 5.0, '#047857', '#34d399', 'STALL');
-        }
-        // South Row
-        for (let x = 32; x <= 74; x += 4.2) {
-          drawBox(x, 1.0, 3.8, 5.0, '#b45309', '#f59e0b', 'STALL');
-        }
-        // East Wall
-        for (let y = 8; y <= 24; y += 4.8) {
-          drawBox(74, y, 5.0, 4.4, '#4338ca', '#818cf8', 'STALL');
-        }
-        // Center Pavilion
-        drawCircle(55, 18.19, 4.2, '#831843', '#f43f5e', 'PAVILION');
-      }
-
-      // Radial Canopy Lights
-      if (app.showLights) {
-        drawRadialLights(55, 18.19, 18);
-      }
-
-      // Rear Hub: Stage, Restrooms & Parking
-      const pR0 = toScreen(82, W_SITE);
-      ctx.fillStyle = '#1e293b';
-      ctx.fillRect(pR0.x, pR0.y, 28 * app.scale, sh);
-
-      drawBox(82, 12, 8, 12.38, '#581c87', '#c084fc', 'AMPHITHEATER');
-      drawBox(103, 14, 6.5, 8.5, '#0369a1', '#38bdf8', 'CR / RESTROOMS');
-
-      if (app.showParking) {
-        for (let x = 92; x <= 106; x += 2.6) {
-          drawStall(x, 24, 2.5, 5.0, '#0f172a', '#94a3b8');
-          drawStall(x, 7.5, 2.5, 5.0, '#0f172a', '#94a3b8');
-        }
-      }
-    }
-
-    // --- DRAW OPTION 3: BOULEVARD RIBBON ---
-    function drawOption3(w, h) {
-      drawBaseSite();
-      const p0 = toScreen(0, W_SITE);
-
-      // South Vehicular Boulevard (Y: 0 to 17m)
-      const pB0 = toScreen(0, 17);
-      ctx.fillStyle = '#1e293b';
-      ctx.fillRect(pB0.x, pB0.y, D_SITE * app.scale, 17 * app.scale);
-
-      // Parking Ribbon along South Boundary
-      if (app.showParking) {
-        for (let x = 4; x <= 102; x += 2.7) {
-          drawStall(x, 0, 2.5, 5.2, '#0f172a', '#94a3b8');
-        }
-      }
-
-      // North Pedestrian Food Street (Y: 17 to 36.38)
-      const pN0 = toScreen(0, W_SITE);
-      ctx.fillStyle = '#27272a';
-      ctx.fillRect(pN0.x, pN0.y, D_SITE * app.scale, (W_SITE - 17) * app.scale);
-
-      // Promenade
-      const pP0 = toScreen(8, 27);
-      ctx.fillStyle = '#3f3f46';
-      ctx.fillRect(pP0.x, pP0.y, 90 * app.scale, 9 * app.scale);
-
-      // Gateway 2-Story Cafe
-      drawBox(0, 18, 8, 18.38, '#1e1b4b', '#6366f1', 'GATEWAY CAFE');
-
-      // 2-Story Container Kiosks Row (North)
-      if (app.showStalls) {
-        for (let x = 10; x <= 92; x += 4.5) {
-          drawBox(x, 29.5, 4.2, 6.8, '#047857', '#34d399', '2-DECK');
-        }
-      }
-
-      // Rear Backyard Stage & Beer Garden
-      drawBox(96, 18, 12, 17, '#4c1d95', '#c084fc', 'BACKYARD & STAGE');
-    }
-
-    // --- DRAW SURVEY PLAN ---
-    function drawSurveyPlan(w, h) {
-      drawBaseSite();
-      // Dividing line
-      const s1 = toScreen(0, 18.19);
-      const s2 = toScreen(D_SITE, 18.19);
-      ctx.strokeStyle = '#38bdf8';
-      ctx.lineWidth = 2;
+  // Bulb dots
+  ctx.fillStyle = 'rgba(253, 224, 71, 0.9)';
+  for (let row = 0; row < 3; row++) {
+    const yy = y2 + (y1 - y2) * (row / 2);
+    for (let i = 0; i <= n; i += 2) {
+      const x = x1 + (i / n) * (x2 - x1);
+      const sp = toScreen(x, yy);
       ctx.beginPath();
-      ctx.moveTo(s1.x, s1.y);
-      ctx.lineTo(s2.x, s2.y);
-      ctx.stroke();
-
-      ctx.fillStyle = '#34d399';
-      ctx.font = 'bold 13px system-ui, sans-serif';
-      ctx.textAlign = 'center';
-      const pC = toScreen(D_SITE / 2, 27.28);
-      ctx.fillText('LOT 834-A-2-C (AREA = 2,000 SQ.M.)', pC.x, pC.y);
-
-      ctx.fillStyle = '#fbbf24';
-      const pB = toScreen(D_SITE / 2, 9.09);
-      ctx.fillText('LOT 834-A-2-B (AREA = 2,000 SQ.M.)', pB.x, pB.y);
-    }
-
-    function drawBox(x, y, w, h, fill, stroke, label) {
-      const sp = toScreen(x, y + h);
-      const sw = w * app.scale;
-      const sh = h * app.scale;
-
-      ctx.fillStyle = fill;
-      ctx.fillRect(sp.x, sp.y, sw, sh);
-      ctx.strokeStyle = stroke;
-      ctx.lineWidth = 1.2;
-      ctx.strokeRect(sp.x, sp.y, sw, sh);
-
-      if (label) {
-        ctx.fillStyle = '#ffffff';
-        ctx.font = 'bold 8px system-ui, sans-serif';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillText(label, sp.x + sw / 2, sp.y + sh / 2);
-      }
-    }
-
-    function drawCircle(x, y, r, fill, stroke, label) {
-      const sp = toScreen(x, y);
-      const sr = r * app.scale;
-
-      ctx.beginPath();
-      ctx.arc(sp.x, sp.y, sr, 0, Math.PI * 2);
-      ctx.fillStyle = fill;
+      ctx.arc(sp.x, sp.y, Math.max(1.5, 0.15 * app.scale), 0, Math.PI * 2);
       ctx.fill();
-      ctx.strokeStyle = stroke;
-      ctx.lineWidth = 1.5;
-      ctx.stroke();
-
-      if (label) {
-        ctx.fillStyle = '#ffffff';
-        ctx.font = 'bold 8px system-ui, sans-serif';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillText(label, sp.x, sp.y);
-      }
     }
+  }
+  ctx.restore();
+}
 
-    function drawStall(x, y, w, h, fill, stroke) {
-      const sp = toScreen(x, y + h);
-      ctx.fillStyle = fill;
-      ctx.fillRect(sp.x, sp.y, w * app.scale, h * app.scale);
-      ctx.strokeStyle = stroke;
-      ctx.lineWidth = 1;
-      ctx.strokeRect(sp.x, sp.y, w * app.scale, h * app.scale);
-    }
+function drawRadialLights(cx, cy, radius) {
+  if (!app.showLights) return;
+  ctx.save();
+  ctx.strokeStyle = 'rgba(253, 224, 71, 0.5)';
+  ctx.lineWidth = 1;
+  ctx.setLineDash([3, 4]);
+  const sp0 = toScreen(cx, cy);
+  for (let ang = 0; ang < Math.PI * 2; ang += Math.PI / 8) {
+    const ex = cx + radius * Math.cos(ang);
+    const ey = cy + (radius * 0.55) * Math.sin(ang);
+    const sp1 = toScreen(ex, ey);
+    ctx.beginPath();
+    ctx.moveTo(sp0.x, sp0.y);
+    ctx.lineTo(sp1.x, sp1.y);
+    ctx.stroke();
+  }
+  ctx.setLineDash([]);
+  // Center light marker
+  ctx.fillStyle = 'rgba(253, 224, 71, 0.8)';
+  ctx.beginPath();
+  ctx.arc(sp0.x, sp0.y, 3, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+}
 
-    function drawFestoon(x1, x2, y1, y2) {
-      ctx.save();
-      ctx.strokeStyle = 'rgba(253, 224, 71, 0.7)';
-      ctx.lineWidth = 1.2;
+/* ---- North Arrow ---- */
+function drawNorthIndicator() {
+  const rect = canvas.getBoundingClientRect();
+  const cx = rect.width - 50;
+  const cy = 55;
+  const len = 22;
+
+  ctx.save();
+  ctx.translate(cx, cy);
+  ctx.rotate(-62 * Math.PI / 180); // N28E from vertical
+
+  // Arrow shaft
+  ctx.strokeStyle = '#38bdf8';
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(0, len);
+  ctx.lineTo(0, -len);
+  ctx.stroke();
+
+  // Arrowhead
+  ctx.fillStyle = '#38bdf8';
+  ctx.beginPath();
+  ctx.moveTo(0, -len);
+  ctx.lineTo(-5, -len + 10);
+  ctx.lineTo(5, -len + 10);
+  ctx.closePath();
+  ctx.fill();
+
+  // N label
+  ctx.fillStyle = '#38bdf8';
+  ctx.font = 'bold 12px system-ui, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'bottom';
+  ctx.fillText('N', 0, -len - 4);
+
+  ctx.restore();
+
+  // Circle
+  ctx.strokeStyle = '#38bdf8';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.arc(cx, cy, len + 8, 0, Math.PI * 2);
+  ctx.stroke();
+}
+
+/* ---- Architectural Dimension Line ---- */
+function drawDimLine(x1, y1, x2, y2, label, offset) {
+  if (!app.showDims) return;
+  const dir = offset || 0;
+  const s1 = toScreen(x1, y1);
+  const s2 = toScreen(x2, y2);
+
+  // Compute perpendicular offset
+  const dx = s2.x - s1.x;
+  const dy = s2.y - s1.y;
+  const len = Math.sqrt(dx * dx + dy * dy);
+  if (len < 1) return;
+  const nx = -dy / len * dir;
+  const ny = dx / len * dir;
+
+  const sa = { x: s1.x + nx, y: s1.y + ny };
+  const sb = { x: s2.x + nx, y: s2.y + ny };
+
+  ctx.save();
+  ctx.strokeStyle = '#94a3b8';
+  ctx.lineWidth = 0.8;
+
+  // Extension lines
+  ctx.beginPath();
+  ctx.moveTo(s1.x, s1.y);
+  ctx.lineTo(sa.x, sa.y);
+  ctx.moveTo(s2.x, s2.y);
+  ctx.lineTo(sb.x, sb.y);
+  ctx.stroke();
+
+  // Dimension line
+  ctx.beginPath();
+  ctx.moveTo(sa.x, sa.y);
+  ctx.lineTo(sb.x, sb.y);
+  ctx.stroke();
+
+  // Tick marks
+  const tw = 4;
+  ctx.lineWidth = 1.2;
+  [sa, sb].forEach(p => {
+    ctx.beginPath();
+    ctx.moveTo(p.x - tw, p.y - tw);
+    ctx.lineTo(p.x + tw, p.y + tw);
+    ctx.stroke();
+  });
+
+  // Label
+  ctx.fillStyle = '#cbd5e1';
+  ctx.font = '600 9px system-ui, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  const mx = (sa.x + sb.x) / 2;
+  const my = (sa.y + sb.y) / 2;
+  // Background pill
+  const tw2 = ctx.measureText(label).width + 6;
+  ctx.fillStyle = '#0f172a';
+  ctx.fillRect(mx - tw2 / 2, my - 6, tw2, 12);
+  ctx.fillStyle = '#cbd5e1';
+  ctx.fillText(label, mx, my);
+  ctx.restore();
+}
+
+/* ============================================================
+   BASE SITE DRAWING
+   ============================================================ */
+function drawBaseSite() {
+  const p0 = toScreen(0, W_SITE);
+  const sw = D_SITE * app.scale;
+  const sh = W_SITE * app.scale;
+
+  // Site fill
+  ctx.fillStyle = '#182234';
+  ctx.fillRect(p0.x, p0.y, sw, sh);
+
+  // National Road
+  const pR0 = toScreen(-16, W_SITE + 2);
+  ctx.fillStyle = '#334155';
+  ctx.fillRect(pR0.x, pR0.y, 16 * app.scale, (W_SITE + 4) * app.scale);
+
+  // Road label
+  const pRT = toScreen(-8, W_SITE / 2);
+  ctx.save();
+  ctx.translate(pRT.x, pRT.y);
+  ctx.rotate(-Math.PI / 2);
+  ctx.fillStyle = '#f8fafc';
+  ctx.font = 'bold 11px system-ui, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('NATIONAL ROAD (LOT 834-A-1, PSD-24776)', 0, -4);
+  ctx.font = '500 10px system-ui, sans-serif';
+  ctx.fillStyle = '#cbd5e1';
+  ctx.fillText('◄ TO BAGO CITY          TO BACOLOD CITY PROPER ►', 0, 12);
+  ctx.restore();
+
+  // Adjacent lots labels
+  if (app.showDims) {
+    // North boundary label
+    const pN = toScreen(D_SITE / 2, W_SITE + 3);
+    ctx.fillStyle = '#64748b';
+    ctx.font = '500 8px system-ui, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('LOT 834-A-2-D (Adjoining Owner)', pN.x, pN.y);
+
+    // South boundary label
+    const pS = toScreen(D_SITE / 2, -3);
+    ctx.fillText('LOT 834-A-2-A (Adjoining Owner)', pS.x, pS.y);
+
+    // Rear boundary label
+    const pRear = toScreen(D_SITE + 3, W_SITE / 2);
+    ctx.save();
+    ctx.translate(pRear.x, pRear.y);
+    ctx.rotate(-Math.PI / 2);
+    ctx.fillText('NHA PROPERTY (Rear)', 0, 0);
+    ctx.restore();
+  }
+
+  // Border
+  ctx.strokeStyle = '#38bdf8';
+  ctx.lineWidth = 2;
+  ctx.strokeRect(p0.x, p0.y, sw, sh);
+
+  // Corner monuments
+  if (app.showDims) {
+    const corners = [[0, 0], [0, W_SITE], [D_SITE, W_SITE], [D_SITE, 0]];
+    const cornerLabels = ['COR 1', 'COR 4', 'COR 3', 'COR 2'];
+    ctx.fillStyle = '#f43f5e';
+    ctx.font = 'bold 7px system-ui, sans-serif';
+    ctx.textAlign = 'center';
+    corners.forEach((c, i) => {
+      const sp = toScreen(c[0], c[1]);
       ctx.beginPath();
-      const n = 16;
-      for (let i = 0; i <= n; i++) {
-        const x = x1 + (i / n) * (x2 - x1);
-        const y = (i % 2 === 0) ? y1 : y2;
-        const sp = toScreen(x, y);
-        if (i === 0) ctx.moveTo(sp.x, sp.y);
-        else ctx.lineTo(sp.x, sp.y);
-      }
-      ctx.stroke();
-      ctx.restore();
-    }
+      ctx.arc(sp.x, sp.y, 3, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillText(cornerLabels[i], sp.x, sp.y + (c[1] > 0 ? -8 : 12));
+    });
+    ctx.fillStyle = '#f43f5e'; // reset
+  }
+}
 
-    function drawRadialLights(cx, cy, radius) {
-      ctx.save();
-      ctx.strokeStyle = 'rgba(253, 224, 71, 0.5)';
+/* ============================================================
+   OPTION 1: LINEAR FRONT-TO-BACK SPLIT
+   ============================================================ */
+function drawOption1(w, h) {
+  drawBaseSite();
+
+  // ---- PARKING ZONE (X: 3 to 47) ----
+  if (app.showParking) {
+    const pAsp0 = toScreen(3, W_SITE);
+    ctx.fillStyle = '#1e293b';
+    ctx.fillRect(pAsp0.x, pAsp0.y, 44 * app.scale, W_SITE * app.scale);
+
+    // Guardhouse
+    drawBox(0.5, 14, 2.5, 8.38, '#0c4a6e', '#38bdf8', 'GUARD', {
+      id: 'Guardhouse', type: 'Security Guardhouse', dims: '2.5m × 8.4m',
+      area: '21.0 m²', notes: 'Manned 24/7, CCTV monitoring station'
+    });
+
+    // Drive aisle label
+    if (app.showDims) {
+      const pDA = toScreen(25, 16.5);
+      ctx.fillStyle = '#475569';
+      ctx.font = '500 8px system-ui, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('6.0m ONE-WAY DRIVE AISLE', pDA.x, pDA.y);
+      // Arrow
+      ctx.strokeStyle = '#475569';
       ctx.lineWidth = 1;
-      const sp0 = toScreen(cx, cy);
-      for (let ang = 0; ang < Math.PI * 2; ang += Math.PI / 6) {
-        const ex = cx + radius * Math.cos(ang);
-        const ey = cy + (radius * 0.6) * Math.sin(ang);
-        const sp1 = toScreen(ex, ey);
-        ctx.beginPath();
-        ctx.moveTo(sp0.x, sp0.y);
-        ctx.lineTo(sp1.x, sp1.y);
-        ctx.stroke();
-      }
-      ctx.restore();
+      ctx.beginPath();
+      const a1 = toScreen(15, 16.0);
+      const a2 = toScreen(40, 16.0);
+      ctx.moveTo(a1.x, a1.y);
+      ctx.lineTo(a2.x, a2.y);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(a2.x, a2.y);
+      ctx.lineTo(a2.x - 6, a2.y - 4);
+      ctx.moveTo(a2.x, a2.y);
+      ctx.lineTo(a2.x - 6, a2.y + 4);
+      ctx.stroke();
     }
 
-    // --- LISTENERS ---
-    canvas.addEventListener('mousedown', (e) => {
-      app.isDragging = true;
-      app.dragStart = { x: e.clientX - app.panX, y: e.clientY - app.panY };
+    // Parking stalls — North row
+    let pIdx = 1;
+    const carCategories = ['Standard', 'Standard', 'Compact', 'Standard', 'Accessible'];
+    for (let i = 0; i < 15; i++) {
+      const x = 7 + i * 2.6;
+      const cat = carCategories[i % 5];
+      drawStall(x, 31.38, 2.5, 5.0, '#0f172a', '#64748b', `P${pIdx}`, {
+        id: `P${pIdx} — Car Stall`, type: 'Car Parking Slot (North Row)',
+        dims: '2.5m × 5.0m', area: '12.5 m²', category: cat
+      });
+      pIdx++;
+    }
+    // South row
+    for (let i = 0; i < 15; i++) {
+      const x = 7 + i * 2.6;
+      drawStall(x, 0, 2.5, 5.0, '#0f172a', '#64748b', `P${pIdx}`, {
+        id: `P${pIdx} — Car Stall`, type: 'Car Parking Slot (South Row)',
+        dims: '2.5m × 5.0m', area: '12.5 m²', category: 'Standard'
+      });
+      pIdx++;
+    }
+    // Center island double row
+    for (let i = 0; i < 8; i++) {
+      const x = 14 + i * 2.6;
+      drawStall(x, 18.19, 2.5, 4.5, '#0f172a', '#64748b', `P${pIdx}`, {
+        id: `P${pIdx} — Car Stall`, type: 'Car Parking Slot (Island North)',
+        dims: '2.5m × 4.5m', area: '11.25 m²', category: 'Compact'
+      });
+      pIdx++;
+      drawStall(x, 13.69, 2.5, 4.5, '#0f172a', '#64748b', `P${pIdx-1}i`, {
+        id: `P${pIdx-1}i — Car Stall`, type: 'Car Parking Slot (Island South)',
+        dims: '2.5m × 4.5m', area: '11.25 m²', category: 'Compact'
+      });
+    }
+
+    // Motorcycle parking
+    const pMoto = toScreen(40, 16.0);
+    ctx.fillStyle = '#1e1b4b';
+    ctx.fillRect(pMoto.x, pMoto.y, 6 * app.scale, 5.5 * app.scale);
+    ctx.strokeStyle = '#6366f1';
+    ctx.lineWidth = 1;
+    ctx.strokeRect(pMoto.x, pMoto.y, 6 * app.scale, 5.5 * app.scale);
+    if (app.scale > 2.5) {
+      ctx.fillStyle = '#a5b4fc';
+      ctx.font = 'bold 8px system-ui, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('MOTO (24)', pMoto.x + 3 * app.scale, pMoto.y + 2.75 * app.scale);
+    }
+    hitItems.push({
+      id: 'Motorcycle Parking (24 Bays)', type: 'Motorcycle Parking Zone',
+      dims: '6.0m × 5.5m', area: '33.0 m²', category: '24 motorcycle bays @ 1.2m × 2.5m each',
+      notes: 'Covered motorcycle bay with wheel stops',
+      sx: pMoto.x, sy: pMoto.y, sw: 6 * app.scale, sh: 5.5 * app.scale
     });
+  }
 
-    window.addEventListener('mousemove', (e) => {
-      const rect = canvas.getBoundingClientRect();
-      const sx = e.clientX - rect.left;
-      const sy = e.clientY - rect.top;
+  // ---- FOOD PARK GROUND (X: 47 to 110) ----
+  const pM0 = toScreen(47, W_SITE);
+  ctx.fillStyle = '#27272a';
+  ctx.fillRect(pM0.x, pM0.y, 63 * app.scale, W_SITE * app.scale);
 
-      if (app.isDragging) {
-        app.panX = e.clientX - app.dragStart.x;
-        app.panY = e.clientY - app.dragStart.y;
-        draw();
-      }
+  // Zone label
+  if (app.showDims) {
+    const pZL = toScreen(77, W_SITE + 5);
+    ctx.fillStyle = '#94a3b8';
+    ctx.font = 'bold 10px system-ui, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('FOOD PROMENADE ZONE', pZL.x, pZL.y);
+  }
 
-      if (sx >= 0 && sx <= rect.width && sy >= 0 && sy <= rect.height) {
-        const pt = toSite(sx, sy);
-        document.getElementById('coord-readout').innerText = `X: ${pt.x.toFixed(1)}m, Y: ${pt.y.toFixed(1)}m`;
-      }
+  // Central Promenade
+  if (app.showDining) {
+    const pPr0 = toScreen(51, 24.5);
+    ctx.fillStyle = '#3f3f46';
+    ctx.fillRect(pPr0.x, pPr0.y, 41 * app.scale, 12.5 * app.scale);
+    if (app.scale > 2.5) {
+      const pPrL = toScreen(71.5, 18.5);
+      ctx.fillStyle = '#71717a';
+      ctx.font = '500 8px system-ui, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('CRUSHED GRAVEL PROMENADE', pPrL.x, pPrL.y);
+    }
+
+    // Dining tables
+    const tablePositions = [
+      [56, 19], [60, 19], [64, 19], [68, 19], [76, 19], [80, 19], [84, 19],
+      [56, 15], [60, 15], [64, 15], [68, 15], [76, 15], [80, 15], [84, 15]
+    ];
+    tablePositions.forEach(([tx, ty]) => drawDiningTable(tx, ty));
+  }
+
+  // ---- KIOSKS ----
+  if (app.showStalls) {
+    const northCategories = ['Filipino', 'Seafood', 'BBQ', 'Ramen', 'Poke Bowl', 'Thai', 'Pizza', 'Pasta', 'Desserts', 'Drinks', 'Coffee'];
+    for (let i = 0; i < 11; i++) {
+      const x = 52 + i * 3.7;
+      drawBox(x, 26.5, 3.4, 7.8, '#047857', '#34d399', `K${i + 1}`, {
+        id: `K${i + 1} — ${northCategories[i]}`, type: 'Container Food Kiosk (North Row)',
+        dims: '3.4m × 7.8m', area: '26.5 m²', category: northCategories[i],
+        notes: '20ft shipping container conversion w/ service window, prep kitchen, & grease trap'
+      });
+    }
+    const southCategories = ['Grill', 'Lechon', 'Sisig', 'Seafood Grill', 'Inasal', 'Tapa King', 'Sizzling', 'BBQ', 'Street Food', 'Smokehouse', 'Wings'];
+    for (let i = 0; i < 11; i++) {
+      const x = 52 + i * 3.7;
+      drawBox(x, 2.0, 3.4, 7.8, '#b45309', '#f59e0b', `G${i + 1}`, {
+        id: `G${i + 1} — ${southCategories[i]}`, type: 'Container Grill Kiosk (South Row)',
+        dims: '3.4m × 7.8m', area: '26.5 m²', category: southCategories[i],
+        notes: 'Open-flame grill station, heavy-duty exhaust hood, container conversion'
+      });
+    }
+
+    // Central Bar
+    drawBox(70.5, 15.6, 5.0, 5.2, '#1e1b4b', '#818cf8', 'CRAFT BAR', {
+      id: 'Central Craft Bar', type: 'Central Bar & Beverage Station',
+      dims: '5.0m × 5.2m', area: '26.0 m²',
+      notes: 'Full-service craft cocktail bar, 360° island counter, elevated timber deck'
     });
+  }
 
-    window.addEventListener('mouseup', () => { app.isDragging = false; });
+  // ---- FESTOON LIGHTS ----
+  drawFestoon(52, 92, 25.2, 11.2);
 
-    canvas.addEventListener('wheel', (e) => {
-      e.preventDefault();
-      const rect = canvas.getBoundingClientRect();
-      const mouseX = e.clientX - rect.left;
-      const mouseY = e.clientY - rect.top;
+  // ---- STAGE & RESTROOMS ----
+  drawBox(94, 13, 8, 10.38, '#4c1d95', '#a855f7', 'STAGE', {
+    id: 'Acoustic Stage', type: 'Performance Stage Platform',
+    dims: '8.0m × 10.4m', area: '83.0 m²',
+    notes: 'Elevated timber deck, overhead truss PA system, LED backdrop'
+  });
+  drawBox(102.5, 23.5, 6.5, 11, '#0369a1', '#38bdf8', 'RESTROOMS', {
+    id: 'Public Restrooms', type: 'Comfort Room Facilities',
+    dims: '6.5m × 11.0m', area: '71.5 m²',
+    notes: 'Male/Female/PWD accessible, tiled finish, 8 stalls total'
+  });
 
-      const zoomFactor = e.deltaY < 0 ? 1.15 : 0.87;
-      const newScale = Math.max(1.0, Math.min(40, app.scale * zoomFactor));
+  // ---- DIMENSION LINES ----
+  if (app.showDims) {
+    drawDimLine(0, -5, D_SITE, -5, '110.00m (DEPTH)', 0);
+    drawDimLine(-5, 0, -5, W_SITE, '36.38m', 0);
+    drawDimLine(0, W_SITE + 6, 47, W_SITE + 6, '47.0m PARKING', 0);
+    drawDimLine(47, W_SITE + 6, D_SITE, W_SITE + 6, '63.0m FOOD PROMENADE', 0);
+  }
 
-      app.panX = mouseX - (mouseX - app.panX) * (newScale / app.scale);
-      app.panY = mouseY - (mouseY - app.panY) * (newScale / app.scale);
-      app.scale = newScale;
+  drawNorthIndicator();
+}
 
-      document.getElementById('zoom-readout').innerText = (app.scale / 6.2).toFixed(1) + 'x';
+/* ============================================================
+   OPTION 2: COURTYARD PIAZZA & FOOD VILLAGE
+   ============================================================ */
+function drawOption2(w, h) {
+  drawBaseSite();
+
+  // ---- FRONT PARKING & EXPRESS ZONE (X: 0 to 28) ----
+  if (app.showParking) {
+    const pFr = toScreen(0, W_SITE);
+    ctx.fillStyle = '#1e293b';
+    ctx.fillRect(pFr.x, pFr.y, 28 * app.scale, W_SITE * app.scale);
+
+    // Express Drive-Up Kiosks
+    if (app.showStalls) {
+      drawBox(2, 14, 6, 8.38, '#d97706', '#f59e0b', 'EXPRESS\nBOBA', {
+        id: 'Express Drive-Up A — Boba & Coffee', type: 'Highway Drive-Up Booth',
+        dims: '6.0m × 8.4m', area: '50.3 m²', category: 'Boba Tea & Coffee',
+        notes: 'Window service directly to cars on National Rd, grab-and-go format'
+      });
+    }
+
+    // Front stalls — North row
+    let pIdx = 1;
+    for (let i = 0; i < 7; i++) {
+      const x = 9 + i * 2.6;
+      drawStall(x, 31.38, 2.5, 5.0, '#0f172a', '#94a3b8', `P${pIdx}`, {
+        id: `P${pIdx} — Front Parking`, type: 'Car Parking Slot (Front North)',
+        dims: '2.5m × 5.0m', area: '12.5 m²', category: 'Standard'
+      });
+      pIdx++;
+    }
+    // South row
+    for (let i = 0; i < 7; i++) {
+      const x = 9 + i * 2.6;
+      drawStall(x, 0, 2.5, 5.0, '#0f172a', '#94a3b8', `P${pIdx}`, {
+        id: `P${pIdx} — Front Parking`, type: 'Car Parking Slot (Front South)',
+        dims: '2.5m × 5.0m', area: '12.5 m²', category: 'Standard'
+      });
+      pIdx++;
+    }
+  }
+
+  // ---- CENTRAL PIAZZA (X: 28 to 82) ----
+  const pZ0 = toScreen(28, W_SITE);
+  ctx.fillStyle = '#27272a';
+  ctx.fillRect(pZ0.x, pZ0.y, 54 * app.scale, W_SITE * app.scale);
+
+  // Courtyard ground
+  if (app.showDining) {
+    const pSq0 = toScreen(36, 29);
+    ctx.fillStyle = '#3f3f46';
+    ctx.fillRect(pSq0.x, pSq0.y, 38 * app.scale, 21.5 * app.scale);
+    if (app.scale > 2.5) {
+      const pSqL = toScreen(55, 18);
+      ctx.fillStyle = '#71717a';
+      ctx.font = '500 8px system-ui, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('GRAND PIAZZA (34m × 22m)', pSqL.x, pSqL.y);
+    }
+    // Dining tables in courtyard
+    const courtTables = [
+      [42, 20], [46, 20], [50, 20], [60, 20], [64, 20], [68, 20],
+      [42, 14], [46, 14], [50, 14], [60, 14], [64, 14], [68, 14],
+      [42, 24], [50, 24], [60, 24], [68, 24]
+    ];
+    courtTables.forEach(([tx, ty]) => drawDiningTable(tx, ty));
+  }
+
+  // ---- U-SHAPE STALLS ----
+  if (app.showStalls) {
+    const piazzaCats = ['Tapas', 'Sushi', 'BBQ', 'Pho', 'Dimsum', 'Ramen', 'Pizza', 'Pasta', 'Tacos', 'Korean', 'Shawarma'];
+    // North Row
+    let kIdx = 1;
+    for (let i = 0; i < 11; i++) {
+      const x = 32 + i * 4.2;
+      drawBox(x, 30.5, 3.8, 5.0, '#047857', '#34d399', `K${kIdx}`, {
+        id: `K${kIdx} — ${piazzaCats[i]}`, type: 'Piazza Kiosk (North Row)',
+        dims: '3.8m × 5.0m', area: '19.0 m²', category: piazzaCats[i],
+        notes: 'U-shape perimeter stall, facing central courtyard'
+      });
+      kIdx++;
+    }
+    // South Row
+    const southCats = ['Seafood', 'Desserts', 'Coffee', 'Craft Beer', 'Juice', 'Crepes', 'Donuts', 'Waffles', 'Gelato', 'Smoothie', 'Bakery'];
+    for (let i = 0; i < 11; i++) {
+      const x = 32 + i * 4.2;
+      drawBox(x, 1.0, 3.8, 5.0, '#b45309', '#f59e0b', `K${kIdx}`, {
+        id: `K${kIdx} — ${southCats[i]}`, type: 'Piazza Kiosk (South Row)',
+        dims: '3.8m × 5.0m', area: '19.0 m²', category: southCats[i],
+        notes: 'U-shape perimeter stall, facing central courtyard'
+      });
+      kIdx++;
+    }
+    // East Wall
+    const eastCats = ['Wine Bar', 'Cocktails', 'Brewery', 'Bakehouse'];
+    for (let i = 0; i < 4; i++) {
+      const y = 8 + i * 5.5;
+      drawBox(74, y, 5.0, 4.8, '#4338ca', '#818cf8', `K${kIdx}`, {
+        id: `K${kIdx} — ${eastCats[i]}`, type: 'Piazza Kiosk (East Wall)',
+        dims: '5.0m × 4.8m', area: '24.0 m²', category: eastCats[i],
+        notes: 'Corner stall with dual-facing service windows'
+      });
+      kIdx++;
+    }
+
+    // Center Pavilion Bar
+    drawCircle(55, 18.19, 4.2, '#831843', '#f43f5e', 'BAR', {
+      id: 'Central Bar Pavilion', type: 'Circular Craft Bar Pavilion',
+      dims: 'Ø 8.4m (radius 4.2m)', area: '55.4 m²',
+      notes: 'Open-air circular bar, thatched roof canopy, center of piazza'
+    });
+  }
+
+  // ---- RADIAL CANOPY LIGHTS ----
+  drawRadialLights(55, 18.19, 18);
+
+  // ---- REAR HUB (X: 82 to 110) ----
+  const pR0 = toScreen(82, W_SITE);
+  ctx.fillStyle = '#1e293b';
+  ctx.fillRect(pR0.x, pR0.y, 28 * app.scale, W_SITE * app.scale);
+
+  // Amphitheater
+  drawBox(82, 12, 8, 12.38, '#581c87', '#c084fc', 'AMPHITHEATER', {
+    id: 'Covered Live Amphitheater', type: 'Performance & Events Space',
+    dims: '8.0m × 12.4m', area: '99.1 m²',
+    notes: 'Tiered seating, stage w/ PA & lighting rig, capacity ~120 persons'
+  });
+
+  // Restrooms
+  drawBox(103, 14, 6.5, 8.5, '#0369a1', '#38bdf8', 'RESTROOMS', {
+    id: 'Public Restrooms', type: 'Comfort Room Facilities',
+    dims: '6.5m × 8.5m', area: '55.3 m²',
+    notes: 'Male/Female/PWD accessible, 6 stalls total'
+  });
+
+  // Rear overflow parking
+  if (app.showParking) {
+    let rpIdx = 15;
+    for (let i = 0; i < 6; i++) {
+      const x = 92 + i * 2.6;
+      drawStall(x, 24, 2.5, 5.0, '#0f172a', '#94a3b8', `P${rpIdx}`, {
+        id: `P${rpIdx} — Rear Parking`, type: 'Car Parking (Rear Overflow)',
+        dims: '2.5m × 5.0m', area: '12.5 m²', category: 'Overflow'
+      });
+      rpIdx++;
+      drawStall(x, 7.5, 2.5, 5.0, '#0f172a', '#94a3b8', `P${rpIdx}`, {
+        id: `P${rpIdx} — Rear Parking`, type: 'Car Parking (Rear Overflow)',
+        dims: '2.5m × 5.0m', area: '12.5 m²', category: 'Overflow'
+      });
+      rpIdx++;
+    }
+  }
+
+  // ---- DIMENSION LINES ----
+  if (app.showDims) {
+    drawDimLine(0, -5, D_SITE, -5, '110.00m (DEPTH)', 0);
+    drawDimLine(-5, 0, -5, W_SITE, '36.38m', 0);
+    drawDimLine(0, W_SITE + 6, 28, W_SITE + 6, '28.0m FRONT PARK', 0);
+    drawDimLine(28, W_SITE + 6, 82, W_SITE + 6, '54.0m CENTRAL PIAZZA', 0);
+    drawDimLine(82, W_SITE + 6, D_SITE, W_SITE + 6, '28.0m REAR HUB', 0);
+  }
+
+  drawNorthIndicator();
+}
+
+/* ============================================================
+   OPTION 3: BOULEVARD RIBBON & DRIVE-IN FOOD STREET
+   ============================================================ */
+function drawOption3(w, h) {
+  drawBaseSite();
+
+  // ---- SOUTH VEHICULAR BOULEVARD (Y: 0 to 17m) ----
+  const pB0 = toScreen(0, 17);
+  ctx.fillStyle = '#1e293b';
+  ctx.fillRect(pB0.x, pB0.y, D_SITE * app.scale, 17 * app.scale);
+
+  // Drive aisle label
+  if (app.showDims) {
+    const pDA = toScreen(55, 10);
+    ctx.fillStyle = '#475569';
+    ctx.font = '500 8px system-ui, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('TWO-WAY DRIVE-IN BOULEVARD (7.0m WIDE)', pDA.x, pDA.y);
+    // Arrows
+    ctx.strokeStyle = '#475569';
+    ctx.lineWidth = 1;
+    const a1 = toScreen(15, 9.5);
+    const a2 = toScreen(95, 9.5);
+    ctx.beginPath();
+    ctx.moveTo(a1.x, a1.y);
+    ctx.lineTo(a2.x, a2.y);
+    ctx.stroke();
+    // Both direction arrows
+    ctx.beginPath();
+    ctx.moveTo(a1.x, a1.y);
+    ctx.lineTo(a1.x + 6, a1.y - 4);
+    ctx.moveTo(a1.x, a1.y);
+    ctx.lineTo(a1.x + 6, a1.y + 4);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(a2.x, a2.y);
+    ctx.lineTo(a2.x - 6, a2.y - 4);
+    ctx.moveTo(a2.x, a2.y);
+    ctx.lineTo(a2.x - 6, a2.y + 4);
+    ctx.stroke();
+  }
+
+  // ---- PARKING RIBBON (South boundary) ----
+  if (app.showParking) {
+    let pIdx = 1;
+    for (let i = 0; i < 38; i++) {
+      const x = 4 + i * 2.7;
+      if (x > 106) break;
+      drawStall(x, 0, 2.5, 5.2, '#0f172a', '#94a3b8', `P${pIdx}`, {
+        id: `P${pIdx} — Drive-In Parking`, type: 'Angled Car Parking (South)',
+        dims: '2.5m × 5.2m', area: '13.0 m²', category: 'Drive-In Angled'
+      });
+      pIdx++;
+    }
+
+    // Motorcycle parking (near entrance)
+    const pMoto = toScreen(2, 14);
+    ctx.fillStyle = '#1e1b4b';
+    ctx.fillRect(pMoto.x, pMoto.y, 5 * app.scale, 8 * app.scale);
+    ctx.strokeStyle = '#6366f1';
+    ctx.lineWidth = 1;
+    ctx.strokeRect(pMoto.x, pMoto.y, 5 * app.scale, 8 * app.scale);
+    if (app.scale > 2.5) {
+      ctx.fillStyle = '#a5b4fc';
+      ctx.font = 'bold 7px system-ui, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('MOTO (30)', pMoto.x + 2.5 * app.scale, pMoto.y + 4 * app.scale);
+    }
+    hitItems.push({
+      id: 'Motorcycle Parking (30 Bays)', type: 'Motorcycle Parking Zone',
+      dims: '5.0m × 8.0m', area: '40.0 m²', category: '30 motorcycle bays',
+      notes: 'Covered motorcycle parking near entrance',
+      sx: pMoto.x, sy: pMoto.y, sw: 5 * app.scale, sh: 8 * app.scale
+    });
+  }
+
+  // ---- NORTH PEDESTRIAN FOOD STREET (Y: 17 to 36.38) ----
+  const pN0 = toScreen(0, W_SITE);
+  ctx.fillStyle = '#27272a';
+  ctx.fillRect(pN0.x, pN0.y, D_SITE * app.scale, (W_SITE - 17) * app.scale);
+
+  // Promenade walkway
+  if (app.showDining) {
+    const pP0 = toScreen(8, 27);
+    ctx.fillStyle = '#3f3f46';
+    ctx.fillRect(pP0.x, pP0.y, 90 * app.scale, 9 * app.scale);
+    if (app.scale > 2.5) {
+      const pPL = toScreen(53, 22.5);
+      ctx.fillStyle = '#71717a';
+      ctx.font = '500 8px system-ui, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('CONTINUOUS MERKADO PROMENADE', pPL.x, pPL.y);
+    }
+    // Dining tables along promenade
+    const promTables = [
+      [15, 22], [22, 22], [29, 22], [36, 22], [43, 22], [50, 22],
+      [57, 22], [64, 22], [71, 22], [78, 22], [85, 22]
+    ];
+    promTables.forEach(([tx, ty]) => drawDiningTable(tx, ty));
+  }
+
+  // ---- GATEWAY CAFE ----
+  drawBox(0, 18, 8, 18.38, '#1e1b4b', '#6366f1', 'GATEWAY\nCAFE', {
+    id: 'Gateway 2-Story Café', type: 'Anchor Tenant — Two-Story Café',
+    dims: '8.0m × 18.4m (2 Floors)', area: '294.1 m² (total)',
+    notes: 'Flagship gateway building, 2nd-floor rooftop terrace overlooking the promenade'
+  });
+
+  // ---- 2-STORY CONTAINER KIOSKS (North Row) ----
+  if (app.showStalls) {
+    const containerCats = ['Filipino', 'Seafood', 'BBQ', 'Ramen', 'Thai', 'Pizza', 'Tacos', 'Korean', 'Desserts',
+                          'Craft Beer', 'Poke Bowl', 'Burger', 'Wings', 'Sushi', 'Shawarma', 'Waffles', 'Smokehouse', 'Juice', 'Coffee'];
+    for (let i = 0; i < 19; i++) {
+      const x = 10 + i * 4.5;
+      if (x > 95) break;
+      drawBox(x, 29.5, 4.2, 6.8, '#047857', '#34d399', `D${i + 1}`, {
+        id: `D${i + 1} — ${containerCats[i]}`, type: '2-Story Container Kiosk',
+        dims: '4.2m × 6.8m × 2 Floors', area: '57.1 m² (2 floors)',
+        category: containerCats[i],
+        notes: 'Ground floor: kitchen & service. Upper floor: rooftop dining deck with festoon canopy'
+      });
+    }
+  }
+
+  // ---- FESTOON LIGHTS along promenade ----
+  drawFestoon(10, 96, 29, 19);
+
+  // ---- REAR BACKYARD & STAGE ----
+  drawBox(96, 18, 12, 17, '#4c1d95', '#c084fc', 'BACKYARD\n& STAGE', {
+    id: 'Backyard Beer Garden & Stage', type: 'Events & Entertainment Zone',
+    dims: '12.0m × 17.0m', area: '204.0 m²',
+    notes: 'Open-air beer garden with live music stage, capacity ~150 persons'
+  });
+
+  // Restrooms at rear
+  drawBox(103, 2, 6, 15, '#0369a1', '#38bdf8', 'RESTROOMS', {
+    id: 'Public Restrooms', type: 'Comfort Room Facilities',
+    dims: '6.0m × 15.0m', area: '90.0 m²',
+    notes: 'Male/Female/PWD accessible, 10 stalls total, ADA compliant'
+  });
+
+  // ---- DIMENSION LINES ----
+  if (app.showDims) {
+    drawDimLine(0, -5, D_SITE, -5, '110.00m (DEPTH)', 0);
+    drawDimLine(-5, 0, -5, W_SITE, '36.38m', 0);
+    drawDimLine(D_SITE + 3, 0, D_SITE + 3, 17, '17.0m DRIVE-IN', 0);
+    drawDimLine(D_SITE + 3, 17, D_SITE + 3, W_SITE, '19.4m FOOD STREET', 0);
+  }
+
+  drawNorthIndicator();
+}
+
+/* ============================================================
+   SURVEY PLAN
+   ============================================================ */
+function drawSurveyPlan(w, h) {
+  drawBaseSite();
+
+  // Dividing line between lots
+  const s1 = toScreen(0, 18.19);
+  const s2 = toScreen(D_SITE, 18.19);
+  ctx.strokeStyle = '#fbbf24';
+  ctx.lineWidth = 2;
+  ctx.setLineDash([6, 4]);
+  ctx.beginPath();
+  ctx.moveTo(s1.x, s1.y);
+  ctx.lineTo(s2.x, s2.y);
+  ctx.stroke();
+  ctx.setLineDash([]);
+
+  // Lot labels
+  ctx.font = 'bold 13px system-ui, sans-serif';
+  ctx.textAlign = 'center';
+
+  ctx.fillStyle = '#34d399';
+  const pC = toScreen(D_SITE / 2, 27.28);
+  ctx.fillText('LOT 834-A-2-C (AREA = 2,000 SQ.M.)', pC.x, pC.y);
+
+  ctx.fillStyle = '#fbbf24';
+  const pB = toScreen(D_SITE / 2, 9.09);
+  ctx.fillText('LOT 834-A-2-B (AREA = 2,000 SQ.M.)', pB.x, pB.y);
+
+  // Bearing labels
+  if (app.showDims) {
+    ctx.fillStyle = '#94a3b8';
+    ctx.font = '600 9px system-ui, sans-serif';
+
+    // North boundary
+    const pNB = toScreen(D_SITE / 2, W_SITE + 1);
+    ctx.fillText('N 28°00\'E → 36.38m (FRONTAGE)', pNB.x, pNB.y);
+
+    // South boundary
+    const pSB = toScreen(D_SITE / 2, -1);
+    ctx.fillText('S 28°00\'W → 36.38m (REAR)', pSB.x, pSB.y);
+
+    // West boundary (depth — road side)
+    const pWB = toScreen(-1, W_SITE / 2);
+    ctx.save();
+    ctx.translate(pWB.x, pWB.y);
+    ctx.rotate(-Math.PI / 2);
+    ctx.fillText('S 63°22\'E → 110.00m', 0, 0);
+    ctx.restore();
+
+    // East boundary (depth — rear)
+    const pEB = toScreen(D_SITE + 1.5, W_SITE / 2);
+    ctx.save();
+    ctx.translate(pEB.x, pEB.y);
+    ctx.rotate(-Math.PI / 2);
+    ctx.fillText('N 63°22\'W → 110.00m', 0, 0);
+    ctx.restore();
+
+    // Dimension lines
+    drawDimLine(0, -5, D_SITE, -5, '110.00m', 0);
+    drawDimLine(-5, 0, -5, W_SITE, '36.38m', 0);
+    drawDimLine(-5, 0, -5, 18.19, '18.19m (LOT B)', 0);
+    drawDimLine(D_SITE + 5, 18.19, D_SITE + 5, W_SITE, '18.19m (LOT C)', 0);
+  }
+
+  drawNorthIndicator();
+}
+
+/* ============================================================
+   MAIN DRAW DISPATCH
+   ============================================================ */
+function draw() {
+  const rect = canvas.getBoundingClientRect();
+  const w = rect.width, h = rect.height;
+
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(0, 0, w, h);
+
+  // Reset hit items
+  hitItems = [];
+
+  if (app.scheme === 'opt1') drawOption1(w, h);
+  else if (app.scheme === 'opt2') drawOption2(w, h);
+  else if (app.scheme === 'opt3') drawOption3(w, h);
+  else drawSurveyPlan(w, h);
+}
+
+/* ============================================================
+   EVENT LISTENERS
+   ============================================================ */
+canvas.addEventListener('mousedown', (e) => {
+  app.isDragging = true;
+  app.dragStart = { x: e.clientX - app.panX, y: e.clientY - app.panY };
+});
+
+window.addEventListener('mousemove', (e) => {
+  const rect = canvas.getBoundingClientRect();
+  const sx = e.clientX - rect.left;
+  const sy = e.clientY - rect.top;
+
+  if (app.isDragging) {
+    app.panX = e.clientX - app.dragStart.x;
+    app.panY = e.clientY - app.dragStart.y;
+    draw();
+  }
+
+  // Coord readout
+  if (sx >= 0 && sx <= rect.width && sy >= 0 && sy <= rect.height) {
+    const pt = toSite(sx, sy);
+    document.getElementById('coord-readout').innerText = `X: ${pt.x.toFixed(1)}m, Y: ${pt.y.toFixed(1)}m`;
+  }
+
+  // Hit testing for inspector (hover)
+  if (!app.isDragging) {
+    const hit = checkHitTest(sx, sy);
+    if (hit !== app.hoverItem) {
+      app.hoverItem = hit;
+      canvas.style.cursor = hit ? 'pointer' : 'grab';
+      updateInspector(hit || app.selectedItem);
       draw();
-    }, { passive: false });
+    }
+  }
+});
 
-    // UI Controls
-    document.getElementById('btn-zoom-in').addEventListener('click', () => { app.scale = Math.min(40, app.scale * 1.25); fitView(); });
-    document.getElementById('btn-zoom-out').addEventListener('click', () => { app.scale = Math.max(1.0, app.scale * 0.8); fitView(); });
-    document.getElementById('btn-fit').addEventListener('click', fitView);
+window.addEventListener('mouseup', () => { app.isDragging = false; });
 
-    document.getElementById('scheme-select').addEventListener('change', (e) => {
-      app.scheme = e.target.value;
-      updateSchemeUI();
-      fitView();
-    });
+canvas.addEventListener('click', (e) => {
+  if (app.isDragging) return;
+  const rect = canvas.getBoundingClientRect();
+  const sx = e.clientX - rect.left;
+  const sy = e.clientY - rect.top;
+  const hit = checkHitTest(sx, sy);
+  app.selectedItem = hit;
+  updateInspector(hit);
+  draw();
+});
 
-    // Checkbox toggles
-    document.getElementById('chk-parking').addEventListener('change', (e) => { app.showParking = e.target.checked; draw(); });
-    document.getElementById('chk-stalls').addEventListener('change', (e) => { app.showStalls = e.target.checked; draw(); });
-    document.getElementById('chk-dining').addEventListener('change', (e) => { app.showDining = e.target.checked; draw(); });
-    document.getElementById('chk-lights').addEventListener('change', (e) => { app.showLights = e.target.checked; draw(); });
-    document.getElementById('chk-dims').addEventListener('change', (e) => { app.showDims = e.target.checked; draw(); });
+canvas.addEventListener('wheel', (e) => {
+  e.preventDefault();
+  const rect = canvas.getBoundingClientRect();
+  const mouseX = e.clientX - rect.left;
+  const mouseY = e.clientY - rect.top;
 
-    // Export PNG
-    document.getElementById('btn-export-png').addEventListener('click', () => {
-      const link = document.createElement('a');
-      link.download = `Sean_Merkado_${app.scheme}.png`;
-      link.href = canvas.toDataURL('image/png', 1.0);
-      link.click();
-    });
+  const zoomFactor = e.deltaY < 0 ? 1.15 : 0.87;
+  const newScale = Math.max(1.0, Math.min(40, app.scale * zoomFactor));
 
-    // Init
-    window.addEventListener('DOMContentLoaded', () => {
-      updateSchemeUI();
-      resize();
-      fitView();
-    });
-    setTimeout(() => {
-      updateSchemeUI();
-      resize();
-      fitView();
-    }, 100);
-  </script>
+  app.panX = mouseX - (mouseX - app.panX) * (newScale / app.scale);
+  app.panY = mouseY - (mouseY - app.panY) * (newScale / app.scale);
+  app.scale = newScale;
+
+  document.getElementById('zoom-readout').innerText = (app.scale / 6.2).toFixed(1) + 'x';
+  draw();
+}, { passive: false });
+
+// UI Controls
+document.getElementById('btn-zoom-in').addEventListener('click', () => { app.scale = Math.min(40, app.scale * 1.25); fitView(); });
+document.getElementById('btn-zoom-out').addEventListener('click', () => { app.scale = Math.max(1.0, app.scale * 0.8); fitView(); });
+document.getElementById('btn-fit').addEventListener('click', fitView);
+
+document.getElementById('scheme-select').addEventListener('change', (e) => {
+  app.scheme = e.target.value;
+  app.selectedItem = null;
+  app.hoverItem = null;
+  updateInspector(null);
+  updateSchemeUI();
+  fitView();
+});
+
+// Checkbox toggles — all properly wired
+document.getElementById('chk-parking').addEventListener('change', (e) => { app.showParking = e.target.checked; draw(); });
+document.getElementById('chk-stalls').addEventListener('change', (e) => { app.showStalls = e.target.checked; draw(); });
+document.getElementById('chk-dining').addEventListener('change', (e) => { app.showDining = e.target.checked; draw(); });
+document.getElementById('chk-lights').addEventListener('change', (e) => { app.showLights = e.target.checked; draw(); });
+document.getElementById('chk-dims').addEventListener('change', (e) => { app.showDims = e.target.checked; draw(); });
+
+// Export PNG
+document.getElementById('btn-export-png').addEventListener('click', () => {
+  const link = document.createElement('a');
+  link.download = `Sean_Merkado_${app.scheme}.png`;
+  link.href = canvas.toDataURL('image/png', 1.0);
+  link.click();
+});
+
+// Init
+window.addEventListener('DOMContentLoaded', () => {
+  updateSchemeUI();
+  resize();
+  fitView();
+});
+setTimeout(() => {
+  updateSchemeUI();
+  resize();
+  fitView();
+}, 100);
+</script>
 </body>
 </html>
