@@ -17,7 +17,7 @@
 | **Motorcycle Capacity** | **24 Slots** | **20 Slots** | **30 Slots** |
 | **Food Kiosk Count** | **22 Stalls** + Central Bar | **26 Stalls** + Center Pavilion | **19 Two-Story Stalls** (38 total vendor bays/decks) |
 | **Dining Seating** | ~260 Seats (Promenade picnic) | **~320 Seats** (Grand central square) | **~350 Seats** (Ground strip + Rooftop decks) |
-| **Vehicular Circulation** | One-way counter-clockwise loop | Dual courtyard access (North in, South out) | Full-length two-way boulevard (8m aisle) |
+| **Vehicular Circulation** | One-way counter-clockwise loop | Continuous 6.0m two-way South Overflow Access Drive | Full-length two-way boulevard (8m aisle) |
 | **Pedestrian Ambiance** | Authentic night market gravel walk | Intimate European-style market square | Trendy urban multi-level food street |
 | **Phase Development** | Simple 2-stage (front then rear) | Multi-stage (front, piazza, rear) | Highly modular (develop north half, south as parking) |
 
@@ -40,11 +40,12 @@
 ![Option 2 Courtyard Piazza](./option_2_courtyard_piazza.png)
 
 ### Concept & Space Allocation:
-- **Zoning Strategy:** Concentric community square / U-shaped village enclosing a grand social dining piazza.
-  - **Front Zone (0m to 28m):** 14 quick-turnover parking stalls plus **2 Express Highway Drive-Up Kiosks** (specializing in morning coffee, milk tea, and grab-and-go snacks for highway commuters).
-  - **Central Courtyard Piazza (28m to 82m):** A spacious $34\text{m} \times 22\text{m}$ open-air dining square enclosed on three sides by 26 food kiosks, anchored by a central circular craft bar pavilion and a radial festoon lighting canopy.
-  - **Rear Hub (82m to 110m):** 18 secondary/overflow parking stalls, covered acoustic amphitheater stage, and sanitary restroom building.
-- **Key Advantage:** Creates a cozy, vibrant "enclosed village" atmosphere; radial canopy lighting creates a festival centerpiece; captures daytime drive-by highway traffic with express drive-up booths.
+- **Zoning Strategy:** Concentric community square / U-shaped village enclosing a grand social dining piazza with an unobstructed vehicular link to rear parking.
+  - **South Overflow Access Drive (0m to 88m):** A dedicated 6.0m two-way paved roadway running continuously along the southern perimeter, enabling customers to drive directly from the National Road frontage to the rear overflow parking lot without cutting through the dining areas. Buffered by safety bollards and landscaping.
+  - **Front Zone (0m to 28m):** 14 quick-turnover parking stalls (P1–P14) plus **2 Express Highway Drive-Up Kiosks** (specializing in morning coffee, milk tea, and grab-and-go snacks for highway commuters).
+  - **Central Courtyard Piazza (28m to 82m):** A spacious $39\text{m} \times 18\text{m}$ open-air dining square enclosed on three sides by 26 food kiosks, anchored by a central circular craft bar pavilion and a radial festoon lighting canopy.
+  - **Rear Hub (82m to 110m):** 18 secondary/overflow parking stalls (P15–P32) with a 5.5m drive aisle and hammerhead turnaround, covered acoustic amphitheater stage, and sanitary restroom building.
+- **Key Advantage:** Creates an intimate, festival-square dining ambiance shielded completely from vehicle traffic, while maintaining smooth, direct vehicular circulation between highway frontage and rear overflow parking.
 
 ---
 

@@ -176,14 +176,15 @@ const SCHEME_INFO = {
   },
   opt2: {
     title: "Option 2: Courtyard Piazza & Village",
-    subtitle: "• Central Enclosed Piazza & Radial Festoon Canopy",
+    subtitle: "• Central Enclosed Piazza & South Overflow Access Drive",
     cars: 32, moto: 20, stalls: "26 Kiosks", seats: "~320",
-    desc: `<p><strong>Typology:</strong> Enclosed central dining courtyard enclosed on 3 sides by modular food stalls.</p>
+    desc: `<p><strong>Typology:</strong> Enclosed central dining courtyard flanked by a dedicated two-way overflow access drive.</p>
       <ul class="list-disc pl-4 space-y-1 mt-1 text-gray-500">
-        <li><strong>Front Courtyard:</strong> 14 quick-turnover car stalls + 2 Express Highway Drive-Up booths (coffee/boba).</li>
-        <li><strong>Central Piazza:</strong> 34m × 22m grand open dining square with central craft bar pavilion and radial festoon canopy.</li>
-        <li><strong>Rear Zone:</strong> 18 overflow parking stalls + covered live amphitheater &amp; restrooms.</li>
-        <li><strong>Advantage:</strong> Intimate festival square atmosphere, wind/weather protection, drive-up highway sales.</li>
+        <li><strong>South Overflow Access Drive (6.0m):</strong> Continuous two-way paved roadway running along the south perimeter, connecting the frontage directly to the rear 18-stall overflow parking lot, buffered by safety bollards and landscaping.</li>
+        <li><strong>Front Courtyard:</strong> 14 quick-turnover car stalls (P1–P14) + Express Highway Drive-Up booth (coffee/boba).</li>
+        <li><strong>Central Piazza (39m × 18m):</strong> Grand open-air dining square enclosed by 26 food kiosks, anchored by a central circular craft bar pavilion and radial festoon canopy.</li>
+        <li><strong>Rear Overflow Hub:</strong> 18 parking stalls (P15–P32) with 5.5m drive aisle &amp; turnaround hammerhead, covered live amphitheater, and comfort rooms.</li>
+        <li><strong>Advantage:</strong> Seamless vehicular circulation with zero pedestrian disruption inside the central dining courtyard.</li>
       </ul>`
   },
   opt3: {
@@ -287,10 +288,11 @@ function updateSchemeUI() {
       <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-indigo-600"></span><span>Central Bar</span></div>
       <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-purple-600"></span><span>Acoustic Stage</span></div>`,
     opt2: `
+      <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-blue-500"></span><span>South Overflow Access Drive (6m)</span></div>
       <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-amber-500"></span><span>Express Drive-Up (Front)</span></div>
       <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-emerald-600"></span><span>Piazza Kiosks (U-Shape)</span></div>
       <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-rose-600"></span><span>Central Bar Pavilion</span></div>
-      <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-blue-600"></span><span>Split Parking (Front &amp; Rear)</span></div>`,
+      <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-blue-600"></span><span>Front &amp; Rear Overflow Parking</span></div>`,
     opt3: `
       <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-blue-600"></span><span>Drive-In Boulevard &amp; Ribbon Parking</span></div>
       <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-emerald-600"></span><span>2-Story Container Kiosks (Rooftop Decks)</span></div>
@@ -887,165 +889,384 @@ function drawOption1(w, h) {
 }
 
 /* ============================================================
-   OPTION 2: COURTYARD PIAZZA & FOOD VILLAGE
+   OPTION 2: COURTYARD PIAZZA & FOOD VILLAGE (WITH OVERFLOW ACCESS)
    ============================================================ */
 function drawOption2(w, h) {
   drawBaseSite();
 
-  // ---- FRONT PARKING & EXPRESS ZONE (X: 0 to 28) ----
+  // ==========================================================
+  // 1. SOUTH OVERFLOW ACCESS DRIVEWAY (Continuous from X: 0 to 88m)
+  // Width: 6.0m (Y: 0 to 6.0m)
+  // ==========================================================
+  if (app.showParking) {
+    const pD0 = toScreen(0, 6.0);
+    ctx.fillStyle = '#1e293b';
+    ctx.fillRect(pD0.x, pD0.y, 88 * app.scale, 6.0 * app.scale);
+    ctx.strokeStyle = '#475569';
+    ctx.lineWidth = 1;
+    ctx.strokeRect(pD0.x, pD0.y, 88 * app.scale, 6.0 * app.scale);
+
+    // Center dashed yellow line along Y = 3.0m
+    ctx.save();
+    ctx.strokeStyle = '#facc15';
+    ctx.lineWidth = 1.2;
+    ctx.setLineDash([6, 4]);
+    const dL1 = toScreen(2, 3.0);
+    const dL2 = toScreen(86, 3.0);
+    ctx.beginPath();
+    ctx.moveTo(dL1.x, dL1.y);
+    ctx.lineTo(dL2.x, dL2.y);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.restore();
+
+    // Road text & arrows
+    if (app.scale > 2.2) {
+      const pTxt = toScreen(44, 3.0);
+      ctx.fillStyle = '#fde047';
+      ctx.font = 'bold 8px system-ui, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('◄ TWO-WAY OVERFLOW ACCESS DRIVE (6.0m) ►', pTxt.x, pTxt.y);
+
+      // Traffic arrows
+      ctx.strokeStyle = '#22c55e';
+      ctx.lineWidth = 1.5;
+      const arr1 = toScreen(18, 4.3);
+      const arr2 = toScreen(26, 4.3);
+      ctx.beginPath();
+      ctx.moveTo(arr1.x, arr1.y);
+      ctx.lineTo(arr2.x, arr2.y);
+      ctx.lineTo(arr2.x - 4, arr2.y - 3);
+      ctx.moveTo(arr2.x, arr2.y);
+      ctx.lineTo(arr2.x - 4, arr2.y + 3);
+      ctx.stroke();
+
+      ctx.strokeStyle = '#ef4444';
+      const arr3 = toScreen(65, 1.7);
+      const arr4 = toScreen(57, 1.7);
+      ctx.beginPath();
+      ctx.moveTo(arr3.x, arr3.y);
+      ctx.lineTo(arr4.x, arr4.y);
+      ctx.lineTo(arr4.x + 4, arr4.y - 3);
+      ctx.moveTo(arr4.x, arr4.y);
+      ctx.lineTo(arr4.x + 4, arr4.y + 3);
+      ctx.stroke();
+    }
+
+    // Hit test for South Overflow Access Drive
+    const spD = toScreen(0, 6.0);
+    hitItems.push({
+      id: 'South Overflow Access Drive',
+      type: 'Vehicular Access Roadway (Two-Way)',
+      dims: '6.0m width × 88.0m length',
+      area: '528.0 m²',
+      category: 'Two-Way Paved Asphalt Driveway',
+      notes: 'Direct unobstructed roadway connecting the National Road frontage to the 18-car rear overflow parking lot',
+      sx: spD.x, sy: spD.y, sw: 88 * app.scale, sh: 6.0 * app.scale
+    });
+  }
+
+  // Safety Landscaped Buffer & Bollards (Y: 6.0 to 7.0m, X: 28 to 82)
+  const pBuf = toScreen(28, 7.0);
+  ctx.fillStyle = '#064e3b';
+  ctx.fillRect(pBuf.x, pBuf.y, 54 * app.scale, 1.0 * app.scale);
+  ctx.strokeStyle = '#059669';
+  ctx.lineWidth = 0.8;
+  ctx.strokeRect(pBuf.x, pBuf.y, 54 * app.scale, 1.0 * app.scale);
+  // Bollard dots
+  ctx.fillStyle = '#10b981';
+  for (let bx = 30; bx <= 80; bx += 4) {
+    const spB = toScreen(bx, 6.5);
+    ctx.beginPath();
+    ctx.arc(spB.x, spB.y, 2, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  // ==========================================================
+  // 2. FRONT QUICK-TURNOVER PARKING ZONE (X: 0 to 28m)
+  // ==========================================================
   if (app.showParking) {
     const pFr = toScreen(0, W_SITE);
     ctx.fillStyle = '#1e293b';
-    ctx.fillRect(pFr.x, pFr.y, 28 * app.scale, W_SITE * app.scale);
+    ctx.fillRect(pFr.x, pFr.y, 28 * app.scale, (W_SITE - 6.0) * app.scale);
 
-    // Express Drive-Up Kiosks
+    // Express Drive-Up Kiosk (X: 1.5 to 7.0, Y: 13.5 to 23.0)
     if (app.showStalls) {
-      drawBox(2, 14, 6, 8.38, '#d97706', '#f59e0b', 'EXPRESS\nBOBA', {
-        id: 'Express Drive-Up A — Boba & Coffee', type: 'Highway Drive-Up Booth',
-        dims: '6.0m × 8.4m', area: '50.3 m²', category: 'Boba Tea & Coffee',
-        notes: 'Window service directly to cars on National Rd, grab-and-go format'
+      drawBox(1.5, 13.5, 5.5, 9.5, '#d97706', '#f59e0b', 'EXPRESS\nDRIVE-UP', {
+        id: 'Express Highway Drive-Up Kiosks',
+        type: 'Express Drive-Thru Booth (2 Vendor Units)',
+        dims: '5.5m × 9.5m',
+        area: '52.3 m²',
+        category: 'Coffee & Milk Tea / Fast Casual',
+        notes: 'Dedicated pick-up window directly accessible from the front driveway loop for grab-and-go highway commuters'
       });
     }
 
-    // Front stalls — North row
+    // Front Parking Stalls — North Row (P1 to P7, Y: 31.38 to 36.38)
     let pIdx = 1;
     for (let i = 0; i < 7; i++) {
-      const x = 9 + i * 2.6;
+      const x = 8.5 + i * 2.6;
       drawStall(x, 31.38, 2.5, 5.0, '#0f172a', '#94a3b8', `P${pIdx}`, {
-        id: `P${pIdx} — Front Parking`, type: 'Car Parking Slot (Front North)',
-        dims: '2.5m × 5.0m', area: '12.5 m²', category: 'Standard'
+        id: `P${pIdx} — Front Quick Parking`,
+        type: 'Car Parking Slot (Front North)',
+        dims: '2.5m × 5.0m',
+        area: '12.5 m²',
+        category: 'Standard'
       });
       pIdx++;
     }
-    // South row
+
+    // Front Parking Stalls — Middle Row (P8 to P14, Y: 7.5 to 12.5)
     for (let i = 0; i < 7; i++) {
-      const x = 9 + i * 2.6;
-      drawStall(x, 0, 2.5, 5.0, '#0f172a', '#94a3b8', `P${pIdx}`, {
-        id: `P${pIdx} — Front Parking`, type: 'Car Parking Slot (Front South)',
-        dims: '2.5m × 5.0m', area: '12.5 m²', category: 'Standard'
+      const x = 8.5 + i * 2.6;
+      drawStall(x, 7.5, 2.5, 5.0, '#0f172a', '#94a3b8', `P${pIdx}`, {
+        id: `P${pIdx} — Front Quick Parking`,
+        type: 'Car Parking Slot (Front South)',
+        dims: '2.5m × 5.0m',
+        area: '12.5 m²',
+        category: 'Standard'
       });
       pIdx++;
+    }
+
+    // Motorcycle Parking (20 bays near entrance)
+    const pMoto = toScreen(0.5, 30.5);
+    ctx.fillStyle = '#1e1b4b';
+    ctx.fillRect(pMoto.x, pMoto.y, 6.5 * app.scale, 5.5 * app.scale);
+    ctx.strokeStyle = '#6366f1';
+    ctx.lineWidth = 1;
+    ctx.strokeRect(pMoto.x, pMoto.y, 6.5 * app.scale, 5.5 * app.scale);
+    if (app.scale > 2.5) {
+      ctx.fillStyle = '#a5b4fc';
+      ctx.font = 'bold 8px system-ui, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('MOTO (20)', pMoto.x + 3.25 * app.scale, pMoto.y + 2.75 * app.scale);
+    }
+    hitItems.push({
+      id: 'Motorcycle Parking (20 Bays)',
+      type: 'Motorcycle Parking Area',
+      dims: '6.5m × 5.5m',
+      area: '35.8 m²',
+      category: '20 motorcycle bays',
+      notes: 'Covered parking for motorbikes and scooters near front gate',
+      sx: pMoto.x, sy: pMoto.y, sw: 6.5 * app.scale, sh: 5.5 * app.scale
+    });
+
+    // Front drive aisle text
+    if (app.showDims && app.scale > 2.5) {
+      const pFA = toScreen(17, 27.5);
+      ctx.fillStyle = '#475569';
+      ctx.font = '500 8px system-ui, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('6.0m FRONT PARKING AISLE', pFA.x, pFA.y);
     }
   }
 
-  // ---- CENTRAL PIAZZA (X: 28 to 82) ----
+  // ==========================================================
+  // 3. CENTRAL GRAND PIAZZA & VILLAGE (X: 28 to 82m)
+  // ==========================================================
   const pZ0 = toScreen(28, W_SITE);
   ctx.fillStyle = '#27272a';
-  ctx.fillRect(pZ0.x, pZ0.y, 54 * app.scale, W_SITE * app.scale);
+  ctx.fillRect(pZ0.x, pZ0.y, 54 * app.scale, (W_SITE - 7.0) * app.scale);
 
-  // Courtyard ground
+  // Gateway Portal from Front Parking to Piazza
+  const pPort = toScreen(27.5, 27.0);
+  ctx.fillStyle = '#1e293b';
+  ctx.fillRect(pPort.x, pPort.y, 1.5 * app.scale, 14 * app.scale);
+  ctx.strokeStyle = '#f59e0b';
+  ctx.lineWidth = 1.5;
+  ctx.setLineDash([4, 3]);
+  ctx.strokeRect(pPort.x, pPort.y, 1.5 * app.scale, 14 * app.scale);
+  ctx.setLineDash([]);
+  if (app.scale > 2.5) {
+    ctx.save();
+    const pPTxt = toScreen(28.2, 20.0);
+    ctx.translate(pPTxt.x, pPTxt.y);
+    ctx.rotate(-Math.PI / 2);
+    ctx.fillStyle = '#fbbf24';
+    ctx.font = 'bold 8px system-ui, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('★ ENTRANCE PORTAL: THE PIAZZA ★', 0, 0);
+    ctx.restore();
+  }
+
+  // Courtyard paving
   if (app.showDining) {
-    const pSq0 = toScreen(36, 29);
+    const pSq0 = toScreen(34, 29.5);
     ctx.fillStyle = '#3f3f46';
-    ctx.fillRect(pSq0.x, pSq0.y, 38 * app.scale, 21.5 * app.scale);
+    ctx.fillRect(pSq0.x, pSq0.y, 39 * app.scale, 18.0 * app.scale);
+    ctx.strokeStyle = '#e4e4e7';
+    ctx.lineWidth = 1;
+    ctx.strokeRect(pSq0.x, pSq0.y, 39 * app.scale, 18.0 * app.scale);
+
     if (app.scale > 2.5) {
-      const pSqL = toScreen(55, 18);
-      ctx.fillStyle = '#71717a';
-      ctx.font = '500 8px system-ui, sans-serif';
+      const pSqL = toScreen(53.5, 23.5);
+      ctx.fillStyle = '#fef08a';
+      ctx.font = 'bold 9px system-ui, sans-serif';
       ctx.textAlign = 'center';
-      ctx.fillText('GRAND PIAZZA (34m × 22m)', pSqL.x, pSqL.y);
+      ctx.fillText('GRAND CENTRAL DINING PIAZZA (39m × 18m)', pSqL.x, pSqL.y);
     }
+
     // Dining tables in courtyard
     const courtTables = [
-      [42, 20], [46, 20], [50, 20], [60, 20], [64, 20], [68, 20],
-      [42, 14], [46, 14], [50, 14], [60, 14], [64, 14], [68, 14],
-      [42, 24], [50, 24], [60, 24], [68, 24]
+      [38, 22], [42, 22], [46, 22], [61, 22], [65, 22], [69, 22],
+      [38, 16], [42, 16], [46, 16], [61, 16], [65, 16], [69, 16],
+      [40, 26], [45, 26], [62, 26], [67, 26]
     ];
     courtTables.forEach(([tx, ty]) => drawDiningTable(tx, ty));
   }
 
-  // ---- U-SHAPE STALLS ----
+  // ---- U-SHAPE STALLS ENCLOSING THE PIAZZA ----
   if (app.showStalls) {
-    const piazzaCats = ['Tapas', 'Sushi', 'BBQ', 'Pho', 'Dimsum', 'Ramen', 'Pizza', 'Pasta', 'Tacos', 'Korean', 'Shawarma'];
-    // North Row
+    // North Row (11 kiosks, X: 32 to 74, Y: 30.5 to 35.5)
+    const piazzaNorthCats = ['Tapas', 'Sushi', 'BBQ', 'Pho', 'Dimsum', 'Ramen', 'Pizza', 'Pasta', 'Tacos', 'Korean', 'Shawarma'];
     let kIdx = 1;
     for (let i = 0; i < 11; i++) {
       const x = 32 + i * 4.2;
       drawBox(x, 30.5, 3.8, 5.0, '#047857', '#34d399', `K${kIdx}`, {
-        id: `K${kIdx} — ${piazzaCats[i]}`, type: 'Piazza Kiosk (North Row)',
-        dims: '3.8m × 5.0m', area: '19.0 m²', category: piazzaCats[i],
-        notes: 'U-shape perimeter stall, facing central courtyard'
-      });
-      kIdx++;
-    }
-    // South Row
-    const southCats = ['Seafood', 'Desserts', 'Coffee', 'Craft Beer', 'Juice', 'Crepes', 'Donuts', 'Waffles', 'Gelato', 'Smoothie', 'Bakery'];
-    for (let i = 0; i < 11; i++) {
-      const x = 32 + i * 4.2;
-      drawBox(x, 1.0, 3.8, 5.0, '#b45309', '#f59e0b', `K${kIdx}`, {
-        id: `K${kIdx} — ${southCats[i]}`, type: 'Piazza Kiosk (South Row)',
-        dims: '3.8m × 5.0m', area: '19.0 m²', category: southCats[i],
-        notes: 'U-shape perimeter stall, facing central courtyard'
-      });
-      kIdx++;
-    }
-    // East Wall
-    const eastCats = ['Wine Bar', 'Cocktails', 'Brewery', 'Bakehouse'];
-    for (let i = 0; i < 4; i++) {
-      const y = 8 + i * 5.5;
-      drawBox(74, y, 5.0, 4.8, '#4338ca', '#818cf8', `K${kIdx}`, {
-        id: `K${kIdx} — ${eastCats[i]}`, type: 'Piazza Kiosk (East Wall)',
-        dims: '5.0m × 4.8m', area: '24.0 m²', category: eastCats[i],
-        notes: 'Corner stall with dual-facing service windows'
+        id: `K${kIdx} — ${piazzaNorthCats[i]}`,
+        type: 'Piazza Kiosk (North Row)',
+        dims: '3.8m × 5.0m',
+        area: '19.0 m²',
+        category: piazzaNorthCats[i],
+        notes: 'U-shape perimeter stall facing south into central courtyard'
       });
       kIdx++;
     }
 
-    // Center Pavilion Bar
-    drawCircle(55, 18.19, 4.2, '#831843', '#f43f5e', 'BAR', {
-      id: 'Central Bar Pavilion', type: 'Circular Craft Bar Pavilion',
-      dims: 'Ø 8.4m (radius 4.2m)', area: '55.4 m²',
-      notes: 'Open-air circular bar, thatched roof canopy, center of piazza'
+    // South Row (11 kiosks, X: 32 to 74, Y: 7.2 to 11.8)
+    // Backs face the South Overflow Drive (service doors), fronts open into the Piazza!
+    const piazzaSouthCats = ['Seafood', 'Desserts', 'Coffee', 'Craft Beer', 'Juice', 'Crepes', 'Donuts', 'Waffles', 'Gelato', 'Smoothie', 'Bakery'];
+    for (let i = 0; i < 11; i++) {
+      const x = 32 + i * 4.2;
+      drawBox(x, 7.2, 3.8, 4.6, '#b45309', '#f59e0b', `K${kIdx}`, {
+        id: `K${kIdx} — ${piazzaSouthCats[i]}`,
+        type: 'Piazza Kiosk (South Row)',
+        dims: '3.8m × 4.6m',
+        area: '17.5 m²',
+        category: piazzaSouthCats[i],
+        notes: 'Perimeter stall facing north into central courtyard; rear service door opens to buffer strip along South Drive'
+      });
+      kIdx++;
+    }
+
+    // East Wall (4 kiosks, X: 73.5 to 78.5, Y: 12.2 to 28.0)
+    const eastCats = ['Wine Bar', 'Cocktails', 'Bakehouse', 'Gourmet Deli'];
+    for (let i = 0; i < 4; i++) {
+      const y = 12.2 + i * 4.0;
+      drawBox(73.5, y, 4.6, 3.8, '#4338ca', '#818cf8', `K${kIdx}`, {
+        id: `K${kIdx} — ${eastCats[i]}`,
+        type: 'Piazza Kiosk (East Wall)',
+        dims: '4.6m × 3.8m',
+        area: '17.5 m²',
+        category: eastCats[i],
+        notes: 'East courtyard boundary kiosk; leaves Y: 0 to 6m completely clear for overflow driveway'
+      });
+      kIdx++;
+    }
+
+    // Center Circular Craft Bar Pavilion
+    drawCircle(53.5, 17.5, 4.2, '#831843', '#f43f5e', 'BAR', {
+      id: 'Central Bar Pavilion',
+      type: 'Circular Craft Bar Pavilion',
+      dims: 'Ø 8.4m (radius 4.2m)',
+      area: '55.4 m²',
+      notes: 'Open-air circular craft beverage bar, 360° seating counter, centerpiece of grand dining piazza'
     });
   }
 
-  // ---- RADIAL CANOPY LIGHTS ----
-  drawRadialLights(55, 18.19, 18);
+  // Radial Canopy Lights from center pavilion
+  drawRadialLights(53.5, 17.5, 17);
 
-  // ---- REAR HUB (X: 82 to 110) ----
+  // ==========================================================
+  // 4. REAR OVERFLOW PARKING & ENTERTAINMENT HUB (X: 82 to 110m)
+  // ==========================================================
   const pR0 = toScreen(82, W_SITE);
   ctx.fillStyle = '#1e293b';
   ctx.fillRect(pR0.x, pR0.y, 28 * app.scale, W_SITE * app.scale);
 
-  // Amphitheater
-  drawBox(82, 12, 8, 12.38, '#581c87', '#c084fc', 'AMPHITHEATER', {
-    id: 'Covered Live Amphitheater', type: 'Performance & Events Space',
-    dims: '8.0m × 12.4m', area: '99.1 m²',
-    notes: 'Tiered seating, stage w/ PA & lighting rig, capacity ~120 persons'
+  // Covered Amphitheater / Music Stage (X: 80 to 88, Y: 16 to 28)
+  drawBox(80, 16, 8.0, 12.0, '#581c87', '#c084fc', 'AMPHITHEATER', {
+    id: 'Covered Live Amphitheater',
+    type: 'Performance & Events Space',
+    dims: '8.0m × 12.0m',
+    area: '96.0 m²',
+    notes: 'Covered band stage & live performance platform overlooking gathering lawn; capacity ~120 persons'
   });
 
-  // Restrooms
-  drawBox(103, 14, 6.5, 8.5, '#0369a1', '#38bdf8', 'RESTROOMS', {
-    id: 'Public Restrooms', type: 'Comfort Room Facilities',
-    dims: '6.5m × 8.5m', area: '55.3 m²',
-    notes: 'Male/Female/PWD accessible, 6 stalls total'
+  // Restrooms (M/F/PWD) at North-East Corner (X: 90 to 98, Y: 26 to 34.5)
+  drawBox(90, 26, 8.0, 8.5, '#0369a1', '#38bdf8', 'RESTROOMS', {
+    id: 'Public Restrooms (CR)',
+    type: 'Sanitary Comfort Facilities',
+    dims: '8.0m × 8.5m',
+    area: '68.0 m²',
+    notes: 'Fully tiled restrooms with male, female, and PWD accessible stalls'
   });
 
-  // Rear overflow parking
+  // 18 REAR OVERFLOW PARKING STALLS (Connected directly via South Access Drive)
   if (app.showParking) {
     let rpIdx = 15;
-    for (let i = 0; i < 6; i++) {
-      const x = 92 + i * 2.6;
-      drawStall(x, 24, 2.5, 5.0, '#0f172a', '#94a3b8', `P${rpIdx}`, {
-        id: `P${rpIdx} — Rear Parking`, type: 'Car Parking (Rear Overflow)',
-        dims: '2.5m × 5.0m', area: '12.5 m²', category: 'Overflow'
-      });
-      rpIdx++;
-      drawStall(x, 7.5, 2.5, 5.0, '#0f172a', '#94a3b8', `P${rpIdx}`, {
-        id: `P${rpIdx} — Rear Parking`, type: 'Car Parking (Rear Overflow)',
-        dims: '2.5m × 5.0m', area: '12.5 m²', category: 'Overflow'
+    // Row 1: South Edge (Y: 0 to 5.0m, X: 88 to 108) — 8 stalls
+    for (let i = 0; i < 8; i++) {
+      const x = 88 + i * 2.6;
+      drawStall(x, 0, 2.5, 5.0, '#0f172a', '#38bdf8', `P${rpIdx}`, {
+        id: `P${rpIdx} — Rear Overflow Stall`,
+        type: 'Car Parking Slot (Rear South)',
+        dims: '2.5m × 5.0m',
+        area: '12.5 m²',
+        category: 'Overflow Parking'
       });
       rpIdx++;
     }
+
+    // Row 2: Across Aisle (Y: 10.5 to 15.5m, X: 88 to 108) — 8 stalls
+    for (let i = 0; i < 8; i++) {
+      const x = 88 + i * 2.6;
+      drawStall(x, 10.5, 2.5, 5.0, '#0f172a', '#38bdf8', `P${rpIdx}`, {
+        id: `P${rpIdx} — Rear Overflow Stall`,
+        type: 'Car Parking Slot (Rear Mid)',
+        dims: '2.5m × 5.0m',
+        area: '12.5 m²',
+        category: 'Overflow Parking'
+      });
+      rpIdx++;
+    }
+
+    // Row 3: End Turnaround Stalls (P31 & P32, X: 104.5 to 109.5, Y: 18 to 23.5)
+    for (let i = 0; i < 2; i++) {
+      const y = 17.5 + i * 2.8;
+      drawStall(104.5, y, 5.0, 2.5, '#0f172a', '#38bdf8', `P${rpIdx}`, {
+        id: `P${rpIdx} — Rear Overflow Stall`,
+        type: 'Car Parking Slot (Turnaround Bay)',
+        dims: '5.0m × 2.5m',
+        area: '12.5 m²',
+        category: 'Overflow Parking'
+      });
+      rpIdx++;
+    }
+
+    // Rear Drive Aisle & Turnaround
+    if (app.scale > 2.2) {
+      const pRDA = toScreen(98, 7.75);
+      ctx.fillStyle = '#fde047';
+      ctx.font = 'bold 8px system-ui, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('5.5m DRIVE AISLE / TURNAROUND ◄►', pRDA.x, pRDA.y);
+    }
   }
 
-  // ---- DIMENSION LINES ----
+  // ==========================================================
+  // 5. DIMENSION LINES
+  // ==========================================================
   if (app.showDims) {
-    drawDimLine(0, -5, D_SITE, -5, '110.00m (DEPTH)', 0);
-    drawDimLine(-5, 0, -5, W_SITE, '36.38m', 0);
-    drawDimLine(0, W_SITE + 6, 28, W_SITE + 6, '28.0m FRONT PARK', 0);
+    drawDimLine(0, -5, D_SITE, -5, '110.00m (TOTAL DEPTH)', 0);
+    drawDimLine(-5, 0, -5, W_SITE, '36.38m (FRONTAGE)', 0);
+    drawDimLine(0, W_SITE + 6, 28, W_SITE + 6, '28.0m FRONT PARKING', 0);
     drawDimLine(28, W_SITE + 6, 82, W_SITE + 6, '54.0m CENTRAL PIAZZA', 0);
     drawDimLine(82, W_SITE + 6, D_SITE, W_SITE + 6, '28.0m REAR HUB', 0);
+    drawDimLine(0, -1.5, 88, -1.5, '88.0m SOUTH OVERFLOW ACCESS DRIVE (6.0m WIDE)', 0);
   }
 
   drawNorthIndicator();
