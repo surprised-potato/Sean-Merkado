@@ -1,109 +1,73 @@
-# Site Survey & Site Development Plan: "Sean Merkado"
-**Project:** Commercial Food Park & Market Site Development Plan  
-**Lots:** Combined Lot 834-A-2-B &amp; Lot 834-A-2-C, Plan (LRA) PSD-408589  
-**Location:** National Road, Brgy. Pahanocoy, Bacolod City, Island of Negros  
-**Total Land Area:** 4,000.00 sq.m (0.40 Hectares)  
+# Sean Merkado — Alternative Site Development Plans
+**Property:** Combined Lot 834-A-2-B &amp; Lot 834-A-2-C, Plan (LRA) PSD-408589  
+**Location:** National Road, Brgy. Pahanocoy, Bacolod City, Negros Occidental  
+**Total Parcel Area:** 4,000.00 sq.m (0.40 Hectares)  
 **Dimensions:** 36.38 meters (Frontage) × 110.00 meters (Depth)  
+**Live Interactive Application:** [https://surprised-potato.github.io/Sean-Merkado/](https://surprised-potato.github.io/Sean-Merkado/)  
 
 ---
 
-## 1. Site Development Master Plan
+## Comparative Master Plan Matrix
 
-Based on your design requirements and reference inspiration (outdoor night market with crushed gravel, permeable concrete turf pavers, vibrant modular container kiosks, and overhead festoon lighting):
-
-![Sean Merkado Site Development Plan](./sean_merkado_site_development_plan.png)
-
----
-
-## 2. Master Zoning & Space Allocation
-
-The 4,000 sq.m property is divided into two primary zones: **Front Customer Parking & Circulation Zone (~43%)** and **Rear Food Park & Market Promenade Zone (~57%)**.
-
-```
-◄ NATIONAL ROAD (36.38m Frontage)
-┌───────────────────────────────┬───────────────────────────────────────────────────┐
-│                               │  ★ WELCOME ARCH ("SEAN MERKADO") ★               │
-│   CUSTOMER PARKING ZONE       │  • North Row: 11 Food Kiosks (Savory/Meals)      │
-│   • 38 Car Parking Slots      │  • South Row: 11 Food Kiosks (Grill/BBQ/Drinks)   │
-│   • 24 Motorcycle Bays        │  • Central Beverage & Craft Bar Island           │
-│   • 6m One-Way Driveway Loop  │  • Central Gravel & Turf Paver Promenade          │
-│   • Guardhouse & Walkway      │  • Al Fresco Picnic Dining (~260 Seats)          │
-│                               │  • Covered Live Acoustic Music Stage              │
-│   Depth: ~47.0 meters         │  • Comfort Rooms (M/F/PWD) & Service Yard (Rear)  │
-│   Area: ~1,710 sq.m (42.7%)   │   Depth: ~63.0 meters | Area: ~2,290 sq.m (57.3%) │
-└───────────────────────────────┴───────────────────────────────────────────────────┘
-                                                      REAR BOUNDARY (NHA Property) ►
-```
+| Feature / Criteria | Option 1: Linear Split (Baseline) | Option 2: Courtyard Piazza | Option 3: Boulevard Ribbon |
+| :--- | :--- | :--- | :--- |
+| **Design Concept** | Front parking zone + rear pedestrian promenade | Enclosed central dining square with U-shaped stalls | Longitudinal parallel drive-in street + 2-story containers |
+| **Highway Exposure** | Visible front parking lot & entrance arch | Front drive-up express kiosks & portal | Full 110m continuous view into the vibrant food street |
+| **Car Parking Capacity** | **38 Cars** (Front lot) | **32 Cars** (14 Front + 18 Rear) | **40 Cars** (Full-length angled ribbon) |
+| **Motorcycle Capacity** | **24 Slots** | **20 Slots** | **30 Slots** |
+| **Food Kiosk Count** | **22 Stalls** + Central Bar | **26 Stalls** + Center Pavilion | **19 Two-Story Stalls** (38 total vendor bays/decks) |
+| **Dining Seating** | ~260 Seats (Promenade picnic) | **~320 Seats** (Grand central square) | **~350 Seats** (Ground strip + Rooftop decks) |
+| **Vehicular Circulation** | One-way counter-clockwise loop | Dual courtyard access (North in, South out) | Full-length two-way boulevard (8m aisle) |
+| **Pedestrian Ambiance** | Authentic night market gravel walk | Intimate European-style market square | Trendy urban multi-level food street |
+| **Phase Development** | Simple 2-stage (front then rear) | Multi-stage (front, piazza, rear) | Highly modular (develop north half, south as parking) |
 
 ---
 
-## 3. Detailed Program Specifications
+## 1. Option 1: Linear Front-to-Back Split (Baseline Scheme)
 
-### Zone A: Front Parking & Vehicular Circulation (~1,710 m²)
-- **Frontage Buffer:** 3.0 m wide landscaped sidewalk buffer along the National Highway.
-- **Vehicular Flow:** One-way counter-clockwise circulation loop with **6.0 m wide drive aisles**.
-  - **Vehicular IN:** North Gate (Y = 27m to 33m) directly from National Highway.
-  - **Vehicular OUT:** South Gate (Y = 2m to 8m) exiting back to highway.
-  - *Prevents bottlenecking and dangerous queueing on the national road.*
-- **Parking Capacities:**
-  - **38 Car Parking Slots** (standard 2.5m × 5.0m stalls).
-  - **24 Motorcycle / Scooter Slots** (1.2m × 2.2m stalls placed conveniently adjacent to the market entrance).
-- **Security & Pedestrian Safety:**
-  - Dedicated **Guardhouse & Ticket Booth** at entry (3.5m × 3.5m).
-  - Dedicated painted/paved **Pedestrian Walkway** leading customers safely from cars directly to the market arch without stepping into blind vehicular paths.
+![Option 1 Site Development Plan](./sean_merkado_site_development_plan.png)
+
+### Concept & Space Allocation:
+- **Zoning Strategy:** Clean front-to-back division.
+  - **Front 47 meters (~1,710 m² / 42.7%):** Dedicated to customer parking (38 car slots + 24 motorcycle bays) with a 6-meter one-way circulation loop, security guardhouse, and marked pedestrian walkway.
+  - **Rear 63 meters (~2,290 m² / 57.3%):** Dedicated to the "Sean Merkado" pedestrian food market inspired directly by the reference photo (gravel & concrete turf paver promenade, overhead festoon lights, 22 container kiosks, central beverage bar, covered acoustic music stage, and rear comfort rooms).
+- **Key Advantage:** 100% vehicle-free pedestrian safety inside the dining area; buffers diners from national highway dust and noise.
 
 ---
 
-### Zone B: "Sean Merkado" Food Market & Dining (~2,290 m²)
-Inspired by the night market aesthetic in your reference photo:
+## 2. Option 2: "Courtyard Piazza & Food Village"
 
-1. **Entrance Arch Portal (X = 47m to 50m):**
-   - Decorative illuminated steel and timber portal branded **"SEAN MERKADO"**.
-   - Photo-op feature with tropical planter boxes and accent spot lights.
+![Option 2 Courtyard Piazza](./option_2_courtyard_piazza.png)
 
-2. **Ground Treatment & Promenade (X = 51m to 92m):**
-   - **Ground finish:** Crushed basalt/river gravel ground with **interlocking permeable grass-paver blocks (turf blocks)** down the center walkway (identical to your reference photo).
-   - Natural storm drainage through permeable gravel base (prevents puddling during rainy season).
-   - Overhead **criss-crossing festoon string lights (warm Edison bulbs)** suspended on catenary wire cables.
-
-3. **Modular Food Kiosks (22+ Units):**
-   - **Size:** 3.4m width × 3.2m depth per stall (approx. $10.9\text{ m}^2$ kitchen area) plus $1.2\text{m}$ roll-up service awning.
-   - **North Row (Stalls 1–11):** Focused on savory dishes, rice meals, burgers, artisan noodles, and specialty foreign street foods.
-   - **South Row (Stalls 12–22):** Focused on charcoal grilled chicken inasal/BBQ, seafood, coolers, desserts, and fried specialties (equipped with rear exhaust ducting).
-   - **Utilities per Kiosk:** Dedicated 220V 30A circuit breaker, sub-metered potable water tap, and drain line routed through grease traps.
-
-4. **Central Beverage & Craft Bar Island (X = 70.5m to 75.5m):**
-   - Centrally positioned $5.0\text{m} \times 5.2\text{m}$ 360-degree service kiosk serving craft beer, fresh tropical juices, milk teas, and specialty coffee.
-
-5. **Outdoor Dining Area:**
-   - Solid wood picnic benches with umbrella canopies distributed throughout the central promenade and side alcoves.
-   - Total seating capacity: **~260 to 300 seated diners**.
-
-6. **Live Acoustic Stage (X = 94m to 102m):**
-   - $8.0\text{m} \times 10.4\text{m}$ elevated covered timber stage for weekend acoustic duos, buskers, and soft live music performances.
-
-7. **Sanitary & Service Facilities (Rear Boundary, X = 102.5m to 109m):**
-   - **Restroom Facility (Comfort Rooms):**
-     - Male CR: Urinals and private cubicles.
-     - Female CR: Multiple cubicles.
-     - PWD / Universal accessible comfort room.
-     - Exterior double handwashing counter with mirrors.
-   - **Back-of-House Service Yard:**
-     - Commercial centralized grease trap vault.
-     - Material Recovery Facility (MRF) for waste segregation and recycling.
-     - Standby generator enclosure & main electrical breaker panel.
+### Concept & Space Allocation:
+- **Zoning Strategy:** Concentric community square / U-shaped village enclosing a grand social dining piazza.
+  - **Front Zone (0m to 28m):** 14 quick-turnover parking stalls plus **2 Express Highway Drive-Up Kiosks** (specializing in morning coffee, milk tea, and grab-and-go snacks for highway commuters).
+  - **Central Courtyard Piazza (28m to 82m):** A spacious $34\text{m} \times 22\text{m}$ open-air dining square enclosed on three sides by 26 food kiosks, anchored by a central circular craft bar pavilion and a radial festoon lighting canopy.
+  - **Rear Hub (82m to 110m):** 18 secondary/overflow parking stalls, covered acoustic amphitheater stage, and sanitary restroom building.
+- **Key Advantage:** Creates a cozy, vibrant "enclosed village" atmosphere; radial canopy lighting creates a festival centerpiece; captures daytime drive-by highway traffic with express drive-up booths.
 
 ---
 
-## 4. Interactive Canvas Tool Access
+## 3. Option 3: "Boulevard Ribbon & Drive-In Food Street"
 
-You can open the interactive canvas tool directly in your browser or through the IDE side pane:
-- **Project File:** [index.html](file:///home/daniel/Documents/GitHub/Sean%20Merkado/index.html)
-- **Artifact File:** [lot_canvas_visualizer.html](file:///home/daniel/.gemini/antigravity/brain/0f898883-2477-4bac-8e75-630fd6e8ce71/lot_canvas_visualizer.html)
+![Option 3 Boulevard Ribbon](./option_3_boulevard_ribbon.png)
 
-**Interactive Canvas Capabilities:**
-- Switch between **Site Development Plan** and **Survey Boundary Plan** tabs.
-- Pan & Zoom anywhere on the master site plan.
-- Toggle layers: Parking, Stalls, Dining, Festoon Lights, Stage & CR, and Architectural Dimensions.
-- Hover / Click on any stall (Stalls 1–22) or parking stall (P1–P50) to view vendor types, dimensions, electrical/water hookups, and specifications in the inspector card.
-- Download high-resolution PNG plans directly from the tool.
+### Concept & Space Allocation:
+- **Zoning Strategy:** Longitudinal parallel ribbon split running the full 110-meter depth.
+  - **South Ribbon (17.0m wide):** Two-way drive-in vehicular boulevard with a continuous ribbon of **40 angled parking spaces** running from the highway all the way to the rear boundary.
+  - **North Ribbon (19.4m wide):** "The Merkado Walk" — a pedestrian food street featuring **19 two-story modified shipping container kiosks** with 2nd-floor rooftop dining decks overlooking the street, a front 2-story signature gateway cafe, central al fresco dining tables, and a rear "Backyard" beer garden & stage.
+- **Key Advantage:**
+  - **Unmatched Commercial Visibility:** Motorists on the National Road can see the entire 110-meter vibrant food street lit up deep into the property.
+  - **"Park & Dine" Convenience:** Customers can park directly adjacent to their preferred kiosk.
+  - **2-Story Rooftop Seating:** Doubles the usable seating area and provides an elevated vantage point.
+
+---
+
+## Technical Survey Reference (PSD-408589)
+
+![Survey Plot](./lot_survey_plot.png)
+
+- **Lot 834-A-2-C (North Lot):** 2,000.00 sq.m (Frontage: 18.19m along National Road, Depth: 110.00m)
+- **Lot 834-A-2-B (South Lot):** 2,000.00 sq.m (Frontage: 18.19m along National Road, Depth: 110.00m)
+- **Combined Area:** 4,000.00 sq.m (36.38m frontage × 110.00m depth)
+- **Tie Line:** From BBM No. 2, CAD 39 Bacolod Cadastre to Corner 1: **S. 26° 13' W, 711.62 m**

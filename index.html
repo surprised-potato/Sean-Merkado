@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sean Merkado - Site Development & Survey Plan</title>
+  <title>Sean Merkado - Alternative Site Development Plans</title>
   <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
   <style>
     canvas {
@@ -13,180 +13,134 @@
     canvas:active {
       cursor: grabbing;
     }
-    .custom-scrollbar::-webkit-scrollbar {
-      width: 6px;
-      height: 6px;
-    }
-    .custom-scrollbar::-webkit-scrollbar-thumb {
-      background: var(--border, #cbd5e1);
-      border-radius: 9999px;
-    }
   </style>
 </head>
 <body class="bg-transparent text-[var(--foreground,#0f172a)] antialiased p-2 sm:p-4">
   <div class="max-w-7xl mx-auto flex flex-col gap-4">
     
-    <!-- Header with View Switcher -->
+    <!-- Top Nav & Scheme Selector -->
     <div class="bg-[var(--card,#ffffff)] border border-[var(--border,#e2e8f0)] rounded-2xl p-4 sm:p-5 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
       <div>
         <div class="flex items-center gap-2 mb-1">
           <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300">
-            Site Development &amp; Food Park Plan
+            Site Development Options
           </span>
-          <span class="text-xs text-[var(--muted-foreground,#64748b)]">Lot 834-A-2-B &amp; 834-A-2-C (4,000 m²)</span>
+          <span class="text-xs text-[var(--muted-foreground,#64748b)]">Lot 834-A-2-B &amp; C (4,000 m²)</span>
         </div>
         <h1 class="text-xl sm:text-2xl font-bold tracking-tight text-[var(--foreground,#0f172a)] flex items-center gap-2">
           <span>SEAN MERKADO</span>
-          <span class="text-sm font-normal text-[var(--muted-foreground,#64748b)]">&bull; Food Park &amp; Commercial Hub</span>
+          <span id="header-scheme-subtitle" class="text-sm font-normal text-[var(--muted-foreground,#64748b)]">&bull; Option 1: Linear Front-to-Back Split</span>
         </h1>
         <p class="text-xs sm:text-sm text-[var(--muted-foreground,#64748b)] mt-0.5">
           National Road, Brgy. Pahanocoy, Bacolod City &bull; 36.38m Frontage × 110.00m Depth
         </p>
       </div>
 
-      <!-- View Switcher Tabs -->
-      <div class="flex items-center bg-[var(--background,#f1f5f9)] p-1 rounded-xl border border-[var(--border,#cbd5e1)]">
-        <button id="tab-sdp" class="px-3.5 py-2 rounded-lg text-xs font-semibold bg-white dark:bg-slate-800 text-blue-600 shadow-sm transition">
-          Site Development Plan
-        </button>
-        <button id="tab-survey" class="px-3.5 py-2 rounded-lg text-xs font-medium text-[var(--muted-foreground,#64748b)] hover:text-[var(--foreground,#0f172a)] transition">
-          Survey &amp; Boundary Plan
-        </button>
+      <!-- Master Scheme Switcher -->
+      <div class="flex flex-wrap items-center gap-2">
+        <label class="text-xs font-semibold text-[var(--foreground,#0f172a)] block sm:inline">Select Scheme:</label>
+        <select id="scheme-select" class="text-xs font-semibold rounded-xl border border-[var(--border,#cbd5e1)] bg-[var(--background,#ffffff)] text-[var(--foreground,#0f172a)] px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none shadow-sm cursor-pointer">
+          <option value="opt1" selected>Option 1: Linear Split (Front Parking / Rear Promenade)</option>
+          <option value="opt2">Option 2: Courtyard Piazza (Central Enclosed Village)</option>
+          <option value="opt3">Option 3: Boulevard Ribbon (Drive-In &amp; 2-Deck Containers)</option>
+          <option value="survey">Technical Survey &amp; Boundary Plan</option>
+        </select>
       </div>
     </div>
 
-    <!-- Quick Stats Cards -->
-    <div id="stats-sdp" class="grid grid-cols-2 sm:grid-cols-5 gap-2 sm:gap-3 text-center">
+    <!-- Comparative Metrics Bar -->
+    <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 sm:gap-3 text-center">
       <div class="bg-[var(--card,#ffffff)] border border-[var(--border,#e2e8f0)] rounded-xl p-3 shadow-sm">
         <div class="text-[11px] font-medium text-[var(--muted-foreground,#64748b)] uppercase">Total Site Area</div>
         <div class="text-lg font-bold text-[var(--foreground,#0f172a)]">4,000 <span class="text-xs font-normal">m²</span></div>
       </div>
       <div class="bg-[var(--card,#ffffff)] border border-[var(--border,#e2e8f0)] rounded-xl p-3 shadow-sm">
         <div class="text-[11px] font-medium text-[var(--muted-foreground,#64748b)] uppercase">Car Parking</div>
-        <div class="text-lg font-bold text-blue-600 dark:text-blue-400">38 <span class="text-xs font-normal">Slots</span></div>
+        <div id="metric-cars" class="text-lg font-bold text-blue-600 dark:text-blue-400">38 <span class="text-xs font-normal">Cars</span></div>
       </div>
       <div class="bg-[var(--card,#ffffff)] border border-[var(--border,#e2e8f0)] rounded-xl p-3 shadow-sm">
-        <div class="text-[11px] font-medium text-[var(--muted-foreground,#64748b)] uppercase">Motorcycle Parking</div>
-        <div class="text-lg font-bold text-indigo-600 dark:text-indigo-400">24 <span class="text-xs font-normal">Slots</span></div>
+        <div class="text-[11px] font-medium text-[var(--muted-foreground,#64748b)] uppercase">Moto Parking</div>
+        <div id="metric-moto" class="text-lg font-bold text-indigo-600 dark:text-indigo-400">24 <span class="text-xs font-normal">Bays</span></div>
       </div>
       <div class="bg-[var(--card,#ffffff)] border border-[var(--border,#e2e8f0)] rounded-xl p-3 shadow-sm">
-        <div class="text-[11px] font-medium text-[var(--muted-foreground,#64748b)] uppercase">Food Stalls / Kiosks</div>
-        <div class="text-lg font-bold text-emerald-600 dark:text-emerald-400">22+ <span class="text-xs font-normal">+ Bar</span></div>
+        <div class="text-[11px] font-medium text-[var(--muted-foreground,#64748b)] uppercase">Food Stalls</div>
+        <div id="metric-stalls" class="text-lg font-bold text-emerald-600 dark:text-emerald-400">22+ <span class="text-xs font-normal">+ Bar</span></div>
       </div>
       <div class="bg-[var(--card,#ffffff)] border border-[var(--border,#e2e8f0)] rounded-xl p-3 shadow-sm col-span-2 sm:col-span-1">
-        <div class="text-[11px] font-medium text-[var(--muted-foreground,#64748b)] uppercase">Outdoor Dining</div>
-        <div class="text-lg font-bold text-amber-600 dark:text-amber-400">~260 <span class="text-xs font-normal">Seats</span></div>
+        <div class="text-[11px] font-medium text-[var(--muted-foreground,#64748b)] uppercase">Seating Capacity</div>
+        <div id="metric-seats" class="text-lg font-bold text-amber-600 dark:text-amber-400">~260 <span class="text-xs font-normal">Seats</span></div>
       </div>
     </div>
 
-    <!-- Main Content Grid -->
+    <!-- Main Workspace -->
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-4 items-start">
       
-      <!-- Left Panel: Controls & Options -->
+      <!-- Left Controls Panel -->
       <div class="lg:col-span-1 flex flex-col gap-4">
         
-        <!-- SDP Specific Controls -->
-        <div id="panel-sdp-controls" class="bg-[var(--card,#ffffff)] border border-[var(--border,#e2e8f0)] rounded-2xl p-4 shadow-sm space-y-4">
-          <div>
-            <h2 class="text-xs font-bold uppercase tracking-wider text-[var(--muted-foreground,#64748b)] mb-2">
-              Market Zones &amp; Layers
-            </h2>
-            <div class="space-y-2 text-xs">
-              <label class="flex items-center gap-2 cursor-pointer">
-                <input type="checkbox" id="layer-parking" checked class="rounded text-blue-600">
-                <span>Parking Zone (Stalls &amp; Lanes)</span>
-              </label>
-              <label class="flex items-center gap-2 cursor-pointer">
-                <input type="checkbox" id="layer-stalls" checked class="rounded text-emerald-600">
-                <span>Food Stalls (North &amp; South Rows)</span>
-              </label>
-              <label class="flex items-center gap-2 cursor-pointer">
-                <input type="checkbox" id="layer-dining" checked class="rounded text-amber-600">
-                <span>Al Fresco Picnic Tables</span>
-              </label>
-              <label class="flex items-center gap-2 cursor-pointer">
-                <input type="checkbox" id="layer-lights" checked class="rounded text-yellow-500">
-                <span>Festoon String Lights (Warm)</span>
-              </label>
-              <label class="flex items-center gap-2 cursor-pointer">
-                <input type="checkbox" id="layer-stage-cr" checked class="rounded text-purple-600">
-                <span>Live Stage &amp; Restrooms (CR)</span>
-              </label>
-              <label class="flex items-center gap-2 cursor-pointer">
-                <input type="checkbox" id="layer-dims" checked class="rounded text-gray-600">
-                <span>Zone Dimensions &amp; Labels</span>
-              </label>
-            </div>
-          </div>
-
-          <div class="pt-3 border-t border-[var(--border,#e2e8f0)]">
-            <h2 class="text-xs font-bold uppercase tracking-wider text-[var(--muted-foreground,#64748b)] mb-2">
-              Design Highlights (Reference Inspired)
-            </h2>
-            <ul class="text-xs text-[var(--muted-foreground,#64748b)] space-y-1.5 list-disc pl-4">
-              <li><strong>Gravel &amp; Turf Block Promenade:</strong> Permeable pavers with natural crushed gravel.</li>
-              <li><strong>Container Food Kiosks:</strong> 3.4m × 3.2m modular stalls with lighted awnings.</li>
-              <li><strong>One-Way Traffic Flow:</strong> Separate North Entry &amp; South Exit gates to prevent gridlock on the highway.</li>
-              <li><strong>Central Beverage Bar:</strong> Island hub serving craft drinks, fruit juices, and beer.</li>
-              <li><strong>Acoustic Live Stage:</strong> Covered timber deck for local buskers &amp; music.</li>
-            </ul>
+        <!-- Scheme Details Card -->
+        <div class="bg-[var(--card,#ffffff)] border border-[var(--border,#e2e8f0)] rounded-2xl p-4 shadow-sm space-y-3">
+          <h2 class="text-xs font-bold uppercase tracking-wider text-[var(--muted-foreground,#64748b)]">
+            Active Scheme Description
+          </h2>
+          <div id="scheme-description" class="text-xs text-[var(--muted-foreground,#64748b)] leading-relaxed space-y-2">
+            <!-- Dynamic content inserted by JS -->
           </div>
         </div>
 
-        <!-- Survey Plan Specific Controls (Hidden when in SDP mode) -->
-        <div id="panel-survey-controls" class="hidden bg-[var(--card,#ffffff)] border border-[var(--border,#e2e8f0)] rounded-2xl p-4 shadow-sm space-y-4">
-          <div>
-            <h2 class="text-xs font-bold uppercase tracking-wider text-[var(--muted-foreground,#64748b)] mb-2">
-              Survey View Options
-            </h2>
-            <div class="space-y-2 text-xs">
-              <label class="block mb-1 font-medium">Orientation:</label>
-              <div class="grid grid-cols-2 gap-1 mb-2">
-                <button id="btn-north-up" class="px-2 py-1 rounded bg-blue-600 text-white text-[11px] font-medium">True North Up</button>
-                <button id="btn-ortho-grid" class="px-2 py-1 rounded border text-[11px] font-medium">Ortho Grid</button>
-              </div>
-              <label class="flex items-center gap-2 cursor-pointer">
-                <input type="checkbox" id="chk-survey-bearings" checked class="rounded text-blue-600">
-                <span>Bearings &amp; Distances</span>
-              </label>
-              <label class="flex items-center gap-2 cursor-pointer">
-                <input type="checkbox" id="chk-survey-envelope" checked class="rounded text-blue-600">
-                <span>Building Setback Envelope</span>
-              </label>
-              <label class="flex items-center gap-2 cursor-pointer">
-                <input type="checkbox" id="chk-survey-tieline" class="rounded text-purple-600">
-                <span>BBM No. 2 Tie Vector</span>
-              </label>
-            </div>
+        <!-- Layer Toggles -->
+        <div class="bg-[var(--card,#ffffff)] border border-[var(--border,#e2e8f0)] rounded-2xl p-4 shadow-sm space-y-3">
+          <h2 class="text-xs font-bold uppercase tracking-wider text-[var(--muted-foreground,#64748b)]">
+            Display Layers
+          </h2>
+          <div class="space-y-2 text-xs">
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="checkbox" id="chk-parking" checked class="rounded text-blue-600">
+              <span>Parking Stalls &amp; Drive Aisles</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="checkbox" id="chk-stalls" checked class="rounded text-emerald-600">
+              <span>Food Kiosks &amp; Stalls</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="checkbox" id="chk-dining" checked class="rounded text-amber-600">
+              <span>Dining Tables &amp; Courtyards</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="checkbox" id="chk-lights" checked class="rounded text-yellow-500">
+              <span>Festoon Lighting Canopy</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="checkbox" id="chk-dims" checked class="rounded text-gray-600">
+              <span>Architectural Dimensions</span>
+            </label>
           </div>
         </div>
 
-        <!-- Stall / Feature Inspector Card -->
+        <!-- Inspector Card -->
         <div class="bg-[var(--card,#ffffff)] border border-[var(--border,#e2e8f0)] rounded-2xl p-4 shadow-sm">
           <h2 class="text-xs font-bold uppercase tracking-wider text-[var(--muted-foreground,#64748b)] mb-2">
-            Selected Element Info
+            Selected Element Inspector
           </h2>
-          <div id="inspector-content" class="text-xs text-[var(--muted-foreground,#64748b)] italic">
-            Hover or click on any stall, parking slot, or amenity in the canvas to view specifications.
+          <div id="inspector-text" class="text-xs text-[var(--muted-foreground,#64748b)] italic">
+            Hover or click on any stall, parking slot, or facility to view details.
           </div>
         </div>
 
-        <!-- Export Buttons -->
-        <div class="flex flex-col gap-2">
-          <button id="btn-export-canvas-png" class="w-full py-2.5 px-4 bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 rounded-xl text-xs font-semibold hover:opacity-90 flex items-center justify-center gap-2 shadow-sm">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-            Download High-Res Plan (PNG)
-          </button>
-        </div>
+        <!-- Export Action -->
+        <button id="btn-export-png" class="w-full py-2.5 px-4 bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 rounded-xl text-xs font-semibold hover:opacity-90 flex items-center justify-center gap-2 shadow-sm">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+          Export Active Scheme (PNG)
+        </button>
 
       </div>
 
-      <!-- Right Panel: The Canvas -->
+      <!-- Right Canvas Panel -->
       <div class="lg:col-span-3 flex flex-col gap-4">
         
         <div class="relative bg-[var(--card,#ffffff)] border border-[var(--border,#e2e8f0)] rounded-2xl shadow-sm overflow-hidden flex flex-col">
           
-          <!-- Floating Toolbar -->
+          <!-- Floating Controls -->
           <div class="absolute top-3 left-3 right-3 z-10 flex flex-wrap items-center justify-between gap-2 pointer-events-none">
             <div class="pointer-events-auto flex items-center bg-[var(--card,#ffffff)]/90 backdrop-blur-md border border-[var(--border,#cbd5e1)] rounded-xl p-1 shadow-sm gap-1">
               <button id="btn-zoom-in" class="w-7 h-7 rounded-lg flex items-center justify-center text-[var(--foreground,#0f172a)] hover:bg-gray-100 dark:hover:bg-slate-800 font-bold" title="Zoom In">+</button>
@@ -195,41 +149,22 @@
             </div>
 
             <div class="pointer-events-auto bg-[var(--card,#ffffff)]/90 backdrop-blur-md border border-[var(--border,#cbd5e1)] rounded-xl px-3 py-1 shadow-sm text-xs font-medium text-[var(--foreground,#0f172a)] flex items-center gap-2">
-              <span id="canvas-coord-readout" class="font-mono text-[11px] text-[var(--muted-foreground,#64748b)]">X: 0.00m, Y: 0.00m</span>
+              <span id="coord-readout" class="font-mono text-[11px] text-[var(--muted-foreground,#64748b)]">X: 0.0m, Y: 0.0m</span>
               <span class="w-px h-3 bg-gray-300"></span>
-              <span id="canvas-scale-readout" class="text-[11px] font-mono">1.0x</span>
+              <span id="zoom-readout" class="text-[11px] font-mono">1.0x</span>
             </div>
           </div>
 
-          <!-- Main Interactive Canvas -->
-          <canvas id="main-canvas" class="w-full h-[620px] sm:h-[720px] block"></canvas>
+          <!-- Canvas -->
+          <canvas id="app-canvas" class="w-full h-[620px] sm:h-[720px] block"></canvas>
 
-          <!-- Canvas Footer Legend -->
+          <!-- Footer Legend -->
           <div class="p-3 bg-[var(--background,#f8fafc)] border-t border-[var(--border,#e2e8f0)] flex flex-wrap items-center justify-between gap-3 text-xs">
-            <div class="flex items-center flex-wrap gap-4">
-              <div class="flex items-center gap-1.5">
-                <span class="w-3 h-3 rounded bg-blue-600 inline-block"></span>
-                <span>Parking (38 Cars + 24 Moto)</span>
-              </div>
-              <div class="flex items-center gap-1.5">
-                <span class="w-3 h-3 rounded bg-emerald-600 inline-block"></span>
-                <span>Food Stalls (North Row)</span>
-              </div>
-              <div class="flex items-center gap-1.5">
-                <span class="w-3 h-3 rounded bg-amber-600 inline-block"></span>
-                <span>Grill &amp; Drinks (South Row)</span>
-              </div>
-              <div class="flex items-center gap-1.5">
-                <span class="w-3 h-3 rounded bg-indigo-600 inline-block"></span>
-                <span>Central Beverage Bar</span>
-              </div>
-              <div class="flex items-center gap-1.5">
-                <span class="w-3 h-3 rounded bg-purple-600 inline-block"></span>
-                <span>Acoustic Stage &amp; Lounge</span>
-              </div>
+            <div id="canvas-legend" class="flex items-center flex-wrap gap-4">
+              <!-- Inserted dynamically based on scheme -->
             </div>
             <div class="text-[var(--muted-foreground,#64748b)] text-[11px]">
-              Drag to pan &bull; Scroll to zoom &bull; Click any item to inspect
+              Drag to pan &bull; Scroll to zoom &bull; Click items for specs
             </div>
           </div>
 
@@ -242,146 +177,97 @@
   </div>
 
   <script>
-    // --- GEODETIC & ARCHITECTURAL COORDINATE SYSTEM ---
-    const RAD = Math.PI / 180;
-    const AZ_ROAD = 28.0 * RAD;
-    const AZ_DEPTH = (180 - (63 + 22/60)) * RAD; // 116.6333°
+    const W_SITE = 36.38;
+    const D_SITE = 110.00;
 
-    const W_SITE = 36.38; // Frontage along National Road (m)
-    const D_SITE = 110.00; // Depth (m)
+    const SCHEME_INFO = {
+      opt1: {
+        title: "Option 1: Linear Front-to-Back Split",
+        subtitle: "• Front Parking / Rear Food Promenade",
+        cars: 38,
+        moto: 24,
+        stalls: "22+ & Bar",
+        seats: "~260",
+        desc: `
+          <p><strong>Typology:</strong> Clean linear zoning splitting the site into two distinct zones.</p>
+          <ul class="list-disc pl-4 space-y-1 mt-1 text-gray-500">
+            <li><strong>Front 47m:</strong> Dedicated customer parking with one-way circulation loop (38 cars + 24 motorbikes).</li>
+            <li><strong>Rear 63m:</strong> Continuous central gravel &amp; turf-paver promenade flanked by 22 container kiosks, central craft bar, acoustic stage, and comfort rooms.</li>
+            <li><strong>Advantage:</strong> 100% pedestrian safety, low highway noise/dust inside dining, authentic night market vibe.</li>
+          </ul>
+        `
+      },
+      opt2: {
+        title: "Option 2: Courtyard Piazza & Village",
+        subtitle: "• Central Enclosed Piazza & Radial Festoon Canopy",
+        cars: 32,
+        moto: 20,
+        stalls: "26 Kiosks",
+        seats: "~320",
+        desc: `
+          <p><strong>Typology:</strong> Enclosed central dining courtyard enclosed on 3 sides by modular food stalls.</p>
+          <ul class="list-disc pl-4 space-y-1 mt-1 text-gray-500">
+            <li><strong>Front Courtyard:</strong> 14 quick-turnover car stalls + 2 Express Highway Drive-Up booths (coffee/boba).</li>
+            <li><strong>Central Piazza:</strong> 34m × 22m grand open dining square with central craft bar pavilion and radial festoon canopy.</li>
+            <li><strong>Rear Zone:</strong> 18 overflow parking stalls + covered live amphitheater &amp; restrooms.</li>
+            <li><strong>Advantage:</strong> Intimate festival square atmosphere, wind/weather protection, drive-up highway sales.</li>
+          </ul>
+        `
+      },
+      opt3: {
+        title: "Option 3: Boulevard Ribbon & Drive-In",
+        subtitle: "• Parallel Drive-In Boulevard & 2-Story Container Strip",
+        cars: 40,
+        moto: 30,
+        stalls: "19 Two-Story",
+        seats: "~350",
+        desc: `
+          <p><strong>Typology:</strong> Longitudinal parallel ribbon split running the full 110m depth.</p>
+          <ul class="list-disc pl-4 space-y-1 mt-1 text-gray-500">
+            <li><strong>South Ribbon (17m wide):</strong> Full-length two-way drive-in boulevard with 38+ angled parking stalls.</li>
+            <li><strong>North Ribbon (19.4m wide):</strong> Continuous pedestrian food street with 19 multi-tier container stalls featuring 2nd-floor rooftop dining decks!</li>
+            <li><strong>Advantage:</strong> Complete highway visibility from the national road, "Park-and-Dine" convenience, double floor space.</li>
+          </ul>
+        `
+      },
+      survey: {
+        title: "Technical Survey & Boundary Plan",
+        subtitle: "• Geodetic Metes & Bounds (PSD-408589)",
+        cars: 0,
+        moto: 0,
+        stalls: "N/A",
+        seats: "N/A",
+        desc: `
+          <p><strong>Official Geodetic Survey Plan:</strong> Lot 834-A-2-B &amp; Lot 834-A-2-C situated in Brgy. Pahanocoy, Bacolod City.</p>
+          <ul class="list-disc pl-4 space-y-1 mt-1 text-gray-500">
+            <li>Frontage: 36.38m (N 28°00'E) along National Highway.</li>
+            <li>Depth: 110.00m (S 63°22'E) along Lot D and Lot A boundaries.</li>
+            <li>Rear: 36.38m (S 28°00'W) along NHA property.</li>
+            <li>Common tie line: BBM No. 2, CAD 39 to Cor 1: S 26°13'W, 711.62m.</li>
+          </ul>
+        `
+      }
+    };
 
-    // Unit vectors in geodetic space
-    const uFront = { x: Math.sin(AZ_ROAD), y: Math.cos(AZ_ROAD) };
-    const uDepth = { x: Math.sin(AZ_DEPTH), y: Math.cos(AZ_DEPTH) };
-
-    // Application state
-    const appState = {
-      viewMode: 'sdp', // 'sdp' or 'survey'
-      surveyOrientation: 'north', // 'north' or 'ortho'
-      // Layers
-      layerParking: true,
-      layerStalls: true,
-      layerDining: true,
-      layerLights: true,
-      layerStageCR: true,
-      layerDims: true,
-      // Survey layers
-      surveyBearings: true,
-      surveyEnvelope: true,
-      surveyTieLine: false,
-      // Transforms
-      scale: 6.2, // pixels per meter
+    const app = {
+      scheme: 'opt1',
+      showParking: true,
+      showStalls: true,
+      showDining: true,
+      showLights: true,
+      showDims: true,
+      scale: 6.2,
       panX: 60,
       panY: 300,
       isDragging: false,
       dragStart: { x: 0, y: 0 },
-      mousePos: { x: 0, y: 0 },
-      hoveredItem: null,
-      selectedItem: null
+      hoverItem: null
     };
 
-    // --- PROGRAMMATIC SITE DEVELOPMENT ITEMS (Orthogonal Site Space: X: 0 to 110m, Y: 0 to 36.38m) ---
-    // X=0 is National Road frontage, X=110 is rear NHA. Y=0 is South (Lot A), Y=36.38 is North (Lot D).
-
-    const SDP_ITEMS = {
-      // Highway & Gateway
-      road: { x: -16, y: -2, w: 16, h: W_SITE + 4, name: "National Road (Lot 834-A-1, Psd-24776)", type: "road" },
-      sidewalk: { x: 0, y: 0, w: 3, h: W_SITE, name: "Sidewalk & Landscape Buffer", type: "buffer" },
-      guardhouse: { x: 3.2, y: 16.5, w: 3.5, h: 3.5, name: "Security & Ticket Booth", desc: "24/7 Gate Guardhouse with CCTV monitoring & ticket dispenser", type: "amenity" },
-      arch: { x: 47, y: 6, w: 3, h: W_SITE - 12, name: "★ Welcome Arch: SEAN MERKADO ★", desc: "Illuminated steel & timber decorative portal with overhead signage", type: "portal" },
-      
-      // Parking Stalls
-      stallsParking: [],
-      // Food Stalls
-      foodStallsNorth: [],
-      foodStallsSouth: [],
-      // Central Bar
-      centralBar: { x: 70.5, y: 15.6, w: 5.0, h: 5.2, name: "Central Beverage & Craft Bar Island", desc: "Specialty bar serving craft beers, fresh fruit coolers, artisanal coffee & cocktails. 360-degree service counters.", type: "bar" },
-      // Dining Tables
-      diningTables: [],
-      // Stage & Restrooms
-      stage: { x: 94, y: 13, w: 8, h: 10.38, name: "Live Acoustic Stage & Band Lounge", desc: "Covered timber performance deck with sound system, ambient warm wash lighting, and open picnic turf.", type: "stage" },
-      restrooms: { x: 102.5, y: 23.5, w: 6.5, h: 11, name: "Comfort Rooms (CR / Restroom Facility)", desc: "Modern sanitary facilities: Men's cubicles & urinals, Women's multi-cubicles, PWD accessible toilet, and exterior double handwash vanity.", type: "restrooms" },
-      serviceYard: { x: 102.5, y: 2, w: 6.5, h: 10, name: "Service Yard & Utilities", desc: "Solid waste segregation (MRF), grease trap vaults, standby generator room, and back-of-house staff access.", type: "service" },
-      motoParking: { x: 39, y: 12, w: 6.5, h: 12, name: "Motorcycle & Scooter Parking (24 Slots)", desc: "Dedicated paved parking bays for motorbikes and scooters right beside market entrance.", type: "moto" }
-    };
-
-    // Populate Parking Stalls
-    let pNum = 1;
-    // North wall (P1-P15)
-    for (let x = 7; x <= 43.4; x += 2.6) {
-      SDP_ITEMS.stallsParking.push({ id: `P${pNum}`, x: x, y: 31.38, w: 2.5, h: 5.0, type: 'car', desc: 'Standard Car Parking Stall (2.5m × 5.0m)' });
-      pNum++;
-    }
-    // South wall (P16-P30)
-    for (let x = 7; x <= 43.4; x += 2.6) {
-      SDP_ITEMS.stallsParking.push({ id: `P${pNum}`, x: x, y: 0, w: 2.5, h: 5.0, type: 'car', desc: 'Standard Car Parking Stall (2.5m × 5.0m)' });
-      pNum++;
-    }
-    // Center Island Top (P31-P40)
-    for (let x = 14; x <= 37.4; x += 2.6) {
-      SDP_ITEMS.stallsParking.push({ id: `P${pNum}`, x: x, y: 18.19, w: 2.5, h: 4.5, type: 'car', desc: 'Central Island Car Parking Stall (2.5m × 4.5m)' });
-      pNum++;
-    }
-    // Center Island Bottom (P41-P50)
-    for (let x = 14; x <= 37.4; x += 2.6) {
-      SDP_ITEMS.stallsParking.push({ id: `P${pNum}`, x: x, y: 13.69, w: 2.5, h: 4.5, type: 'car', desc: 'Central Island Car Parking Stall (2.5m × 4.5m)' });
-      pNum++;
-    }
-
-    // Populate Food Kiosks
-    // North Row (Stalls 1 to 11)
-    const northCategories = [
-      "Lechon & Sisig House", "Artisan Burger Joint", "Gourmet Pasta & Pizza",
-      "Korean Street Food", "Japanese Yakitori & Ramen", "Smoked BBQ Ribs",
-      "Shawarma & Kebab Hub", "Seafood Boil & Shrimp", "Crispy Bagnet Express",
-      "Taco & Burrito Cantina", "Specialty Desserts & Gelato"
-    ];
-    let kId = 1;
-    for (let i = 0; i < 11; i++) {
-      const x = 52 + i * 3.7;
-      SDP_ITEMS.foodStallsNorth.push({
-        id: `STALL ${kId}`,
-        category: northCategories[i],
-        x: x, y: 26.5, w: 3.4, h: 7.8,
-        power: "220V 30A Dedicated",
-        water: "Potable supply + Commercial Grease Trap Drain",
-        type: 'food_stall'
-      });
-      kId++;
-    }
-
-    // South Row (Stalls 12 to 22)
-    const southCategories = [
-      "Inasal & Chicken BBQ", "Grilled Tuna & Bangus", "Fresh Fruit Shakes & Coolers",
-      "Belgian Waffles & Crepes", "Milk Tea & Boba Bar", "Local Negros Delicacies",
-      "Loaded Nachos & Wings", "Sizzling Steak & Gravy", "Crispy Calamares & Fries",
-      "Thai Street Noodles", "Craft Mocktails & Ice Scramble"
-    ];
-    for (let i = 0; i < 11; i++) {
-      const x = 52 + i * 3.7;
-      SDP_ITEMS.foodStallsSouth.push({
-        id: `STALL ${kId}`,
-        category: southCategories[i],
-        x: x, y: 2.0, w: 3.4, h: 7.8,
-        power: "220V 30A Dedicated",
-        water: "Potable supply + Commercial Grease Trap Drain",
-        type: 'food_stall'
-      });
-      kId++;
-    }
-
-    // Dining tables
-    for (let tx of [56, 62, 68, 77, 83, 88]) {
-      for (let ty of [14.0, 21.8]) {
-        SDP_ITEMS.diningTables.push({ x: tx, y: ty, w: 2.2, h: 1.2, name: "Picnic Dining Set (4-6 Seats)" });
-      }
-    }
-
-    const canvas = document.getElementById('main-canvas');
+    const canvas = document.getElementById('app-canvas');
     const ctx = canvas.getContext('2d');
 
-    function resizeCanvas() {
+    function resize() {
       const rect = canvas.getBoundingClientRect();
       const dpr = window.devicePixelRatio || 1;
       canvas.width = rect.width * dpr;
@@ -390,127 +276,109 @@
       ctx.scale(dpr, dpr);
       draw();
     }
+    window.addEventListener('resize', resize);
 
-    window.addEventListener('resize', resizeCanvas);
-
-    function fitToScreen() {
+    function fitView() {
       const rect = canvas.getBoundingClientRect();
       const w = rect.width;
       const h = rect.height;
 
-      if (appState.viewMode === 'sdp') {
-        // Site space is 110m long by 36.38m wide (+ margin)
-        const totalSpanX = 135;
-        const totalSpanY = 55;
-        const sX = (w * 0.9) / totalSpanX;
-        const sY = (h * 0.85) / totalSpanY;
-        appState.scale = Math.min(sX, sY);
-
-        // Center horizontally and vertically
-        appState.panX = (w - (D_SITE * appState.scale)) / 2 + 10 * appState.scale;
-        appState.panY = h / 2 + (W_SITE / 2) * appState.scale;
-      } else {
-        // Survey mode
-        const lotSpanX = 125;
-        const lotSpanY = 80;
-        appState.scale = Math.min((w * 0.8) / lotSpanX, (h * 0.8) / lotSpanY);
-        appState.panX = w / 2;
-        appState.panY = h / 2;
-      }
-
-      updateUI();
+      const totalSpanX = 135;
+      const totalSpanY = 55;
+      app.scale = Math.min((w * 0.9) / totalSpanX, (h * 0.85) / totalSpanY);
+      app.panX = (w - (D_SITE * app.scale)) / 2 + 10 * app.scale;
+      app.panY = h / 2 + (W_SITE / 2) * app.scale;
+      document.getElementById('zoom-readout').innerText = (app.scale / 6.2).toFixed(1) + 'x';
       draw();
     }
 
-    // Coordinate Transforms
-    function siteToScreen(x, y) {
-      // In SDP mode: X goes to the right, Y goes UP (screen Y goes down)
+    function toScreen(x, y) {
       return {
-        x: appState.panX + x * appState.scale,
-        y: appState.panY - y * appState.scale
+        x: app.panX + x * app.scale,
+        y: app.panY - y * app.scale
       };
     }
 
-    function screenToSite(sx, sy) {
+    function toSite(sx, sy) {
       return {
-        x: (sx - appState.panX) / appState.scale,
-        y: -(sy - appState.panY) / appState.scale
+        x: (sx - app.panX) / app.scale,
+        y: -(sy - app.panY) / app.scale
       };
     }
 
-    function updateUI() {
-      document.getElementById('canvas-scale-readout').innerText = (appState.scale / 6.2).toFixed(1) + 'x';
+    function updateSchemeUI() {
+      const info = SCHEME_INFO[app.scheme];
+      document.getElementById('header-scheme-subtitle').innerText = info.subtitle;
+      document.getElementById('metric-cars').innerHTML = `${info.cars} <span class="text-xs font-normal">Cars</span>`;
+      document.getElementById('metric-moto').innerHTML = `${info.moto} <span class="text-xs font-normal">Bays</span>`;
+      document.getElementById('metric-stalls').innerHTML = `${info.stalls}`;
+      document.getElementById('metric-seats').innerHTML = `${info.seats} <span class="text-xs font-normal">Seats</span>`;
+      document.getElementById('scheme-description').innerHTML = info.desc;
+
+      const leg = document.getElementById('canvas-legend');
+      if (app.scheme === 'opt1') {
+        leg.innerHTML = `
+          <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-blue-600"></span><span>Parking (38 Cars + 24 Moto)</span></div>
+          <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-emerald-600"></span><span>Food Stalls North</span></div>
+          <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-amber-600"></span><span>Grill Stalls South</span></div>
+          <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-indigo-600"></span><span>Central Bar</span></div>
+          <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-purple-600"></span><span>Acoustic Stage</span></div>
+        `;
+      } else if (app.scheme === 'opt2') {
+        leg.innerHTML = `
+          <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-amber-500"></span><span>Express Drive-Up (Front)</span></div>
+          <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-emerald-600"></span><span>Piazza Kiosks (U-Shape)</span></div>
+          <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-rose-600"></span><span>Central Bar Pavilion</span></div>
+          <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-blue-600"></span><span>Split Parking (Front &amp; Rear)</span></div>
+        `;
+      } else if (app.scheme === 'opt3') {
+        leg.innerHTML = `
+          <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-blue-600"></span><span>Drive-In Boulevard &amp; Ribbon Parking</span></div>
+          <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-emerald-600"></span><span>2-Story Container Kiosks (Rooftop Decks)</span></div>
+          <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-yellow-500"></span><span>Continuous Merkado Promenade</span></div>
+        `;
+      } else {
+        leg.innerHTML = `
+          <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-emerald-500"></span><span>Lot 834-A-2-C (2,000 m²)</span></div>
+          <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-amber-500"></span><span>Lot 834-A-2-B (2,000 m²)</span></div>
+        `;
+      }
     }
 
-    // --- DRAW ROUTINE ---
+    // --- MAIN DRAW ROUTINE ---
     function draw() {
       const rect = canvas.getBoundingClientRect();
       const w = rect.width;
       const h = rect.height;
 
       const isDark = document.documentElement.classList.contains('dark');
-      const bgColor = isDark ? '#0f172a' : '#ffffff';
-      const textColor = isDark ? '#f8fafc' : '#0f172a';
-      const mutedColor = isDark ? '#94a3b8' : '#64748b';
-
-      ctx.fillStyle = bgColor;
+      ctx.fillStyle = isDark ? '#0f172a' : '#ffffff';
       ctx.fillRect(0, 0, w, h);
 
-      if (appState.viewMode === 'sdp') {
-        drawSiteDevelopmentPlan(w, h, textColor, mutedColor);
-      } else {
-        drawSurveyBoundaryPlan(w, h, textColor, mutedColor);
-      }
+      if (app.scheme === 'opt1') drawOption1(w, h);
+      else if (app.scheme === 'opt2') drawOption2(w, h);
+      else if (app.scheme === 'opt3') drawOption3(w, h);
+      else drawSurveyPlan(w, h);
     }
 
-    // =========================================================================
-    // SITE DEVELOPMENT PLAN DRAWING
-    // =========================================================================
-    function drawSiteDevelopmentPlan(w, h, textColor, mutedColor) {
-      ctx.save();
+    // --- BASE CAD DRAW HELPERS ---
+    function drawBaseSite() {
+      const p0 = toScreen(0, W_SITE);
+      const sw = D_SITE * app.scale;
+      const sh = W_SITE * app.scale;
 
-      // 1. Site Boundary Outer Box
-      const p0 = siteToScreen(0, W_SITE);
-      const p1 = siteToScreen(D_SITE, 0);
-      const siteBoxWidth = D_SITE * appState.scale;
-      const siteBoxHeight = W_SITE * appState.scale;
-
-      // Fill parcel base
       ctx.fillStyle = '#182234';
-      ctx.fillRect(p0.x, p0.y, siteBoxWidth, siteBoxHeight);
+      ctx.fillRect(p0.x, p0.y, sw, sh);
 
-      // Dividing lot line (Lot C and Lot B division at Y = 18.19)
-      const pDiv1 = siteToScreen(0, 18.19);
-      const pDiv2 = siteToScreen(D_SITE, 18.19);
-      ctx.strokeStyle = '#38bdf8';
-      ctx.lineWidth = 1;
-      ctx.setLineDash([4, 4]);
-      ctx.beginPath();
-      ctx.moveTo(pDiv1.x, pDiv1.y);
-      ctx.lineTo(pDiv2.x, pDiv2.y);
-      ctx.stroke();
-      ctx.setLineDash([]);
-
-      // 2. National Road & Frontage Corridor
-      const pRoad0 = siteToScreen(-16, W_SITE + 2);
+      // National Road
+      const pR0 = toScreen(-16, W_SITE + 2);
       ctx.fillStyle = '#334155';
-      ctx.fillRect(pRoad0.x, pRoad0.y, 16 * appState.scale, (W_SITE + 4) * appState.scale);
-      // Road centerline
-      const pC1 = siteToScreen(-8, -2);
-      const pC2 = siteToScreen(-8, W_SITE + 2);
-      ctx.strokeStyle = '#facc15';
-      ctx.lineWidth = 2;
-      ctx.setLineDash([8, 8]);
-      ctx.beginPath();
-      ctx.moveTo(pC1.x, pC1.y);
-      ctx.lineTo(pC2.x, pC2.y);
-      ctx.stroke();
-      ctx.setLineDash([]);
+      ctx.fillRect(pR0.x, pR0.y, 16 * app.scale, (W_SITE + 4) * app.scale);
 
-      // Road Text
-      const pRoadText = siteToScreen(-8, W_SITE / 2);
+      // Road text
+      const pRT = toScreen(-8, W_SITE / 2);
       ctx.save();
-      ctx.translate(pRoadText.x, pRoadText.y);
+      ctx.translate(pRT.x, pRT.y);
       ctx.rotate(-Math.PI / 2);
       ctx.fillStyle = '#f8fafc';
       ctx.font = 'bold 11px system-ui, sans-serif';
@@ -521,628 +389,290 @@
       ctx.fillText('◄ TO BAGO CITY          TO BACOLOD CITY PROPER ►', 0, 12);
       ctx.restore();
 
-      // Sidewalk buffer
-      const pSide0 = siteToScreen(0, W_SITE);
-      ctx.fillStyle = '#475569';
-      ctx.fillRect(pSide0.x, pSide0.y, 3 * appState.scale, siteBoxHeight);
-
-      // 3. PARKING ZONE (X: 3 to 47m)
-      if (appState.layerParking) {
-        // Asphalt pavement
-        const pAsp0 = siteToScreen(3, W_SITE);
-        ctx.fillStyle = '#1e293b';
-        ctx.fillRect(pAsp0.x, pAsp0.y, 44 * appState.scale, siteBoxHeight);
-
-        // Driveway direction arrows
-        drawDrivewayArrow(5, 30.5, 14, 30.5, '#22c55e', 'VEHICULAR IN');
-        drawDrivewayArrow(14, 5.5, 3, 5.5, '#ef4444', 'VEHICULAR OUT');
-        drawDrivewayArrow(15, 26, 38, 26, '#94a3b8');
-        drawDrivewayArrow(41, 26, 41, 10.5, '#94a3b8');
-        drawDrivewayArrow(38, 10.5, 15, 10.5, '#94a3b8');
-
-        // Car Parking Stalls
-        SDP_ITEMS.stallsParking.forEach(stall => {
-          const sp = siteToScreen(stall.x, stall.y + stall.h);
-          const sw = stall.w * appState.scale;
-          const sh = stall.h * appState.scale;
-
-          const isHov = appState.hoveredItem && appState.hoveredItem.id === stall.id;
-
-          ctx.fillStyle = isHov ? '#1e3a8a' : '#0f172a';
-          ctx.fillRect(sp.x, sp.y, sw, sh);
-
-          ctx.strokeStyle = isHov ? '#60a5fa' : '#64748b';
-          ctx.lineWidth = 1;
-          ctx.strokeRect(sp.x, sp.y, sw, sh);
-
-          // Stall Number
-          ctx.fillStyle = isHov ? '#ffffff' : '#cbd5e1';
-          ctx.font = 'bold 8px monospace';
-          ctx.textAlign = 'center';
-          ctx.textBaseline = 'middle';
-          ctx.fillText(stall.id, sp.x + sw / 2, sp.y + sh / 2);
-        });
-
-        // Motorcycle Parking Zone
-        const mp = siteToScreen(SDP_ITEMS.motoParking.x, SDP_ITEMS.motoParking.y + SDP_ITEMS.motoParking.h);
-        const mpw = SDP_ITEMS.motoParking.w * appState.scale;
-        const mph = SDP_ITEMS.motoParking.h * appState.scale;
-
-        ctx.fillStyle = '#1e1b4b';
-        ctx.fillRect(mp.x, mp.y, mpw, mph);
-        ctx.strokeStyle = '#6366f1';
-        ctx.lineWidth = 1.5;
-        ctx.strokeRect(mp.x, mp.y, mpw, mph);
-
-        ctx.fillStyle = '#c7d2fe';
-        ctx.font = 'bold 9px system-ui, sans-serif';
-        ctx.textAlign = 'center';
-        ctx.fillText('MOTORCYCLE', mp.x + mpw / 2, mp.y + mph / 2 - 6);
-        ctx.fillText('PARKING (24)', mp.x + mpw / 2, mp.y + mph / 2 + 6);
-
-        // Pedestrian safe path
-        const pw = siteToScreen(43, 28);
-        ctx.fillStyle = '#065f46';
-        ctx.fillRect(pw.x, pw.y, 5 * appState.scale, 4 * appState.scale);
-        ctx.strokeStyle = '#10b981';
-        ctx.strokeRect(pw.x, pw.y, 5 * appState.scale, 4 * appState.scale);
-        ctx.fillStyle = '#a7f3d0';
-        ctx.font = 'bold 8px system-ui, sans-serif';
-        ctx.fillText('WALKWAY', pw.x + (2.5 * appState.scale), pw.y + (2 * appState.scale));
-
-        // Guardhouse
-        const gh = siteToScreen(SDP_ITEMS.guardhouse.x, SDP_ITEMS.guardhouse.y + SDP_ITEMS.guardhouse.h);
-        ctx.fillStyle = '#0284c7';
-        ctx.fillRect(gh.x, gh.y, SDP_ITEMS.guardhouse.w * appState.scale, SDP_ITEMS.guardhouse.h * appState.scale);
-        ctx.strokeStyle = '#38bdf8';
-        ctx.strokeRect(gh.x, gh.y, SDP_ITEMS.guardhouse.w * appState.scale, SDP_ITEMS.guardhouse.h * appState.scale);
-        ctx.fillStyle = '#ffffff';
-        ctx.font = 'bold 8px system-ui, sans-serif';
-        ctx.fillText('GUARD', gh.x + (1.75 * appState.scale), gh.y + (1.75 * appState.scale));
-      }
-
-      // 4. FOOD PARK ZONE (X: 47 to 110m)
-      // Ground: Gravel & Permeable Pavers (matches reference photo)
-      const pMkt0 = siteToScreen(47, W_SITE);
-      ctx.fillStyle = '#27272a';
-      ctx.fillRect(pMkt0.x, pMkt0.y, 63 * appState.scale, siteBoxHeight);
-
-      // Central Promenade Walkway
-      const pProm0 = siteToScreen(51, 24.5);
-      const promW = 41 * appState.scale;
-      const promH = 12.5 * appState.scale;
-      ctx.fillStyle = '#3f3f46';
-      ctx.fillRect(pProm0.x, pProm0.y, promW, promH);
-
-      // Draw decorative turf-paver track along promenade center
-      ctx.strokeStyle = '#71717a';
-      ctx.lineWidth = 1;
-      ctx.setLineDash([6, 6]);
-      ctx.strokeRect(pProm0.x, pProm0.y + promH * 0.25, promW, promH * 0.5);
-      ctx.setLineDash([]);
-
-      // Welcome Arch
-      const archP = siteToScreen(SDP_ITEMS.arch.x, SDP_ITEMS.arch.y + SDP_ITEMS.arch.h);
-      ctx.fillStyle = '#1c1917';
-      ctx.fillRect(archP.x, archP.y, SDP_ITEMS.arch.w * appState.scale, SDP_ITEMS.arch.h * appState.scale);
-      ctx.strokeStyle = '#f59e0b';
-      ctx.lineWidth = 2;
-      ctx.strokeRect(archP.x, archP.y, SDP_ITEMS.arch.w * appState.scale, SDP_ITEMS.arch.h * appState.scale);
-
-      ctx.save();
-      ctx.translate(archP.x + (SDP_ITEMS.arch.w * appState.scale) / 2, archP.y + (SDP_ITEMS.arch.h * appState.scale) / 2);
-      ctx.rotate(-Math.PI / 2);
-      ctx.fillStyle = '#fbbf24';
-      ctx.font = 'bold 11px system-ui, sans-serif';
-      ctx.textAlign = 'center';
-      ctx.fillText('★ ENTRANCE ARCH: "SEAN MERKADO" ★', 0, 4);
-      ctx.restore();
-
-      // Food Stalls (North Row - Green/Emerald)
-      if (appState.layerStalls) {
-        SDP_ITEMS.foodStallsNorth.forEach(stall => {
-          const sp = siteToScreen(stall.x, stall.y + stall.h);
-          const sw = stall.w * appState.scale;
-          const sh = stall.h * appState.scale;
-
-          const isHov = appState.hoveredItem && appState.hoveredItem.id === stall.id;
-
-          // Main kiosk body
-          ctx.fillStyle = isHov ? '#059669' : '#047857';
-          ctx.fillRect(sp.x, sp.y, sw, sh);
-          ctx.strokeStyle = isHov ? '#a7f3d0' : '#34d399';
-          ctx.lineWidth = 1.2;
-          ctx.strokeRect(sp.x, sp.y, sw, sh);
-
-          // Awning / service counter on walkway side
-          const awnY = sp.y + sh - (1.2 * appState.scale);
-          ctx.fillStyle = '#065f46';
-          ctx.fillRect(sp.x, awnY, sw, 1.2 * appState.scale);
-          ctx.strokeStyle = '#10b981';
-          ctx.strokeRect(sp.x, awnY, sw, 1.2 * appState.scale);
-
-          // Text label
-          ctx.fillStyle = '#ffffff';
-          ctx.font = 'bold 8px system-ui, sans-serif';
-          ctx.textAlign = 'center';
-          ctx.fillText(stall.id, sp.x + sw / 2, sp.y + sh * 0.4);
-        });
-
-        // Food Stalls (South Row - Amber/Orange)
-        SDP_ITEMS.foodStallsSouth.forEach(stall => {
-          const sp = siteToScreen(stall.x, stall.y + stall.h);
-          const sw = stall.w * appState.scale;
-          const sh = stall.h * appState.scale;
-
-          const isHov = appState.hoveredItem && appState.hoveredItem.id === stall.id;
-
-          ctx.fillStyle = isHov ? '#d97706' : '#b45309';
-          ctx.fillRect(sp.x, sp.y, sw, sh);
-          ctx.strokeStyle = isHov ? '#fde68a' : '#f59e0b';
-          ctx.lineWidth = 1.2;
-          ctx.strokeRect(sp.x, sp.y, sw, sh);
-
-          // Awning
-          ctx.fillStyle = '#78350f';
-          ctx.fillRect(sp.x, sp.y, sw, 1.2 * appState.scale);
-          ctx.strokeStyle = '#f59e0b';
-          ctx.strokeRect(sp.x, sp.y, sw, 1.2 * appState.scale);
-
-          ctx.fillStyle = '#ffffff';
-          ctx.font = 'bold 8px system-ui, sans-serif';
-          ctx.textAlign = 'center';
-          ctx.fillText(stall.id, sp.x + sw / 2, sp.y + sh * 0.65);
-        });
-
-        // Central Beverage Bar Island
-        const bar = SDP_ITEMS.centralBar;
-        const bp = siteToScreen(bar.x, bar.y + bar.h);
-        const bw = bar.w * appState.scale;
-        const bh = bar.h * appState.scale;
-
-        const isBarHov = appState.hoveredItem && appState.hoveredItem.type === 'bar';
-        ctx.fillStyle = isBarHov ? '#4338ca' : '#1e1b4b';
-        ctx.fillRect(bp.x, bp.y, bw, bh);
-        ctx.strokeStyle = isBarHov ? '#c7d2fe' : '#818cf8';
-        ctx.lineWidth = 2;
-        ctx.strokeRect(bp.x, bp.y, bw, bh);
-
-        ctx.fillStyle = '#e0e7ff';
-        ctx.font = 'bold 9px system-ui, sans-serif';
-        ctx.textAlign = 'center';
-        ctx.fillText('BEVERAGE', bp.x + bw / 2, bp.y + bh / 2 - 5);
-        ctx.fillText('& BAR', bp.x + bw / 2, bp.y + bh / 2 + 7);
-      }
-
-      // 5. Al Fresco Dining Tables (Picnic tables with umbrellas)
-      if (appState.layerDining) {
-        SDP_ITEMS.diningTables.forEach(t => {
-          const tp = siteToScreen(t.x, t.y + t.h);
-          const tw = t.w * appState.scale;
-          const th = t.h * appState.scale;
-
-          // Table top
-          ctx.fillStyle = '#854d0e';
-          ctx.fillRect(tp.x, tp.y, tw, th);
-          ctx.strokeStyle = '#ca8a04';
-          ctx.lineWidth = 1;
-          ctx.strokeRect(tp.x, tp.y, tw, th);
-
-          // Umbrella circle center
-          ctx.beginPath();
-          ctx.arc(tp.x + tw / 2, tp.y + th / 2, 4, 0, Math.PI * 2);
-          ctx.fillStyle = '#fde047';
-          ctx.fill();
-        });
-      }
-
-      // 6. Overhead Festoon String Lights
-      if (appState.layerLights) {
-        ctx.save();
-        const numSegments = 16;
-        const xStart = 52;
-        const xEnd = 92;
-        const step = (xEnd - xStart) / numSegments;
-
-        ctx.strokeStyle = 'rgba(253, 224, 71, 0.75)';
-        ctx.lineWidth = 1.2;
-        ctx.beginPath();
-
-        for (let i = 0; i <= numSegments; i++) {
-          const lx = xStart + i * step;
-          const ly = (i % 2 === 0) ? 25.2 : 11.2;
-          const lp = siteToScreen(lx, ly);
-
-          if (i === 0) ctx.moveTo(lp.x, lp.y);
-          else ctx.lineTo(lp.x, lp.y);
-        }
-        ctx.stroke();
-
-        // Light bulb glows
-        for (let i = 0; i <= numSegments; i++) {
-          const lx = xStart + i * step;
-          const ly = (i % 2 === 0) ? 25.2 : 11.2;
-          const lp = siteToScreen(lx, ly);
-
-          ctx.beginPath();
-          ctx.arc(lp.x, lp.y, 3, 0, Math.PI * 2);
-          ctx.fillStyle = '#facc15';
-          ctx.fill();
-        }
-        ctx.restore();
-      }
-
-      // 7. Live Stage & Restrooms (CR)
-      if (appState.layerStageCR) {
-        // Stage
-        const st = siteToScreen(SDP_ITEMS.stage.x, SDP_ITEMS.stage.y + SDP_ITEMS.stage.h);
-        const stw = SDP_ITEMS.stage.w * appState.scale;
-        const sth = SDP_ITEMS.stage.h * appState.scale;
-
-        ctx.fillStyle = '#4c1d95';
-        ctx.fillRect(st.x, st.y, stw, sth);
-        ctx.strokeStyle = '#a855f7';
-        ctx.lineWidth = 2;
-        ctx.strokeRect(st.x, st.y, stw, sth);
-
-        ctx.fillStyle = '#f3e8ff';
-        ctx.font = 'bold 9px system-ui, sans-serif';
-        ctx.textAlign = 'center';
-        ctx.fillText('LIVE ACOUSTIC', st.x + stw / 2, st.y + sth / 2 - 5);
-        ctx.fillText('STAGE / BAND', st.x + stw / 2, st.y + sth / 2 + 7);
-
-        // Restroom Building
-        const cr = siteToScreen(SDP_ITEMS.restrooms.x, SDP_ITEMS.restrooms.y + SDP_ITEMS.restrooms.h);
-        const crw = SDP_ITEMS.restrooms.w * appState.scale;
-        const crh = SDP_ITEMS.restrooms.h * appState.scale;
-
-        ctx.fillStyle = '#0369a1';
-        ctx.fillRect(cr.x, cr.y, crw, crh);
-        ctx.strokeStyle = '#38bdf8';
-        ctx.lineWidth = 1.5;
-        ctx.strokeRect(cr.x, cr.y, crw, crh);
-
-        ctx.fillStyle = '#e0f2fe';
-        ctx.font = 'bold 8.5px system-ui, sans-serif';
-        ctx.textAlign = 'center';
-        ctx.fillText('RESTROOMS', cr.x + crw / 2, cr.y + crh * 0.4);
-        ctx.fillText('(CR / PWD)', cr.x + crw / 2, cr.y + crh * 0.6);
-
-        // Service Yard
-        const sv = siteToScreen(SDP_ITEMS.serviceYard.x, SDP_ITEMS.serviceYard.y + SDP_ITEMS.serviceYard.h);
-        const svw = SDP_ITEMS.serviceYard.w * appState.scale;
-        const svh = SDP_ITEMS.serviceYard.h * appState.scale;
-
-        ctx.fillStyle = '#334155';
-        ctx.fillRect(sv.x, sv.y, svw, svh);
-        ctx.strokeStyle = '#64748b';
-        ctx.lineWidth = 1.5;
-        ctx.setLineDash([4, 4]);
-        ctx.strokeRect(sv.x, sv.y, svw, svh);
-        ctx.setLineDash([]);
-
-        ctx.fillStyle = '#cbd5e1';
-        ctx.font = 'bold 8px system-ui, sans-serif';
-        ctx.textAlign = 'center';
-        ctx.fillText('SERVICE / MRF', sv.x + svw / 2, sv.y + svh / 2);
-      }
-
-      // 8. Outer Dimensions & Zone Tags
-      if (appState.layerDims) {
-        drawArchitecturalDimensions();
-      }
-
-      // 9. Outer Boundary Stroke
+      // Border
       ctx.strokeStyle = '#38bdf8';
-      ctx.lineWidth = 2.5;
-      ctx.strokeRect(p0.x, p0.y, siteBoxWidth, siteBoxHeight);
-
-      // North Arrow Indicator
-      drawNorthIndicator(w, h);
-
-      ctx.restore();
+      ctx.lineWidth = 2;
+      ctx.strokeRect(p0.x, p0.y, sw, sh);
     }
 
-    function drawDrivewayArrow(x1, y1, x2, y2, color, label) {
-      const p1 = siteToScreen(x1, y1);
-      const p2 = siteToScreen(x2, y2);
+    // --- DRAW OPTION 1 ---
+    function drawOption1(w, h) {
+      drawBaseSite();
+      const p0 = toScreen(0, W_SITE);
+      const sh = W_SITE * app.scale;
 
-      ctx.save();
-      ctx.strokeStyle = color;
-      ctx.fillStyle = color;
+      // Parking (X: 3 to 47)
+      if (app.showParking) {
+        const pAsp0 = toScreen(3, W_SITE);
+        ctx.fillStyle = '#1e293b';
+        ctx.fillRect(pAsp0.x, pAsp0.y, 44 * app.scale, sh);
+
+        // Parking Stalls
+        for (let x = 7; x <= 43.4; x += 2.6) {
+          drawStall(x, 31.38, 2.5, 5.0, '#0f172a', '#64748b');
+          drawStall(x, 0, 2.5, 5.0, '#0f172a', '#64748b');
+        }
+        for (let x = 14; x <= 37.4; x += 2.6) {
+          drawStall(x, 18.19, 2.5, 4.5, '#0f172a', '#64748b');
+          drawStall(x, 13.69, 2.5, 4.5, '#0f172a', '#64748b');
+        }
+      }
+
+      // Food Park Ground
+      const pM0 = toScreen(47, W_SITE);
+      ctx.fillStyle = '#27272a';
+      ctx.fillRect(pM0.x, pM0.y, 63 * app.scale, sh);
+
+      // Central Promenade
+      const pPr0 = toScreen(51, 24.5);
+      ctx.fillStyle = '#3f3f46';
+      ctx.fillRect(pPr0.x, pPr0.y, 41 * app.scale, 12.5 * app.scale);
+
+      // Kiosks
+      if (app.showStalls) {
+        for (let i = 0; i < 11; i++) {
+          const x = 52 + i * 3.7;
+          drawBox(x, 26.5, 3.4, 7.8, '#047857', '#34d399', `K${i+1}`);
+          drawBox(x, 2.0, 3.4, 7.8, '#b45309', '#f59e0b', `K${i+12}`);
+        }
+        // Central Bar
+        drawBox(70.5, 15.6, 5.0, 5.2, '#1e1b4b', '#818cf8', 'BAR');
+      }
+
+      // Festoon Lights
+      if (app.showLights) {
+        drawFestoon(52, 92, 25.2, 11.2);
+      }
+
+      // Stage & Restrooms
+      drawBox(94, 13, 8, 10.38, '#4c1d95', '#a855f7', 'STAGE');
+      drawBox(102.5, 23.5, 6.5, 11, '#0369a1', '#38bdf8', 'RESTROOMS');
+    }
+
+    // --- DRAW OPTION 2: COURTYARD PIAZZA ---
+    function drawOption2(w, h) {
+      drawBaseSite();
+      const p0 = toScreen(0, W_SITE);
+      const sh = W_SITE * app.scale;
+
+      // Front Parking & Express Kiosks (X: 0 to 28)
+      if (app.showParking) {
+        const pFr = toScreen(0, W_SITE);
+        ctx.fillStyle = '#1e293b';
+        ctx.fillRect(pFr.x, pFr.y, 28 * app.scale, sh);
+
+        // Express Drive-Up Kiosks
+        drawBox(2, 12.5, 6, 11.5, '#d97706', '#f59e0b', 'EXPRESS DRIVE-UP');
+
+        // Front stalls
+        for (let x = 9; x <= 26; x += 2.6) {
+          drawStall(x, 31.38, 2.5, 5.0, '#0f172a', '#94a3b8');
+          drawStall(x, 0, 2.5, 5.0, '#0f172a', '#94a3b8');
+        }
+      }
+
+      // Central Grand Piazza (X: 28 to 82)
+      const pZ0 = toScreen(28, W_SITE);
+      ctx.fillStyle = '#27272a';
+      ctx.fillRect(pZ0.x, pZ0.y, 54 * app.scale, sh);
+
+      // Courtyard square
+      const pSq0 = toScreen(36, 29);
+      ctx.fillStyle = '#3f3f46';
+      ctx.fillRect(pSq0.x, pSq0.y, 38 * app.scale, 21.5 * app.scale);
+
+      // Perimeter U-Shape Stalls
+      if (app.showStalls) {
+        // North Row
+        for (let x = 32; x <= 74; x += 4.2) {
+          drawBox(x, 30.5, 3.8, 5.0, '#047857', '#34d399', 'STALL');
+        }
+        // South Row
+        for (let x = 32; x <= 74; x += 4.2) {
+          drawBox(x, 1.0, 3.8, 5.0, '#b45309', '#f59e0b', 'STALL');
+        }
+        // East Wall
+        for (let y = 8; y <= 24; y += 4.8) {
+          drawBox(74, y, 5.0, 4.4, '#4338ca', '#818cf8', 'STALL');
+        }
+        // Center Pavilion
+        drawCircle(55, 18.19, 4.2, '#831843', '#f43f5e', 'PAVILION');
+      }
+
+      // Radial Canopy Lights
+      if (app.showLights) {
+        drawRadialLights(55, 18.19, 18);
+      }
+
+      // Rear Hub: Stage, Restrooms & Parking
+      const pR0 = toScreen(82, W_SITE);
+      ctx.fillStyle = '#1e293b';
+      ctx.fillRect(pR0.x, pR0.y, 28 * app.scale, sh);
+
+      drawBox(82, 12, 8, 12.38, '#581c87', '#c084fc', 'AMPHITHEATER');
+      drawBox(103, 14, 6.5, 8.5, '#0369a1', '#38bdf8', 'CR / RESTROOMS');
+
+      if (app.showParking) {
+        for (let x = 92; x <= 106; x += 2.6) {
+          drawStall(x, 24, 2.5, 5.0, '#0f172a', '#94a3b8');
+          drawStall(x, 7.5, 2.5, 5.0, '#0f172a', '#94a3b8');
+        }
+      }
+    }
+
+    // --- DRAW OPTION 3: BOULEVARD RIBBON ---
+    function drawOption3(w, h) {
+      drawBaseSite();
+      const p0 = toScreen(0, W_SITE);
+
+      // South Vehicular Boulevard (Y: 0 to 17m)
+      const pB0 = toScreen(0, 17);
+      ctx.fillStyle = '#1e293b';
+      ctx.fillRect(pB0.x, pB0.y, D_SITE * app.scale, 17 * app.scale);
+
+      // Parking Ribbon along South Boundary
+      if (app.showParking) {
+        for (let x = 4; x <= 102; x += 2.7) {
+          drawStall(x, 0, 2.5, 5.2, '#0f172a', '#94a3b8');
+        }
+      }
+
+      // North Pedestrian Food Street (Y: 17 to 36.38)
+      const pN0 = toScreen(0, W_SITE);
+      ctx.fillStyle = '#27272a';
+      ctx.fillRect(pN0.x, pN0.y, D_SITE * app.scale, (W_SITE - 17) * app.scale);
+
+      // Promenade
+      const pP0 = toScreen(8, 27);
+      ctx.fillStyle = '#3f3f46';
+      ctx.fillRect(pP0.x, pP0.y, 90 * app.scale, 9 * app.scale);
+
+      // Gateway 2-Story Cafe
+      drawBox(0, 18, 8, 18.38, '#1e1b4b', '#6366f1', 'GATEWAY CAFE');
+
+      // 2-Story Container Kiosks Row (North)
+      if (app.showStalls) {
+        for (let x = 10; x <= 92; x += 4.5) {
+          drawBox(x, 29.5, 4.2, 6.8, '#047857', '#34d399', '2-DECK');
+        }
+      }
+
+      // Rear Backyard Stage & Beer Garden
+      drawBox(96, 18, 12, 17, '#4c1d95', '#c084fc', 'BACKYARD & STAGE');
+    }
+
+    // --- DRAW SURVEY PLAN ---
+    function drawSurveyPlan(w, h) {
+      drawBaseSite();
+      // Dividing line
+      const s1 = toScreen(0, 18.19);
+      const s2 = toScreen(D_SITE, 18.19);
+      ctx.strokeStyle = '#38bdf8';
       ctx.lineWidth = 2;
       ctx.beginPath();
-      ctx.moveTo(p1.x, p1.y);
-      ctx.lineTo(p2.x, p2.y);
+      ctx.moveTo(s1.x, s1.y);
+      ctx.lineTo(s2.x, s2.y);
       ctx.stroke();
 
-      // Arrow head
-      const angle = Math.atan2(p2.y - p1.y, p2.x - p1.x);
-      const headlen = 7;
-      ctx.beginPath();
-      ctx.moveTo(p2.x, p2.y);
-      ctx.lineTo(p2.x - headlen * Math.cos(angle - Math.PI / 6), p2.y - headlen * Math.sin(angle - Math.PI / 6));
-      ctx.lineTo(p2.x - headlen * Math.cos(angle + Math.PI / 6), p2.y - headlen * Math.sin(angle + Math.PI / 6));
-      ctx.closePath();
-      ctx.fill();
+      ctx.fillStyle = '#34d399';
+      ctx.font = 'bold 13px system-ui, sans-serif';
+      ctx.textAlign = 'center';
+      const pC = toScreen(D_SITE / 2, 27.28);
+      ctx.fillText('LOT 834-A-2-C (AREA = 2,000 SQ.M.)', pC.x, pC.y);
+
+      ctx.fillStyle = '#fbbf24';
+      const pB = toScreen(D_SITE / 2, 9.09);
+      ctx.fillText('LOT 834-A-2-B (AREA = 2,000 SQ.M.)', pB.x, pB.y);
+    }
+
+    function drawBox(x, y, w, h, fill, stroke, label) {
+      const sp = toScreen(x, y + h);
+      const sw = w * app.scale;
+      const sh = h * app.scale;
+
+      ctx.fillStyle = fill;
+      ctx.fillRect(sp.x, sp.y, sw, sh);
+      ctx.strokeStyle = stroke;
+      ctx.lineWidth = 1.2;
+      ctx.strokeRect(sp.x, sp.y, sw, sh);
 
       if (label) {
-        ctx.font = 'bold 8.5px system-ui, sans-serif';
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 8px system-ui, sans-serif';
         ctx.textAlign = 'center';
-        ctx.fillText(label, (p1.x + p2.x) / 2, p1.y - 6);
+        ctx.textBaseline = 'middle';
+        ctx.fillText(label, sp.x + sw / 2, sp.y + sh / 2);
       }
-      ctx.restore();
     }
 
-    function drawArchitecturalDimensions() {
-      ctx.save();
-      ctx.fillStyle = '#94a3b8';
-      ctx.strokeStyle = '#64748b';
+    function drawCircle(x, y, r, fill, stroke, label) {
+      const sp = toScreen(x, y);
+      const sr = r * app.scale;
+
+      ctx.beginPath();
+      ctx.arc(sp.x, sp.y, sr, 0, Math.PI * 2);
+      ctx.fillStyle = fill;
+      ctx.fill();
+      ctx.strokeStyle = stroke;
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+
+      if (label) {
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 8px system-ui, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(label, sp.x, sp.y);
+      }
+    }
+
+    function drawStall(x, y, w, h, fill, stroke) {
+      const sp = toScreen(x, y + h);
+      ctx.fillStyle = fill;
+      ctx.fillRect(sp.x, sp.y, w * app.scale, h * app.scale);
+      ctx.strokeStyle = stroke;
       ctx.lineWidth = 1;
-
-      // Frontage dimension (36.38 m)
-      const pF1 = siteToScreen(-2, W_SITE);
-      const pF2 = siteToScreen(-2, 0);
-      ctx.beginPath();
-      ctx.moveTo(pF1.x, pF1.y);
-      ctx.lineTo(pF2.x, pF2.y);
-      ctx.stroke();
-
-      ctx.save();
-      ctx.translate(pF1.x - 10, (pF1.y + pF2.y) / 2);
-      ctx.rotate(-Math.PI / 2);
-      ctx.font = 'bold 10px monospace';
-      ctx.textAlign = 'center';
-      ctx.fillText('Frontage: 36.38 m', 0, 0);
-      ctx.restore();
-
-      // Total Depth dimension (110.00 m)
-      const pD1 = siteToScreen(0, W_SITE + 2);
-      const pD2 = siteToScreen(D_SITE, W_SITE + 2);
-      ctx.beginPath();
-      ctx.moveTo(pD1.x, pD1.y);
-      ctx.lineTo(pD2.x, pD2.y);
-      ctx.stroke();
-
-      ctx.font = 'bold 10px monospace';
-      ctx.textAlign = 'center';
-      ctx.fillText('Total Parcel Depth: 110.00 meters (4,000 SQ.M.)', (pD1.x + pD2.x) / 2, pD1.y - 5);
-
-      // Zone Dividers (Bottom)
-      const pZ_Park1 = siteToScreen(0, -2.5);
-      const pZ_Park2 = siteToScreen(47, -2.5);
-      ctx.beginPath();
-      ctx.moveTo(pZ_Park1.x, pZ_Park1.y);
-      ctx.lineTo(pZ_Park2.x, pZ_Park2.y);
-      ctx.stroke();
-      ctx.fillText('PARKING ZONE (~47m / 42.7% of Site)', (pZ_Park1.x + pZ_Park2.x) / 2, pZ_Park1.y + 14);
-
-      const pZ_Food1 = siteToScreen(47, -2.5);
-      const pZ_Food2 = siteToScreen(D_SITE, -2.5);
-      ctx.beginPath();
-      ctx.moveTo(pZ_Food1.x, pZ_Food1.y);
-      ctx.lineTo(pZ_Food2.x, pZ_Food2.y);
-      ctx.stroke();
-      ctx.fillText('FOOD PARK & MARKET ZONE (~63m / 57.3% of Site)', (pZ_Food1.x + pZ_Food2.x) / 2, pZ_Food1.y + 14);
-
-      ctx.restore();
+      ctx.strokeRect(sp.x, sp.y, w * app.scale, h * app.scale);
     }
 
-    function drawNorthIndicator(w, h) {
+    function drawFestoon(x1, x2, y1, y2) {
       ctx.save();
-      const nx = w - 50;
-      const ny = 65;
-
-      ctx.translate(nx, ny);
-      // In SDP view, road is vertical on the left (bearing N 28° E).
-      // True north is tilted ~28 degrees clockwise from the top
-      ctx.rotate(AZ_ROAD);
-
+      ctx.strokeStyle = 'rgba(253, 224, 71, 0.7)';
+      ctx.lineWidth = 1.2;
       ctx.beginPath();
-      ctx.arc(0, 0, 18, 0, Math.PI * 2);
-      ctx.strokeStyle = 'rgba(255,255,255,0.2)';
-      ctx.stroke();
-
-      ctx.fillStyle = '#ef4444';
-      ctx.beginPath();
-      ctx.moveTo(0, -18);
-      ctx.lineTo(4, 0);
-      ctx.lineTo(0, -2);
-      ctx.closePath();
-      ctx.fill();
-
-      ctx.fillStyle = '#94a3b8';
-      ctx.beginPath();
-      ctx.moveTo(0, 18);
-      ctx.lineTo(4, 0);
-      ctx.lineTo(0, 2);
-      ctx.closePath();
-      ctx.fill();
-
-      ctx.fillStyle = '#ef4444';
-      ctx.font = 'bold 10px system-ui, sans-serif';
-      ctx.textAlign = 'center';
-      ctx.fillText('N', 0, -21);
-
-      ctx.restore();
-    }
-
-    // =========================================================================
-    // SURVEY & BOUNDARY PLAN DRAWING (from View 1)
-    // =========================================================================
-    function drawSurveyBoundaryPlan(w, h, textColor, mutedColor) {
-      // Re-use geodetic drawing
-      ctx.save();
-      // Center on canvas
-      const cx = w / 2;
-      const cy = h / 2;
-
-      // Draw grid
-      drawSurveyGrid(w, h, textColor, mutedColor);
-
-      // Draw lots in true rotation
-      const P_C1 = { x: 0, y: 0 };
-      const P_C_C2 = { x: 18.19 * uFront.x, y: 18.19 * uFront.y };
-      const P_C_C3 = { x: P_C_C2.x + 110.0 * uDepth.x, y: P_C_C2.y + 110.0 * uDepth.y };
-      const P_COMMON_REAR = { x: 110.0 * uDepth.x, y: 110.0 * uDepth.y };
-      const P_B_C4 = { x: -18.19 * uFront.x, y: -18.19 * uFront.y };
-      const P_B_C3 = { x: P_B_C4.x + 110.0 * uDepth.x, y: P_B_C4.y + 110.0 * uDepth.y };
-
-      function toGeodeticScreen(pt) {
-        const dx = pt.x - 55 * uDepth.x;
-        const dy = pt.y - 55 * uDepth.y;
-        return {
-          x: cx + dx * appState.scale * 0.8,
-          y: cy - dy * appState.scale * 0.8
-        };
+      const n = 16;
+      for (let i = 0; i <= n; i++) {
+        const x = x1 + (i / n) * (x2 - x1);
+        const y = (i % 2 === 0) ? y1 : y2;
+        const sp = toScreen(x, y);
+        if (i === 0) ctx.moveTo(sp.x, sp.y);
+        else ctx.lineTo(sp.x, sp.y);
       }
-
-      // Draw Lot C
-      const sC1 = toGeodeticScreen(P_C1);
-      const sC2 = toGeodeticScreen(P_C_C2);
-      const sC3 = toGeodeticScreen(P_C_C3);
-      const sC4 = toGeodeticScreen(P_COMMON_REAR);
-      const sB3 = toGeodeticScreen(P_B_C3);
-      const sB4 = toGeodeticScreen(P_B_C4);
-
-      // Lot C
-      ctx.fillStyle = 'rgba(16, 185, 129, 0.2)';
-      ctx.strokeStyle = '#10b981';
-      ctx.lineWidth = 2;
-      ctx.beginPath();
-      ctx.moveTo(sC1.x, sC1.y);
-      ctx.lineTo(sC2.x, sC2.y);
-      ctx.lineTo(sC3.x, sC3.y);
-      ctx.lineTo(sC4.x, sC4.y);
-      ctx.closePath();
-      ctx.fill();
       ctx.stroke();
-
-      // Lot B
-      ctx.fillStyle = 'rgba(245, 158, 11, 0.2)';
-      ctx.strokeStyle = '#f59e0b';
-      ctx.lineWidth = 2;
-      ctx.beginPath();
-      ctx.moveTo(sB4.x, sB4.y);
-      ctx.lineTo(sC1.x, sC1.y);
-      ctx.lineTo(sC4.x, sC4.y);
-      ctx.lineTo(sB3.x, sB3.y);
-      ctx.closePath();
-      ctx.fill();
-      ctx.stroke();
-
-      // Labels
-      ctx.fillStyle = '#34d399';
-      ctx.font = 'bold 12px system-ui, sans-serif';
-      ctx.textAlign = 'center';
-      ctx.fillText('LOT 834-A-2-C (2,000 SQ.M.)', (sC1.x + sC3.x)/2, (sC1.y + sC3.y)/2);
-
-      ctx.fillStyle = '#fbbf24';
-      ctx.fillText('LOT 834-A-2-B (2,000 SQ.M.)', (sB4.x + sC4.x)/2, (sB4.y + sC4.y)/2);
-
-      // Road indicator
-      ctx.fillStyle = '#cbd5e1';
-      ctx.font = 'bold 10px system-ui, sans-serif';
-      ctx.fillText('NATIONAL ROAD (Frontage: 36.38m)', (sC2.x + sB4.x)/2 - 30, (sC2.y + sB4.y)/2);
-
       ctx.restore();
     }
 
-    function drawSurveyGrid(w, h, textCol, mutCol) {
-      ctx.strokeStyle = 'rgba(255,255,255,0.05)';
+    function drawRadialLights(cx, cy, radius) {
+      ctx.save();
+      ctx.strokeStyle = 'rgba(253, 224, 71, 0.5)';
       ctx.lineWidth = 1;
-      ctx.beginPath();
-      for (let x = 0; x < w; x += 40) { ctx.moveTo(x, 0); ctx.lineTo(x, h); }
-      for (let y = 0; y < h; y += 40) { ctx.moveTo(0, y); ctx.lineTo(w, y); }
-      ctx.stroke();
+      const sp0 = toScreen(cx, cy);
+      for (let ang = 0; ang < Math.PI * 2; ang += Math.PI / 6) {
+        const ex = cx + radius * Math.cos(ang);
+        const ey = cy + (radius * 0.6) * Math.sin(ang);
+        const sp1 = toScreen(ex, ey);
+        ctx.beginPath();
+        ctx.moveTo(sp0.x, sp0.y);
+        ctx.lineTo(sp1.x, sp1.y);
+        ctx.stroke();
+      }
+      ctx.restore();
     }
 
-    // =========================================================================
-    // INTERACTION & HIT TESTING
-    // =========================================================================
-    function checkHitTest(sx, sy) {
-      if (appState.viewMode !== 'sdp') return null;
-
-      const pt = screenToSite(sx, sy);
-
-      // Check Food Stalls North
-      for (let s of SDP_ITEMS.foodStallsNorth) {
-        if (pt.x >= s.x && pt.x <= s.x + s.w && pt.y >= s.y && pt.y <= s.y + s.h) return s;
-      }
-      // Check Food Stalls South
-      for (let s of SDP_ITEMS.foodStallsSouth) {
-        if (pt.x >= s.x && pt.x <= s.x + s.w && pt.y >= s.y && pt.y <= s.y + s.h) return s;
-      }
-      // Check Central Bar
-      const b = SDP_ITEMS.centralBar;
-      if (pt.x >= b.x && pt.x <= b.x + b.w && pt.y >= b.y && pt.y <= b.y + b.h) return b;
-
-      // Check Stage
-      const st = SDP_ITEMS.stage;
-      if (pt.x >= st.x && pt.x <= st.x + st.w && pt.y >= st.y && pt.y <= st.y + st.h) return st;
-
-      // Check Restrooms
-      const cr = SDP_ITEMS.restrooms;
-      if (pt.x >= cr.x && pt.x <= cr.x + cr.w && pt.y >= cr.y && pt.y <= cr.y + cr.h) return cr;
-
-      // Check Guardhouse
-      const gh = SDP_ITEMS.guardhouse;
-      if (pt.x >= gh.x && pt.x <= gh.x + gh.w && pt.y >= gh.y && pt.y <= gh.y + gh.h) return gh;
-
-      // Check Motorcycle
-      const mp = SDP_ITEMS.motoParking;
-      if (pt.x >= mp.x && pt.x <= mp.x + mp.w && pt.y >= mp.y && pt.y <= mp.y + mp.h) return mp;
-
-      // Check Car Stalls
-      for (let p of SDP_ITEMS.stallsParking) {
-        if (pt.x >= p.x && pt.x <= p.x + p.w && pt.y >= p.y && pt.y <= p.y + p.h) return p;
-      }
-
-      return null;
-    }
-
-    function updateInspector(item) {
-      const el = document.getElementById('inspector-content');
-      if (!item) {
-        el.innerHTML = '<span class="italic text-gray-400">Hover or click on any stall, parking slot, or amenity in the canvas to view specifications.</span>';
-        return;
-      }
-
-      if (item.type === 'food_stall') {
-        el.innerHTML = `
-          <div class="space-y-1.5">
-            <div class="flex items-center justify-between">
-              <span class="font-bold text-sm text-emerald-600">${item.id}</span>
-              <span class="px-2 py-0.5 rounded text-[10px] bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 font-semibold">Food Kiosk</span>
-            </div>
-            <div class="font-semibold text-xs text-[var(--foreground,#0f172a)]">${item.category}</div>
-            <div class="text-[11px] text-gray-500"><strong>Footprint:</strong> ${item.w}m × ${item.h}m (${(item.w * item.h).toFixed(1)} m²)</div>
-            <div class="text-[11px] text-gray-500"><strong>Electrical:</strong> ${item.power}</div>
-            <div class="text-[11px] text-gray-500"><strong>Sanitary:</strong> ${item.water}</div>
-          </div>
-        `;
-      } else if (item.type === 'car') {
-        el.innerHTML = `
-          <div class="space-y-1">
-            <div class="font-bold text-sm text-blue-600">Parking Slot ${item.id}</div>
-            <div class="text-[11px] text-gray-500"><strong>Dimensions:</strong> ${item.w}m × ${item.h}m</div>
-            <div class="text-[11px] text-gray-500">Standard perpendicular car parking stall.</div>
-          </div>
-        `;
-      } else {
-        el.innerHTML = `
-          <div class="space-y-1">
-            <div class="font-bold text-sm text-indigo-600">${item.name}</div>
-            <div class="text-xs text-[var(--foreground,#0f172a)]">${item.desc}</div>
-          </div>
-        `;
-      }
-    }
-
-    // Event Listeners
+    // --- LISTENERS ---
     canvas.addEventListener('mousedown', (e) => {
-      appState.isDragging = true;
-      appState.dragStart = { x: e.clientX - appState.panX, y: e.clientY - appState.panY };
+      app.isDragging = true;
+      app.dragStart = { x: e.clientX - app.panX, y: e.clientY - app.panY };
     });
 
     window.addEventListener('mousemove', (e) => {
@@ -1150,28 +680,19 @@
       const sx = e.clientX - rect.left;
       const sy = e.clientY - rect.top;
 
-      if (appState.isDragging) {
-        appState.panX = e.clientX - appState.dragStart.x;
-        appState.panY = e.clientY - appState.dragStart.y;
+      if (app.isDragging) {
+        app.panX = e.clientX - app.dragStart.x;
+        app.panY = e.clientY - app.dragStart.y;
         draw();
       }
 
       if (sx >= 0 && sx <= rect.width && sy >= 0 && sy <= rect.height) {
-        const pt = screenToSite(sx, sy);
-        document.getElementById('canvas-coord-readout').innerText = `X: ${pt.x.toFixed(1)}m, Y: ${pt.y.toFixed(1)}m`;
-
-        const hit = checkHitTest(sx, sy);
-        if (hit !== appState.hoveredItem) {
-          appState.hoveredItem = hit;
-          updateInspector(hit);
-          draw();
-        }
+        const pt = toSite(sx, sy);
+        document.getElementById('coord-readout').innerText = `X: ${pt.x.toFixed(1)}m, Y: ${pt.y.toFixed(1)}m`;
       }
     });
 
-    window.addEventListener('mouseup', () => {
-      appState.isDragging = false;
-    });
+    window.addEventListener('mouseup', () => { app.isDragging = false; });
 
     canvas.addEventListener('wheel', (e) => {
       e.preventDefault();
@@ -1180,81 +701,52 @@
       const mouseY = e.clientY - rect.top;
 
       const zoomFactor = e.deltaY < 0 ? 1.15 : 0.87;
-      const newScale = Math.max(1.0, Math.min(40, appState.scale * zoomFactor));
+      const newScale = Math.max(1.0, Math.min(40, app.scale * zoomFactor));
 
-      appState.panX = mouseX - (mouseX - appState.panX) * (newScale / appState.scale);
-      appState.panY = mouseY - (mouseY - appState.panY) * (newScale / appState.scale);
-      appState.scale = newScale;
+      app.panX = mouseX - (mouseX - app.panX) * (newScale / app.scale);
+      app.panY = mouseY - (mouseY - app.panY) * (newScale / app.scale);
+      app.scale = newScale;
 
-      updateUI();
+      document.getElementById('zoom-readout').innerText = (app.scale / 6.2).toFixed(1) + 'x';
       draw();
     }, { passive: false });
 
-    // Buttons & Tabs
-    document.getElementById('btn-zoom-in').addEventListener('click', () => {
-      appState.scale = Math.min(40, appState.scale * 1.25);
-      updateUI();
-      draw();
+    // UI Controls
+    document.getElementById('btn-zoom-in').addEventListener('click', () => { app.scale = Math.min(40, app.scale * 1.25); fitView(); });
+    document.getElementById('btn-zoom-out').addEventListener('click', () => { app.scale = Math.max(1.0, app.scale * 0.8); fitView(); });
+    document.getElementById('btn-fit').addEventListener('click', fitView);
+
+    document.getElementById('scheme-select').addEventListener('change', (e) => {
+      app.scheme = e.target.value;
+      updateSchemeUI();
+      fitView();
     });
 
-    document.getElementById('btn-zoom-out').addEventListener('click', () => {
-      appState.scale = Math.max(1.0, appState.scale * 0.8);
-      updateUI();
-      draw();
-    });
-
-    document.getElementById('btn-fit').addEventListener('click', fitToScreen);
-
-    // Tab switcher
-    const tabSDP = document.getElementById('tab-sdp');
-    const tabSurvey = document.getElementById('tab-survey');
-    const panelSDP = document.getElementById('panel-sdp-controls');
-    const panelSurvey = document.getElementById('panel-survey-controls');
-    const statsSDP = document.getElementById('stats-sdp');
-
-    tabSDP.addEventListener('click', () => {
-      appState.viewMode = 'sdp';
-      tabSDP.className = 'px-3.5 py-2 rounded-lg text-xs font-semibold bg-white dark:bg-slate-800 text-blue-600 shadow-sm transition';
-      tabSurvey.className = 'px-3.5 py-2 rounded-lg text-xs font-medium text-[var(--muted-foreground,#64748b)] hover:text-[var(--foreground,#0f172a)] transition';
-      panelSDP.classList.remove('hidden');
-      panelSurvey.classList.add('hidden');
-      statsSDP.classList.remove('hidden');
-      fitToScreen();
-    });
-
-    tabSurvey.addEventListener('click', () => {
-      appState.viewMode = 'survey';
-      tabSurvey.className = 'px-3.5 py-2 rounded-lg text-xs font-semibold bg-white dark:bg-slate-800 text-blue-600 shadow-sm transition';
-      tabSDP.className = 'px-3.5 py-2 rounded-lg text-xs font-medium text-[var(--muted-foreground,#64748b)] hover:text-[var(--foreground,#0f172a)] transition';
-      panelSurvey.classList.remove('hidden');
-      panelSDP.classList.add('hidden');
-      fitToScreen();
-    });
-
-    // Layer checkboxes
-    document.getElementById('layer-parking').addEventListener('change', (e) => { appState.layerParking = e.target.checked; draw(); });
-    document.getElementById('layer-stalls').addEventListener('change', (e) => { appState.layerStalls = e.target.checked; draw(); });
-    document.getElementById('layer-dining').addEventListener('change', (e) => { appState.layerDining = e.target.checked; draw(); });
-    document.getElementById('layer-lights').addEventListener('change', (e) => { appState.layerLights = e.target.checked; draw(); });
-    document.getElementById('layer-stage-cr').addEventListener('change', (e) => { appState.layerStageCR = e.target.checked; draw(); });
-    document.getElementById('layer-dims').addEventListener('change', (e) => { appState.layerDims = e.target.checked; draw(); });
+    // Checkbox toggles
+    document.getElementById('chk-parking').addEventListener('change', (e) => { app.showParking = e.target.checked; draw(); });
+    document.getElementById('chk-stalls').addEventListener('change', (e) => { app.showStalls = e.target.checked; draw(); });
+    document.getElementById('chk-dining').addEventListener('change', (e) => { app.showDining = e.target.checked; draw(); });
+    document.getElementById('chk-lights').addEventListener('change', (e) => { app.showLights = e.target.checked; draw(); });
+    document.getElementById('chk-dims').addEventListener('change', (e) => { app.showDims = e.target.checked; draw(); });
 
     // Export PNG
-    document.getElementById('btn-export-canvas-png').addEventListener('click', () => {
+    document.getElementById('btn-export-png').addEventListener('click', () => {
       const link = document.createElement('a');
-      link.download = `Sean_Merkado_Site_Development_Plan.png`;
+      link.download = `Sean_Merkado_${app.scheme}.png`;
       link.href = canvas.toDataURL('image/png', 1.0);
       link.click();
     });
 
-    // Initial boot
+    // Init
     window.addEventListener('DOMContentLoaded', () => {
-      resizeCanvas();
-      fitToScreen();
+      updateSchemeUI();
+      resize();
+      fitView();
     });
     setTimeout(() => {
-      resizeCanvas();
-      fitToScreen();
+      updateSchemeUI();
+      resize();
+      fitView();
     }, 100);
   </script>
 </body>
